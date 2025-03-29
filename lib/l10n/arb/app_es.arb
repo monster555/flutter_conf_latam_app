@@ -1,0 +1,145 @@
+{
+  "@@locale": "es",
+  "appTitle": "FlutterConf LATAM",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "navigationBarLabel": "Navegación",
+  "homeTabLabel": "Inicio",
+  "homeTabTooltip": "Pantalla de inicio con resumen del evento",
+  "@homeTabTooltip": {
+    "description": "Tooltip for the home tab in the bottom navigation bar"
+  },
+  "agendaTabLabel": "Agenda",
+  "agendaTabTooltip": "Ver programa de la conferencia",
+  "@agendaTabTooltip": {
+    "description": "Tooltip for the agenda tab"
+  },
+  "speakersTabLabel": "Speakers",
+  "speakersTabTooltip": "Explorar ponentes de la conferencia",
+  "@speakersTabTooltip": {
+    "description": "Tooltip for the speakers tab"
+  },
+  "venueTabLabel": "Venue",
+  "venueTabTooltip": "Información del lugar de la conferencia",
+  "@venueTabTooltip": {
+    "description": "Tooltip for the venue tab"
+  },
+  "moreTabLabel": "Más",
+  "moreTabTooltip": "Información de la conferencia y consejos",
+  "@moreTabTooltip": {
+    "description": "Tooltip for the more tab in navigation bar"
+  },
+  "venueBannerTitle": "Próxima parada",
+  "@venueBannerTitle": {
+    "description": "Title shown above the venue banner"
+  },
+  "venueBannerSemanticsLabel": "Información del lugar de el evento",
+  "@venueBannerSemanticsLabel": {
+    "description": "Accessibility label for venue banner"
+  },
+  "venueBannerSemanticsHint": "Toca para ver detalles del lugar",
+  "@venueBannerSemanticsHint": {
+    "description": "Accessibility hint for venue banner"
+  },
+  "speaker": "Speaker",
+  "@speaker": {
+    "description": "Label for a speaker"
+  },
+  "magicBeginsLabel": "La magia comienza en",
+  "@magicBeginsLabel": {
+    "description": "Title shown above the countdown timer"
+  },
+  "days": "días",
+  "@days": {
+    "description": "Plural label for days in countdown"
+  },
+  "hours": "horas",
+  "@hours": {
+    "description": "Plural label for hours in countdown"
+  },
+  "minutes": "minutos",
+  "@minutes": {
+    "description": "Plural label for minutes in countdown"
+  },
+  "seconds": "segundos",
+  "@seconds": {
+    "description": "Plural label for seconds in countdown"
+  },
+  "conferenceDates": "{startDay} y {endDay} de Septiembre",
+  "@conferenceDates": {
+    "description": "The dates of the conference (formatted for display in venue banner)",
+    "placeholders": {
+      "startDay": {
+        "type": "int",
+        "example": "9"
+      },
+      "endDay": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+  "sessionLevelBasic": "Básico",
+  "@sessionLevelBasic": {
+    "description": "Basic difficulty level for conference sessions"
+  },
+  "sessionLevelIntermediate": "Intermedio",
+  "@sessionLevelIntermediate": {
+    "description": "Intermediate difficulty level for conference sessions"
+  },
+  "sessionLevelAdvanced": "Avanzado",
+  "@sessionLevelAdvanced": {
+    "description": "Advanced difficulty level for conference sessions"
+  },
+  "sessionLevelExpert": "Experto",
+  "@sessionLevelExpert": {
+    "description": "Expert difficulty level for conference sessions"
+  },
+  "sessionsForDate": "Sesiones para {date}",
+  "sessionCardHint": "Toca para ver detalles de la sesión",
+  "actionGetDirections": "Cómo llegar",
+  "sectionTitleVenue": "Información del lugar",
+  "sectionTitleAccessibility": "Accesibilidad",
+  "errorMapsOpen": "No se pudo abrir la aplicación de mapas",
+  "facilitiesCampusTitle": "Instalaciones del Campus",
+  "facilitiesCampusDescription": "El lugar cuenta con aulas modernas, auditorios y espacios para networking equipados con WiFi de alta velocidad en todo el campus.",
+  "facilitiesFoodTitle": "Comida y Bebidas",
+  "facilitiesFoodDescription": "Hay varias cafeterías y opciones de comida disponibles en el campus, con menús especiales preparados para los asistentes a la conferencia.",
+  "navigatingCampusTitle": "Cómo Moverse",
+  "navigatingCampusDescription": "El campus es fácil de navegar con una señalización clara. Personal del evento con camisas azules de Flutter estará disponible para ayudar con las direcciones.",
+  "accessibilityDescription": "El lugar es totalmente accesible con rampas, ascensores y baños accesibles. Contacta a los organizadores si necesitas alguna adaptación especial.",
+  "venueCapacity": "Capacidad: {capacity} personas",
+  "imageVenueDescription": "Imagen del campus de la Universidad de las Américas",
+  "sectionTitleSafety": "Consejos de Seguridad",
+  "sectionTitleTransportation": "Transporte",
+  "sectionTitleFood": "Comida",
+  "sectionTitleMoney": "Dinero",
+  "sectionTitleWeather": "Clima",
+  "safetyPrecautionsTipTitle": "Precauciones de Seguridad",
+  "safetyPrecautionsTipDescription": "Evita llevar grandes cantidades de dinero y mantén tus objetos de valor seguros en áreas concurridas.",
+  "emergencyContactsTipTitle": "Contactos de Emergencia",
+  "emergencyContactsTipDescription": "Marca 911 para policía, ambulancia o bomberos. Para asistencia al turista, llama al +593-123-AYUDA.",
+  "taxisTipTitle": "Taxis y Transporte",
+  "taxisTipDescription": "Usa taxis autorizados o aplicaciones como Uber y Cabify. Evita tomar taxis no registrados.",
+  "deliveryAppsTipTitle": "Aplicaciones de Entrega",
+  "deliveryAppsTipDescription": "Las opciones populares incluyen Rappi y Uber Eats para un servicio rápido y confiable.",
+  "localRestaurantsTipTitle": "Restaurantes Locales",
+  "localRestaurantsTipDescription": "Prueba platos ecuatorianos como el \"locro\" o \"ceviche\" en restaurantes cercanos como Café Quito.",
+  "currencyTipTitle": "Moneda y Pagos",
+  "currencyTipDescription": "En Ecuador se utilizan dólares estadounidenses. Las tarjetas de crédito son ampliamente aceptadas, pero mantén billetes pequeños para taxis o vendedores ambulantes.",
+  "atmsTipTitle": "Cajeros Automáticos y Cambio de Divisas",
+  "atmsTipDescription": "Hay cajeros automáticos disponibles en toda la ciudad. Evita usar cajeros en áreas aisladas o mal iluminadas por la noche.",
+  "weatherTipTitle": "Consejos sobre el Clima",
+  "weatherTipDescription": "¡Trae ropa por capas! El clima de Quito puede cambiar de cálido y soleado a fresco y lluvioso en minutos.",
+  "actionRetry": "Reintentar",
+  "errorSessionsNone": "No hay sesiones disponibles",
+  "errorSessionsNoneForDay": "No hay sesiones programadas para el {date}",
+  "errorSpeakersNone": "No hay ponentes disponibles",
+  "stateLoadingAgenda": "Cargando agenda",
+  "stateLoadingSessions": "Cargando sesiones",
+  "stateLoadingSpeakers": "Cargando speakers",
+  "speaks": "Habla",
+  "countryFlag": "bandera de {country}",
+  "agendaPreviewEmptyMessage": "Aún no hay sesiones para mostrar. ¡Vuelve pronto!"
+}

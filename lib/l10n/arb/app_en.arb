@@ -1,0 +1,325 @@
+{
+  "@@locale": "en",
+  "appTitle": "FlutterConf LATAM",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "navigationBarLabel": "Navigation",
+  "@navigationBarLabel": {
+    "description": "Accessibility label for the bottom navigation bar"
+  },
+  "homeTabLabel": "Home",
+  "@homeTabLabel": {
+    "description": "Label for the home tab in the bottom navigation bar"
+  },
+  "agendaTabLabel": "Agenda",
+  "@agendaTabLabel": {
+    "description": "Label for the agenda tab"
+  },
+  "speakersTabLabel": "Speakers",
+  "@speakersTabLabel": {
+    "description": "Label for the speakers tab"
+  },
+  "venueTabLabel": "Venue",
+  "@venueTabLabel": {
+    "description": "Label for the venue tab"
+  },
+  "moreTabLabel": "More",
+  "@moreTabLabel": {
+    "description": "Label for the profile/more tab in navigation bar"
+  },
+  "moreTabTooltip": "Conference information and tips",
+  "@moreTabTooltip": {
+    "description": "Tooltip for the more tab in navigation bar"
+  },
+  "venueBannerTitle": "Next stop",
+  "@venueBannerTitle": {
+    "description": "Title shown above the venue banner"
+  },
+  "venueBannerSemanticsLabel": "Conference venue information",
+  "@venueBannerSemanticsLabel": {
+    "description": "Accessibility label for venue banner"
+  },
+  "venueBannerSemanticsHint": "Tap to see venue details",
+  "@venueBannerSemanticsHint": {
+    "description": "Accessibility hint for venue banner"
+  },
+  "speaker": "Speaker",
+  "@speaker": {
+    "description": "Label for a speaker"
+  },
+  "magicBeginsLabel": "The magic begins in",
+  "@magicBeginsLabel": {
+    "description": "Title shown above the countdown timer"
+  },
+  "days": "days",
+  "@days": {
+    "description": "Plural label for days in countdown"
+  },
+  "hours": "hours",
+  "@hours": {
+    "description": "Plural label for hours in countdown"
+  },
+  "minutes": "minutes",
+  "@minutes": {
+    "description": "Plural label for minutes in countdown"
+  },
+  "seconds": "seconds",
+  "@seconds": {
+    "description": "Plural label for seconds in countdown"
+  },
+  "homeTabTooltip": "Home screen with event overview",
+  "@homeTabTooltip": {
+    "description": "Tooltip for the home tab in navigation bar"
+  },
+  "agendaTabTooltip": "Conference schedule by day and time",
+  "@agendaTabTooltip": {
+    "description": "Tooltip for the agenda tab in navigation bar"
+  },
+  "speakersTabTooltip": "Conference speakers and presentations",
+  "@speakersTabTooltip": {
+    "description": "Tooltip for the speakers tab in navigation bar"
+  },
+  "venueTabTooltip": "Venue information and location",
+  "@venueTabTooltip": {
+    "description": "Tooltip for the venue tab in navigation bar"
+  },
+  "conferenceDates": "September {startDay} - {endDay}",
+  "@conferenceDates": {
+    "description": "The dates of the conference (formatted for display in venue banner)",
+    "placeholders": {
+      "startDay": {
+        "type": "int",
+        "example": "9"
+      },
+      "endDay": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+  "sessionLevelBasic": "Basic",
+  "@sessionLevelBasic": {
+    "description": "Basic difficulty level for conference sessions"
+  },
+  "sessionLevelIntermediate": "Intermediate",
+  "@sessionLevelIntermediate": {
+    "description": "Intermediate difficulty level for conference sessions"
+  },
+  "sessionLevelAdvanced": "Advanced",
+  "@sessionLevelAdvanced": {
+    "description": "Advanced difficulty level for conference sessions"
+  },
+  "sessionLevelExpert": "Expert",
+  "@sessionLevelExpert": {
+    "description": "Expert difficulty level for conference sessions"
+  },
+  "sessionsForDate": "Sessions for {date}",
+  "@sessionsForDate": {
+    "description": "Header for sessions on a specific date",
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "example": "September 10, 2025"
+      }
+    }
+  },
+  "sessionCardHint": "Tap to view session details",
+  "@sessionCardHint": {
+    "description": "Hint for interacting with session cards"
+  },
+  "actionGetDirections": "Get Directions",
+  "@actionGetDirections": {
+    "description": "Button to open maps application with directions to venue"
+  },
+  "sectionTitleVenue": "Venue Information",
+  "@sectionTitleVenue": {
+    "description": "Title for venue information section"
+  },
+  "sectionTitleAccessibility": "Accessibility",
+  "@sectionTitleAccessibility": {
+    "description": "Title for venue accessibility section"
+  },
+  "errorMapsOpen": "Unable to open maps application",
+  "@errorMapsOpen": {
+    "description": "Error message when maps app cannot be opened"
+  },
+  "facilitiesCampusTitle": "Campus Facilities",
+  "@facilitiesCampusTitle": {
+    "description": "Title for campus facilities section"
+  },
+  "facilitiesCampusDescription": "The venue offers modern classrooms, auditoriums, and networking spaces equipped with high-speed WiFi throughout the campus.",
+  "@facilitiesCampusDescription": {
+    "description": "Description of venue campus facilities"
+  },
+  "facilitiesFoodTitle": "Food & Refreshments",
+  "@facilitiesFoodTitle": {
+    "description": "Title for food and refreshments section"
+  },
+  "facilitiesFoodDescription": "Several cafeterias and food options are available on campus, with special menus prepared for conference attendees.",
+  "@facilitiesFoodDescription": {
+    "description": "Description of food options at venue"
+  },
+  "navigatingCampusTitle": "Getting Around",
+  "@navigatingCampusTitle": {
+    "description": "Title for getting around section"
+  },
+  "navigatingCampusDescription": "The campus is easy to navigate with clear signage. Event staff in Flutter blue shirts will be available to help with directions.",
+  "@navigatingCampusDescription": {
+    "description": "Description of how to navigate the venue"
+  },
+  "accessibilityDescription": "The venue is fully accessible with ramps, elevators, and accessible restrooms. Contact the organizers if you need any special accommodations.",
+  "@accessibilityDescription": {
+    "description": "Description of venue accessibility features"
+  },
+  "venueCapacity": "Capacity: {capacity} people",
+  "@venueCapacity": {
+    "description": "The capacity of the venue",
+    "placeholders": {
+      "capacity": {
+        "type": "String",
+        "example": "1,200"
+      }
+    }
+  },
+  "imageVenueDescription": "Image of Universidad de las Américas campus",
+  "@imageVenueDescription": {
+    "description": "Accessibility description of the venue image"
+  },
+  "sectionTitleSafety": "Safety Tips",
+  "@sectionTitleSafety": {
+    "description": "Title for the safety tips section"
+  },
+  "sectionTitleTransportation": "Transportation",
+  "@sectionTitleTransportation": {
+    "description": "Title for the transportation section"
+  },
+  "sectionTitleFood": "Food",
+  "@sectionTitleFood": {
+    "description": "Title for the food section"
+  },
+  "sectionTitleMoney": "Money",
+  "@sectionTitleMoney": {
+    "description": "Title for the money section"
+  },
+  "sectionTitleWeather": "Weather",
+  "@sectionTitleWeather": {
+    "description": "Title for the weather section"
+  },
+  "safetyPrecautionsTipTitle": "Safety Precautions",
+  "@safetyPrecautionsTipTitle": {
+    "description": "Title for safety precautions tip"
+  },
+  "safetyPrecautionsTipDescription": "Avoid carrying large amounts of cash, and keep valuables secure in crowded areas.",
+  "@safetyPrecautionsTipDescription": {
+    "description": "Description for safety precautions tip"
+  },
+  "emergencyContactsTipTitle": "Emergency Contacts",
+  "@emergencyContactsTipTitle": {
+    "description": "Title for emergency contacts tip"
+  },
+  "emergencyContactsTipDescription": "Dial 911 for police, ambulance, or fire services. For tourist assistance, call +593-123-HELP.",
+  "@emergencyContactsTipDescription": {
+    "description": "Description for emergency contacts tip"
+  },
+  "taxisTipTitle": "Taxis and Rideshares",
+  "@taxisTipTitle": {
+    "description": "Title for taxis tip"
+  },
+  "taxisTipDescription": "Use authorized taxis or apps like Uber and Cabify. Avoid hailing unregistered taxis.",
+  "@taxisTipDescription": {
+    "description": "Description for taxis tip"
+  },
+  "deliveryAppsTipTitle": "Delivery Apps",
+  "@deliveryAppsTipTitle": {
+    "description": "Title for delivery apps tip"
+  },
+  "deliveryAppsTipDescription": "Popular options include Rappi and Uber Eats for fast and reliable service.",
+  "@deliveryAppsTipDescription": {
+    "description": "Description for delivery apps tip"
+  },
+  "localRestaurantsTipTitle": "Local Restaurants",
+  "@localRestaurantsTipTitle": {
+    "description": "Title for local restaurants tip"
+  },
+  "localRestaurantsTipDescription": "Taste Ecuadorian favorites like \"locro\" or \"ceviche\" at nearby restaurants like Café Quito.",
+  "@localRestaurantsTipDescription": {
+    "description": "Description for local restaurants tip"
+  },
+  "currencyTipTitle": "Currency and Payments",
+  "@currencyTipTitle": {
+    "description": "Title for currency tip"
+  },
+  "currencyTipDescription": "US dollars are used in Ecuador. Credit cards are widely accepted, but keep small bills for taxis or street vendors.",
+  "@currencyTipDescription": {
+    "description": "Description for currency tip"
+  },
+  "atmsTipTitle": "ATMs and Currency Exchange",
+  "@atmsTipTitle": {
+    "description": "Title for ATMs tip"
+  },
+  "atmsTipDescription": "ATMs are available across the city. Avoid using ATMs in isolated or poorly lit areas at night.",
+  "@atmsTipDescription": {
+    "description": "Description for ATMs tip"
+  },
+  "weatherTipTitle": "Weather Tips",
+  "@weatherTipTitle": {
+    "description": "Title for weather tip"
+  },
+  "weatherTipDescription": "Bring layers! Quito's weather can change from warm and sunny to cool and rainy in minutes.",
+  "@weatherTipDescription": {
+    "description": "Description for weather tip"
+  },
+  "actionRetry": "Retry",
+  "@actionRetry": {
+    "description": "Retry button label"
+  },
+  "errorSessionsNone": "No sessions available",
+  "@errorSessionsNone": {
+    "description": "Message displayed when no sessions are available"
+  },
+  "errorSessionsNoneForDay": "No sessions scheduled for {date}",
+  "@errorSessionsNoneForDay": {
+    "description": "Message shown when there are no sessions for a specific day",
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "example": "September 10, 2025"
+      }
+    }
+  },
+  "errorSpeakersNone": "No speakers available",
+  "@errorSpeakersNone": {
+    "description": "Message displayed when no speakers are available"
+  },
+  "stateLoadingAgenda": "Loading Agenda",
+  "@stateLoadingAgenda": {
+    "description": "Message displayed when the Agenda is loading"
+  },
+  "stateLoadingSessions": "Loading Sessions",
+  "@stateLoadingSessions": {
+    "description": "Message displayed when the Sessions are loading"
+  },
+  "stateLoadingSpeakers": "Loading Speakers",
+  "@stateLoadingSpeakers": {
+    "description": "Message displayed when the Speakers are loading"
+  },
+  "speaks": "Speaks",
+  "@speaks": {
+    "description": "Label for the 'Speaks' widget"
+  },
+  "countryFlag": "{country} flag",
+  "@countryFlag": {
+    "description": "Accessibility label for country flag emoji",
+    "placeholders": {
+      "country": {
+        "type": "String",
+        "example": "Ecuador"
+      }
+    }
+  },
+  "agendaPreviewEmptyMessage": "No sessions to preview yet. Check back soon!",
+  "@agendaPreviewEmptyMessage": {
+    "description": "Message shown when there are no sessions to preview on the home screen"
+  }
+}
