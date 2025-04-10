@@ -34,8 +34,9 @@ abstract class LocalizationsManager {
         SessionLevel.expert: l10n.sessionLevelExpert,
       },
       noSessionsMessageBuilder: (date) {
-        final formattedDate = DateFormatService.formatFullDate(date, context);
-        return 'No hay sessiones para el día $formattedDate';
+        final formatter = DateFormatService.withContext(context);
+        final formattedDate = formatter.formatFullDate(date);
+        return l10n.errorSessionsNoneForDay(formattedDate);
       },
     );
   }

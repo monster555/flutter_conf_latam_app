@@ -42,14 +42,9 @@ class SessionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = context.textTheme;
     final colorScheme = context.colorScheme;
-    final formattedStartTime = DateFormatService.formatTime24Hours(
-      session.startTime,
-      context,
-    );
-    final formattedEndTime = DateFormatService.formatTime24Hours(
-      session.startTime,
-      context,
-    );
+    final formatter = DateFormatService.withContext(context);
+    final formattedStartTime = formatter.formatTime24Hours(session.startTime);
+    final formattedEndTime = formatter.formatTime24Hours(session.endTime);
 
     final semanticLabel =
         '${session.title}. '
@@ -87,46 +82,49 @@ class SessionCard extends StatelessWidget {
           Expanded(
             flex: 10,
             child: ExcludeSemantics(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    session.title,
-                    style: textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.person_outline,
-                        size: UiConstants.spacing16,
-                      ),
-                      const SizedBox(width: UiConstants.spacing4),
-                      Expanded(child: Text(session.speaker.name)),
-                    ],
-                  ),
-                  const SizedBox(height: UiConstants.spacing4),
-                  Row(
-                    children: [
-                      _buildLevelChip(session.level),
-                      const SizedBox(width: UiConstants.spacing8),
-                      _buildLanguageChip(colorScheme, session.language),
-                    ],
-                  ),
-                  if (showDescription &&
-                      session.description.isNotEmpty == true) ...[
-                    const SizedBox(height: UiConstants.spacing8),
+              child: Padding(
+                padding: const EdgeInsets.only(right: UiConstants.spacing16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                      session.description,
-                      style: textTheme.bodySmall,
-                      maxLines: 3,
+                      session.title,
+                      style: textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.person_outline,
+                          size: UiConstants.spacing16,
+                        ),
+                        const SizedBox(width: UiConstants.spacing4),
+                        Expanded(child: Text(session.speaker.name)),
+                      ],
+                    ),
+                    const SizedBox(height: UiConstants.spacing4),
+                    Row(
+                      children: [
+                        _buildLevelChip(session.level),
+                        const SizedBox(width: UiConstants.spacing8),
+                        _buildLanguageChip(colorScheme, session.language),
+                      ],
+                    ),
+                    if (showDescription &&
+                        session.description.isNotEmpty == true) ...[
+                      const SizedBox(height: UiConstants.spacing8),
+                      Text(
+                        session.description,
+                        style: textTheme.bodySmall,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
           ),
