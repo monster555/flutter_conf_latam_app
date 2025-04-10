@@ -14,6 +14,8 @@ class SessionDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = context.textTheme;
     final padding = context.padding;
+    final formatter = DateFormatService.withContext(context);
+    final formattedStartTime = formatter.formatTime24Hours(session.startTime);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -47,10 +49,7 @@ class SessionDetailsPage extends StatelessWidget {
 
                     IconLabel(
                       icon: Icons.access_time,
-                      label: DateFormatService.formatDateAndTime(
-                        session.startTime,
-                        context,
-                      ),
+                      label: formattedStartTime,
                     ),
                     const ExcludeSemantics(
                       child: SizedBox(height: UiConstants.spacing4),

@@ -92,6 +92,7 @@ class _AgendaPageState extends State<AgendaPage> {
     final padding = context.padding;
     final topPadding = padding.top;
     final bottomPadding = padding.bottom;
+    final formatter = DateFormatService.withContext(context);
 
     if (_isLoading) {
       return Padding(
@@ -140,10 +141,7 @@ class _AgendaPageState extends State<AgendaPage> {
     final selectedDate = _selectedDate!;
     final sessions = _sessionsByDate[selectedDate] ?? [];
 
-    final formattedDate = DateFormatService.formatFullDate(
-      selectedDate,
-      context,
-    );
+    final formattedDate = formatter.formatFullDate(selectedDate);
 
     return CustomScrollView(
       slivers: [
