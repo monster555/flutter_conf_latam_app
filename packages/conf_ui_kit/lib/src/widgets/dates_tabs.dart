@@ -82,9 +82,11 @@ class _DateTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formattedDate = DateFormatService.formatTabDate(date, context);
     final textTheme = context.textTheme;
     final colorScheme = context.colorScheme;
+
+    final formatter = DateFormatService.withContext(context);
+    final formattedDate = formatter.formatTabDate(date);
 
     final (backgroundColor, textColor, fontWeight) = _getStyles(
       isSelected,

@@ -59,23 +59,22 @@ class SessionsList extends StatelessWidget {
     );
   }
 
-  Widget _buildSessionsList(List<Session> sessions) {
+  Widget _buildSessionsList(List<Session> sessions, DateFormatter formatter) {
     return SliverPadding(
       padding: const EdgeInsets.symmetric(vertical: UiConstants.spacing8),
       sliver: SliverList.separated(
         itemCount: sessions.length,
         itemBuilder: (context, index) {
           final session = sessions[index];
-          final startTimeFormatted = DateFormatService.formatTime(
-            session.startTime,
-            context,
+          final startTimeFormatted = formatter.formatTime(session.startTime);
+          final semanticLabel = _buildSemanticLabel(
+            session,
+            startTimeFormatted,
           );
 
           return Semantics(
             button: true,
-            label:
-                '${session.title} at $startTimeFormatted '
-                'by ${session.speaker.name}',
+            label: semanticLabel,
             hint: 'Tap to view session details',
             child: SessionCard(
               session: session,
@@ -102,19 +101,30 @@ class SessionsList extends StatelessWidget {
     );
   }
 
+  String _buildSemanticLabel(Session session, String formattedTime) {
+    final levelLabel =
+        sessionLevelLabels[session.level] ?? session.level.toString();
+    return '${session.title} at $formattedTime by ${session.speaker.name}. '
+        'Level: $levelLabel';
+  }
+
   @override
   Widget build(BuildContext context) {
     if (sessions.isEmpty && hideWhenEmpty) {
       return const SliverToBoxAdapter(child: SizedBox.shrink());
     }
 
-    return SliverMainAxisGroup(
-      slivers: [
-        if (sessions.isEmpty)
-          _buildEmptyState(context.colorScheme, context.textTheme)
-        else
-          _buildSessionsList(sessions),
-      ],
-    );
+    final Widget sliver;
+
+    if (sessions.isEmpty) {
+      final colorScheme = context.colorScheme;
+      final textTheme = context.textTheme;
+      sliver = _buildEmptyState(colorScheme, textTheme);
+    } else {
+      final formatter = DateFormatService.withContext(context);
+      sliver = _buildSessionsList(sessions, formatter);
+    }
+
+    return SliverMainAxisGroup(slivers: [sliver]);
   }
 }
