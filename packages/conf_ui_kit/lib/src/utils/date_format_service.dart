@@ -32,8 +32,17 @@ class DateFormatter {
       DateFormatService._getCachedFormatter('dd MMM', locale).format(date);
 
   /// Format a date with date and time (e.g., "Sep 9, 2025 at 10:30 AM")
-  String formatDateAndTime(DateTime date) =>
-      DateFormatService._getCachedFormatter('yMMMd jm', locale).format(date);
+  String formatDateAndTime(DateTime date) {
+    final dateFormatter = DateFormatService._getCachedFormatter(
+      'yMMMd',
+      locale,
+    );
+    final timeFormatter = DateFormatService._getCachedFormatter(
+      'hh:mm a',
+      locale,
+    );
+    return '${dateFormatter.format(date)}, ${timeFormatter.format(date)}';
+  }
 
   /// Format a full date (e.g., "September 9, 2025")
   String formatFullDate(DateTime date) =>
