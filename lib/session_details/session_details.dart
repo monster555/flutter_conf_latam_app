@@ -15,7 +15,7 @@ class SessionDetailsPage extends StatelessWidget {
     final textTheme = context.textTheme;
     final padding = context.padding;
     final formatter = DateFormatService.withContext(context);
-    final formattedStartTime = formatter.formatTime24Hours(session.startTime);
+    final formattedStartTime = formatter.formatDateAndTime(session.startTime);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
