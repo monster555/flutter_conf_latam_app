@@ -321,5 +321,59 @@
   "agendaPreviewEmptyMessage": "No sessions to preview yet. Check back soon!",
   "@agendaPreviewEmptyMessage": {
     "description": "Message shown when there are no sessions to preview on the home screen"
+  },
+  "favoriteSessionsLabel": "Favorite Sessions",
+  "@favoriteSessionsLabel": {
+    "description": "Label for the favorite sessions section"
+  },
+  "favoriteSessionsTooltip": "Show favorite sessions",
+  "@favoriteSessionsTooltip": {
+    "description": "Tooltip text for the favorite sessions button"
+  },
+  "filterButtonLabel": "Filters",
+  "@filterButtonLabel": {
+    "description": "Label for the filter button"
+  },
+  "dateSelectedAnnouncement": "Showing sessions for {date}",
+  "@dateSelectedAnnouncement": {
+    "description": "Announcement when a new date is selected",
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "example": "September 10, 2023"
+      }
+    }
+  },
+  "venueBannerSemanticLabel": "Venue: {venueName}. Location: {location}. Dates: {dates}",
+  "@venueBannerSemanticLabel": {
+    "description": "Accessibility label for the venue banner component",
+    "placeholders": {
+      "venueName": {
+        "type": "String",
+        "example": "Universidad de las Américas"
+      },
+      "location": {
+        "type": "String",
+        "example": "Quito, Ecuador"
+      },
+      "dates": {
+        "type": "String",
+        "example": "September 9-10, 2025"
+      }
+    }
+  },
+  "userProfileLabel": "User profile",
+  "@userProfileLabel": {
+    "description": "Accessibility label for the user profile button in app bar"
+  },
+  
+  "userProfileHint": "Tap to view your profile and settings",
+  "@userProfileHint": {
+    "description": "Accessibility hint for the user profile button"
+  },
+  
+  "userProfileTooltip": "Your profile",
+  "@userProfileTooltip": {
+    "description": "Tooltip text for the user profile button"
   }
 }

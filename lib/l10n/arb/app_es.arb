@@ -141,5 +141,13 @@
   "stateLoadingSpeakers": "Cargando speakers",
   "speaks": "Habla",
   "countryFlag": "bandera de {country}",
-  "agendaPreviewEmptyMessage": "Aún no hay sesiones para mostrar. ¡Vuelve pronto!"
+  "agendaPreviewEmptyMessage": "Aún no hay sesiones para mostrar. ¡Vuelve pronto!",
+  "favoriteSessionsLabel": "Sesiones Favoritas",
+  "favoriteSessionsTooltip": "Mostrar sesiones favoritas",
+  "filterButtonLabel": "Filtros",
+  "dateSelectedAnnouncement": "Mostrando sesiones para {date}",
+  "venueBannerSemanticLabel": "Sede: {venueName}. Ubicación: {location}. Fechas: {dates}",
+  "userProfileLabel": "Perfil de Usuario",
+  "userProfileHint": "Toca para ver tu perfil",
+  "userProfileTooltip": "Ver perfil de usuario"
 }

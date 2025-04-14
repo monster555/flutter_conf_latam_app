@@ -526,6 +526,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No sessions to preview yet. Check back soon!'**
   String get agendaPreviewEmptyMessage;
+
+  /// Label for the favorite sessions section
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite Sessions'**
+  String get favoriteSessionsLabel;
+
+  /// Tooltip text for the favorite sessions button
+  ///
+  /// In en, this message translates to:
+  /// **'Show favorite sessions'**
+  String get favoriteSessionsTooltip;
+
+  /// Label for the filter button
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get filterButtonLabel;
+
+  /// Announcement when a new date is selected
+  ///
+  /// In en, this message translates to:
+  /// **'Showing sessions for {date}'**
+  String dateSelectedAnnouncement(String date);
+
+  /// Accessibility label for the venue banner component
+  ///
+  /// In en, this message translates to:
+  /// **'Venue: {venueName}. Location: {location}. Dates: {dates}'**
+  String venueBannerSemanticLabel(String venueName, String location, String dates);
+
+  /// Accessibility label for the user profile button in app bar
+  ///
+  /// In en, this message translates to:
+  /// **'User profile'**
+  String get userProfileLabel;
+
+  /// Accessibility hint for the user profile button
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to view your profile and settings'**
+  String get userProfileHint;
+
+  /// Tooltip text for the user profile button
+  ///
+  /// In en, this message translates to:
+  /// **'Your profile'**
+  String get userProfileTooltip;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

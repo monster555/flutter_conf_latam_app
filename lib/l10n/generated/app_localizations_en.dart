@@ -233,4 +233,32 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get agendaPreviewEmptyMessage => 'No sessions to preview yet. Check back soon!';
+
+  @override
+  String get favoriteSessionsLabel => 'Favorite Sessions';
+
+  @override
+  String get favoriteSessionsTooltip => 'Show favorite sessions';
+
+  @override
+  String get filterButtonLabel => 'Filters';
+
+  @override
+  String dateSelectedAnnouncement(String date) {
+    return 'Showing sessions for $date';
+  }
+
+  @override
+  String venueBannerSemanticLabel(String venueName, String location, String dates) {
+    return 'Venue: $venueName. Location: $location. Dates: $dates';
+  }
+
+  @override
+  String get userProfileLabel => 'User profile';
+
+  @override
+  String get userProfileHint => 'Tap to view your profile and settings';
+
+  @override
+  String get userProfileTooltip => 'Your profile';
 }
