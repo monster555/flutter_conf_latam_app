@@ -35,7 +35,7 @@ class FrostedGlass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final effectiveColor =
-        color ?? context.colorScheme.surface.withValues(alpha: 0.75);
+        color ?? context.scaffoldBackgroundColor.withValues(alpha: 0.75);
 
     return ClipRRect(
       borderRadius: borderRadius ?? BorderRadius.zero,
