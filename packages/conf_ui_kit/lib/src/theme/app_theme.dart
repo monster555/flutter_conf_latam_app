@@ -15,9 +15,21 @@ abstract class AppTheme {
     colorScheme: AppColors.lightColorScheme(),
     cardTheme: CardTheme(
       elevation: 0,
-      color: AppColors.lightCardBackground,
+      color: AppColors.flutterLightBlue.withValues(alpha: 0.1),
       shape: RoundedRectangleBorder(
         borderRadius: UiConstants.borderRadiusLarge,
+      ),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        foregroundColor: AppColors.flutterBlue,
+        highlightColor: AppColors.flutterBlue.withValues(alpha: 0.1),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: AppColors.flutterBlue,
+        side: BorderSide(color: AppColors.flutterBlue.withValues(alpha: 0.3)),
       ),
     ),
     splashColor: AppColors.flutterBlue.withValues(alpha: 0.2),
@@ -36,9 +48,23 @@ abstract class AppTheme {
     colorScheme: AppColors.darkColorScheme(),
     cardTheme: CardTheme(
       elevation: 0,
-      color: AppColors.darkCardBackground,
+      color: AppColors.flutterBlue.withValues(alpha: 0.15),
       shape: RoundedRectangleBorder(
         borderRadius: UiConstants.borderRadiusLarge,
+      ),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        foregroundColor: AppColors.flutterLightBlue,
+        highlightColor: AppColors.flutterLightBlue.withValues(alpha: 0.1),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: AppColors.flutterLightBlue,
+        side: BorderSide(
+          color: AppColors.flutterLightBlue.withValues(alpha: 0.3),
+        ),
       ),
     ),
     splashColor: AppColors.flutterLightBlue.withValues(alpha: 0.2),
