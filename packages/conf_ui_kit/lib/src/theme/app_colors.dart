@@ -11,13 +11,13 @@ abstract class AppColors {
   static const Color lightBackground = Color(0xFFF5F5F5);
   static const Color lightSurface = Color(0xFFE0E0E0);
   static const Color lightCardBackground = Color(0xFFE6E6E6);
-  static const Color lightText = Colors.black87;
+  static const Color lightText = Color(0xD1000000);
 
   // Dark theme colors
   static const Color darkBackground = Color(0xFF121212);
   static const Color darkSurface = Color(0xFF424242);
   static const Color darkCardBackground = Color(0xFF232323);
-  static const Color darkText = Colors.white70;
+  static const Color darkText = Color(0xD9FFFFFF);
 
   // Semantic colors
   static const Color onPrimary = Colors.white;
@@ -35,8 +35,8 @@ abstract class AppColors {
   );
 
   static ColorScheme darkColorScheme() => const ColorScheme.dark(
-    primary: flutterLightBlue,
-    secondary: flutterSkyBlue,
+    primary: flutterSkyBlue,
+    secondary: flutterLightBlue,
     surface: darkSurface,
     onSurface: darkText,
   );
