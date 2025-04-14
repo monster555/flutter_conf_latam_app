@@ -233,4 +233,32 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get agendaPreviewEmptyMessage => 'Aún no hay sesiones para mostrar. ¡Vuelve pronto!';
+
+  @override
+  String get favoriteSessionsLabel => 'Sesiones Favoritas';
+
+  @override
+  String get favoriteSessionsTooltip => 'Mostrar sesiones favoritas';
+
+  @override
+  String get filterButtonLabel => 'Filtros';
+
+  @override
+  String dateSelectedAnnouncement(String date) {
+    return 'Mostrando sesiones para $date';
+  }
+
+  @override
+  String venueBannerSemanticLabel(String venueName, String location, String dates) {
+    return 'Sede: $venueName. Ubicación: $location. Fechas: $dates';
+  }
+
+  @override
+  String get userProfileLabel => 'Perfil de Usuario';
+
+  @override
+  String get userProfileHint => 'Toca para ver tu perfil';
+
+  @override
+  String get userProfileTooltip => 'Ver perfil de usuario';
 }
