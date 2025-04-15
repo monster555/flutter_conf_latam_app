@@ -8,6 +8,8 @@ class VenueBanner extends StatelessWidget {
     required this.location,
     required this.dates,
     required this.imagePath,
+    required this.semanticLabel,
+    required this.semanticHint,
     this.title = 'Próxima parada',
     this.onTap,
     super.key,
@@ -18,6 +20,8 @@ class VenueBanner extends StatelessWidget {
   final String location;
   final String dates;
   final String imagePath;
+  final String semanticLabel;
+  final String semanticHint;
   final VoidCallback? onTap;
 
   @override
@@ -32,6 +36,8 @@ class VenueBanner extends StatelessWidget {
           location: location,
           dates: dates,
           imagePath: imagePath,
+          semanticLabel: semanticLabel,
+          semanticHint: semanticHint,
           onTap: onTap,
         ),
       ],
@@ -45,6 +51,8 @@ class _BannerCard extends StatelessWidget {
     required this.location,
     required this.dates,
     required this.imagePath,
+    required this.semanticLabel,
+    required this.semanticHint,
     this.onTap,
   });
 
@@ -64,12 +72,28 @@ class _BannerCard extends StatelessWidget {
     ],
   );
 
+  static const _topContentPadding = EdgeInsets.fromLTRB(
+    UiConstants.spacing16,
+    UiConstants.spacing12,
+    UiConstants.spacing16,
+    0,
+  );
+
+  static const _bottomContentPadding = EdgeInsets.fromLTRB(
+    UiConstants.spacing16,
+    0,
+    UiConstants.spacing16,
+    UiConstants.spacing12,
+  );
+
   static const _baseColor = Colors.white;
 
   final String venueName;
   final String location;
   final String dates;
   final String imagePath;
+  final String semanticLabel;
+  final String semanticHint;
   final VoidCallback? onTap;
 
   Widget _buildOverlay({
@@ -95,12 +119,7 @@ class _BannerCard extends StatelessWidget {
 
   Widget _buildTopContent(TextTheme textTheme) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        UiConstants.spacing16,
-        UiConstants.spacing12,
-        UiConstants.spacing16,
-        0,
-      ),
+      padding: _topContentPadding,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -111,6 +130,7 @@ class _BannerCard extends StatelessWidget {
                 color: _baseColor,
                 fontWeight: FontWeight.bold,
               ),
+              maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
           ),
@@ -119,14 +139,22 @@ class _BannerCard extends StatelessWidget {
     );
   }
 
+  Widget _buildNavigationIndicator(ColorScheme colorScheme) {
+    return SizedBox.square(
+      dimension: UiConstants.iconSizeXLarge,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: colorScheme.primary.withValues(alpha: 0.6),
+        ),
+        child: Icon(Icons.navigate_next, color: colorScheme.onPrimary),
+      ),
+    );
+  }
+
   Widget _buildBottomContent(TextTheme textTheme, ColorScheme colorScheme) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        UiConstants.spacing16,
-        0,
-        UiConstants.spacing16,
-        UiConstants.spacing12,
-      ),
+      padding: _bottomContentPadding,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -142,6 +170,8 @@ class _BannerCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: _baseColor,
                   ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 Text(
                   dates,
@@ -150,16 +180,7 @@ class _BannerCard extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox.square(
-            dimension: UiConstants.iconSizeXLarge,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: colorScheme.primary.withValues(alpha: 0.6),
-              ),
-              child: const Icon(Icons.navigate_next, color: _baseColor),
-            ),
-          ),
+          _buildNavigationIndicator(colorScheme),
         ],
       ),
     );
@@ -178,12 +199,12 @@ class _BannerCard extends StatelessWidget {
     final textTheme = context.textTheme;
     final colorScheme = context.colorScheme;
 
-    final semanticLabel =
-        'Venue: $venueName. Location: $location. Dates: $dates';
-
     return Semantics(
       label: semanticLabel,
       button: onTap != null,
+      enabled: onTap != null,
+      focusable: onTap != null,
+      hint: semanticHint,
       child: ClipRRect(
         borderRadius: UiConstants.borderRadiusLarge,
         child: Stack(
@@ -208,12 +229,8 @@ class _BannerCard extends StatelessWidget {
                 color: Colors.transparent,
                 child: InkWell(
                   onTap: onTap,
-                  splashColor: context.colorScheme.primary.withValues(
-                    alpha: 0.2,
-                  ),
-                  highlightColor: context.colorScheme.primary.withValues(
-                    alpha: 0.1,
-                  ),
+                  splashColor: colorScheme.primary.withValues(alpha: 0.2),
+                  highlightColor: colorScheme.primary.withValues(alpha: 0.1),
                 ),
               ),
             ),

@@ -138,7 +138,11 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
     final currentTabName = tabs[_currentIndex].label;
 
     return Scaffold(
-      appBar: const MainAppBar(),
+      appBar: MainAppBar(
+        profileLabel: l10n.userProfileLabel,
+        profileHint: l10n.userProfileHint,
+        profileTooltip: l10n.userProfileTooltip,
+      ),
       extendBody: true,
       extendBodyBehindAppBar: true,
       body: Semantics(
