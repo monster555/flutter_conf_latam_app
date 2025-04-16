@@ -10,14 +10,14 @@ import 'package:flutter_conf_latam/speaker_details/speaker_details.dart';
 class Homepage extends StatelessWidget {
   const Homepage({required this.onNavigateToVenue, super.key});
 
-  final VoidCallback onNavigateToVenue;
-
   static const _contentPadding = EdgeInsets.fromLTRB(
     UiConstants.spacing16,
     UiConstants.spacing16,
     UiConstants.spacing16,
     0,
   );
+
+  final VoidCallback onNavigateToVenue;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +41,10 @@ class Homepage extends StatelessWidget {
     final sessions = ConferenceMockData.getSessionsList();
     final speakers = ConferenceMockData.getSpeakers();
 
+    const venueName = 'Universidad de las Américas';
+    const location = 'Quito, Ecuador';
+    final dates = l10n.conferenceDates(9, 10);
+
     return Semantics(
       container: true,
       label: l10n.homeTabLabel,
@@ -53,9 +57,15 @@ class Homepage extends StatelessWidget {
                 VenueBanner(
                   title: l10n.venueBannerTitle,
                   imagePath: 'assets/images/udla.webp',
-                  venueName: 'Universidad de las Américas',
-                  location: 'Quito, Ecuador',
-                  dates: l10n.conferenceDates(9, 10),
+                  venueName: venueName,
+                  location: location,
+                  dates: dates,
+                  semanticLabel: l10n.venueBannerSemanticLabel(
+                    venueName,
+                    location,
+                    dates,
+                  ),
+                  semanticHint: l10n.venueBannerSemanticsHint,
                   onTap: onNavigateToVenue,
                 ),
                 const ExcludeSemantics(
