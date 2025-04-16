@@ -1,6 +1,7 @@
 import 'package:conf_shared_models/conf_shared_models.dart';
 import 'package:conf_ui_kit/conf_ui_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:flutter_conf_latam/extensions/navigator_extensions.dart';
 import 'package:flutter_conf_latam/l10n/l10n.dart';
 import 'package:flutter_conf_latam/mock/mock_data.dart';
@@ -80,10 +81,52 @@ class _AgendaPageState extends State<AgendaPage> {
     }
   }
 
+  Widget _buildFilterButton(BuildContext context) {
+    final l10n = context.l10n;
+    final textTheme = context.textTheme;
+    final colorScheme = context.colorScheme;
+
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        width: double.infinity,
+        child: Semantics(
+          label: l10n.filterButtonLabel,
+          button: true,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: OutlinedButton.icon(
+              onPressed: () {},
+              icon: Icon(Icons.filter_list, color: colorScheme.primary),
+              label: Text(
+                l10n.filterButtonLabel,
+                style: textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.primary,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   void _onDateSelected(DateTime date) {
     setState(() {
       _selectedDate = date;
     });
+
+    _announceSelectedDate(date);
+  }
+
+  void _announceSelectedDate(DateTime date) {
+    final l10n = context.l10n;
+    final formatter = DateFormatService.withContext(context);
+
+    // Announce date change to screen readers
+    SemanticsService.announce(
+      l10n.dateSelectedAnnouncement(formatter.formatFullDate(date)),
+      TextDirection.ltr,
+    );
   }
 
   @override
@@ -145,24 +188,18 @@ class _AgendaPageState extends State<AgendaPage> {
 
     return CustomScrollView(
       slivers: [
-        SliverPadding(
-          padding: EdgeInsets.fromLTRB(
-            UiConstants.spacing16,
-            topPadding + UiConstants.spacing16,
-            UiConstants.spacing16,
-            0,
-          ),
-          sliver: SliverToBoxAdapter(
-            child: Semantics(
-              header: true,
-              child: DatesTabs(
-                availableDates: _dates,
-                selectedDate: selectedDate,
-                onDateSelected: _onDateSelected,
-              ),
-            ),
+        SliverPinnedHeader(
+          child: AgendaHeader(
+            availableDates: _dates,
+            selectedDate: selectedDate,
+            onDateSelected: _onDateSelected,
+            onFavoriteTap: () => debugPrint('Favorite tapped'),
+            favoriteSessionsLabel: l10n.favoriteSessionsLabel,
+            favoriteSessionsTooltip: l10n.favoriteSessionsTooltip,
           ),
         ),
+        _buildFilterButton(context),
+
         SliverPadding(
           padding: EdgeInsets.fromLTRB(
             UiConstants.spacing16,
