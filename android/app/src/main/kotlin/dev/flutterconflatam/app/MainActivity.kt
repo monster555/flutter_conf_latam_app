@@ -1,4 +1,4 @@
-package com.example.flutter_conf_latam
+package dev.flutterconflatam.app
 
 import io.flutter.embedding.android.FlutterActivity
 
