@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 
 extension SessionLevelX on SessionLevel {
   Color get color => switch (this) {
-    (SessionLevel.basic) => Colors.green,
-    (SessionLevel.intermediate) => Colors.orange,
-    (SessionLevel.advanced) => Colors.red,
-    (_) => Colors.purple,
+    SessionLevel.basic => Colors.green,
+    SessionLevel.intermediate => Colors.orange,
+    SessionLevel.advanced => Colors.red,
+    _ => Colors.purple,
   };
 
   // New defaultText property
   String get defaultText => switch (this) {
-    (SessionLevel.basic) => 'Basic',
-    (SessionLevel.intermediate) => 'Intermediate',
-    (SessionLevel.advanced) => 'Advanced',
-    (_) => 'Expert',
+    SessionLevel.basic => 'Basic',
+    SessionLevel.intermediate => 'Intermediate',
+    SessionLevel.advanced => 'Advanced',
+    _ => 'Expert',
   };
 }

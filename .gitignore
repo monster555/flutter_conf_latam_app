@@ -33,6 +33,12 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Firebase related files
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+firebase.json
+lib/firebase_options.dart
+
 # Symbolication related
 app.*.symbols
 

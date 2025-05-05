@@ -10,8 +10,9 @@ class Session {
     required this.endTime,
     required this.track,
     required this.level,
-    required this.speaker,
+    required this.mainSpeaker,
     required this.language,
+    this.coSpeakers,
   });
 
   factory Session.fromJson(Map<String, dynamic> json) {
@@ -20,10 +21,16 @@ class Session {
       title: json['title'] as String,
       description: json['description'] as String,
       level: SessionLevel.values.byName(json['level'] as String),
-      speaker: Speaker.fromJson(json['speaker'] as Map<String, dynamic>),
       startTime: DateTime.parse(json['startTime'] as String),
       endTime: DateTime.parse(json['endTime'] as String),
       track: json['track'] as String,
+      mainSpeaker: Speaker.fromJson(
+        json['mainSpeaker'] as Map<String, dynamic>,
+      ),
+      coSpeakers:
+          (json['coSpeakers'] as List<Map<String, dynamic>>?)
+              ?.map(Speaker.fromJson)
+              .toList(),
       language: Language.values.byName(json['language'] as String),
     );
   }
@@ -34,7 +41,7 @@ class Session {
       'title': title,
       'description': description,
       'level': level.name,
-      'speaker': speaker.toJson(),
+      'mainSpeaker': mainSpeaker.toJson(),
       'startTime': startTime.toIso8601String(),
       'endTime': endTime.toIso8601String(),
       'track': track,
@@ -49,6 +56,7 @@ class Session {
   final DateTime endTime;
   final String track;
   final SessionLevel level;
-  final Speaker speaker;
+  final Speaker mainSpeaker;
+  final List<Speaker>? coSpeakers;
   final Language language;
 }

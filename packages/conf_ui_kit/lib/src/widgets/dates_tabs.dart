@@ -58,6 +58,7 @@ class _DateTab extends StatelessWidget {
     required this.isSelected,
     required this.onTap,
   });
+
   static const _borderRadius = BorderRadius.all(
     Radius.circular(UiConstants.radiusLarge),
   );
@@ -72,9 +73,10 @@ class _DateTab extends StatelessWidget {
   ) {
     final backgroundColor =
         isSelected
-            ? colorScheme.primary.withValues(alpha: 0.2)
+            ? colorScheme.secondary.withValues(alpha: 0.2)
             : Colors.transparent;
-    final textColor = isSelected ? colorScheme.primary : colorScheme.onSurface;
+    final textColor =
+        isSelected ? colorScheme.secondary : colorScheme.onSurface;
     final fontWeight = isSelected ? FontWeight.bold : FontWeight.normal;
 
     return (backgroundColor, textColor, fontWeight);

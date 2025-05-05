@@ -20,6 +20,10 @@
   "@speakersTabLabel": {
     "description": "Label for the speakers tab"
   },
+  "sponsorsTabLabel": "Sponsors",
+  "@sponsorsTabLabel": {
+    "description": "Label for the sponsors tab"
+  },
   "venueTabLabel": "Venue",
   "@venueTabLabel": {
     "description": "Label for the venue tab"
@@ -308,6 +312,16 @@
   "@speaks": {
     "description": "Label for the 'Speaks' widget"
   },
+  "iSpeakLanguages": "I speak {languages}",
+  "@iSpeakLanguages": {
+    "description": "Text showing which languages a speaker knows",
+    "placeholders": {
+      "languages": {
+        "type": "String",
+        "example": "English and Spanish"
+      }
+    }
+  },
   "countryFlag": "{country} flag",
   "@countryFlag": {
     "description": "Accessibility label for country flag emoji",
@@ -366,14 +380,76 @@
   "@userProfileLabel": {
     "description": "Accessibility label for the user profile button in app bar"
   },
-  
   "userProfileHint": "Tap to view your profile and settings",
   "@userProfileHint": {
     "description": "Accessibility hint for the user profile button"
   },
-  
   "userProfileTooltip": "Your profile",
   "@userProfileTooltip": {
     "description": "Tooltip text for the user profile button"
+  },
+  "filterSpeakersTooltip": "Filter speakers",
+  "@filterSpeakersTooltip": {
+    "description": "Tooltip text for the filter speakers button"
+  },
+  "agendaNavigationDescription": "2 days full of talks, workshops, activities and prizes!",
+  "@agendaNavigationDescription": {
+    "description": "Description for the agenda tab in navigation bar"
+  },
+  "speakersNavigationDescription": "Over 20 speakers from 5 different countries",
+  "@speakersNavigationDescription": {
+    "description": "Description for the speakers tab in navigation bar"
+  },
+  "sponsorsNavigationDescription": "Partners and friends who help make this possible",
+  "@sponsorsNavigationDescription": {
+    "description": "Description for the sponsors tab in navigation bar"
+  },
+  "sponsorTierPlatinum": "Platinum",
+  "@sponsorTierPlatinum": {
+    "description": "Platinum sponsor tier"
+  },
+  "sponsorTierGold": "Gold",
+  "@sponsorTierGold": {
+    "description": "Gold sponsor tier"
+  },
+  "sponsorTierSilver": "Silver",
+  "@sponsorTierSilver": {
+    "description": "Silver sponsor tier"
+  },
+  "sponsorTierInkind": "In-kind",
+  "@sponsorTierInkind": {
+    "description": "In-kind sponsor tier"
+  },
+  "sponsorTierOther": "Others",
+  "@sponsorTierOther": {
+    "description": "Other sponsor tier"
+  },
+  "dontBeShyLabel": "Don't be shy and say hi!",
+  "@dontBeShyLabel": {
+    "description": "Label for the 'Don't be shy' section"
+  },
+  "languageEnglish": "English",
+  "@languageEnglish": {
+    "description": "Label for the English language"
+  },
+  "languageSpanish": "Spanish",
+  "@languageSpanish": {
+    "description": "Label for the Spanish language"
+  },
+  "conjunctionAnd": "and",
+  "@conjunctionAnd": {
+    "description": "Conjunction 'and' in English"
+  },
+  "socialNetworkOther": "Other",
+  "@socialNetworkOther": {
+    "description": "Label for other social networks"
+  },
+  "socialProfilePrefix": "Open profile on ",
+  "@socialProfilePrefix": {
+    "description": "Accessibility prefix for social media links, followed by platform name"
+  },
+  "contactSectionTitle": "Let's keep in touch",
+  "@contactSectionTitle": {
+    "description": "Title for the social media links section on speaker details"
   }
 }

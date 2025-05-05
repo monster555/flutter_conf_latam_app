@@ -145,9 +145,13 @@ class _BannerCard extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: colorScheme.primary.withValues(alpha: 0.6),
+          color: colorScheme.secondary.withValues(alpha: 0.6),
         ),
-        child: Icon(Icons.navigate_next, color: colorScheme.onPrimary),
+        child: Icon(
+          Icons.adaptive.arrow_forward,
+          color: Colors.white,
+          size: UiConstants.iconSizeSmall,
+        ),
       ),
     );
   }

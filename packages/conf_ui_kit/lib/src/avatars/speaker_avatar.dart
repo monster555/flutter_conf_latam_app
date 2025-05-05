@@ -1,5 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conf_shared_models/conf_shared_models.dart';
-import 'package:conf_ui_kit/src/assets/image_assets.dart';
 import 'package:conf_ui_kit/src/extensions/theme_extensions.dart';
 import 'package:conf_ui_kit/src/theme/ui_constants.dart';
 import 'package:flutter/material.dart';
@@ -30,18 +30,18 @@ class SpeakerAvatar extends StatelessWidget {
   Widget _buildSpeakerImage(ColorScheme colorScheme) {
     final placeholder = _buildPlaceholder(colorScheme);
 
-    if (speaker.photo.isEmpty) {
-      return placeholder;
-    }
+    if (speaker.photo.isEmpty) return placeholder;
 
-    return FadeInImage.memoryNetwork(
-      placeholder: ImageAssets.kTransparentImage,
-      image: speaker.photo,
+    final cacheKey = 'speaker_${speaker.id}-${size.toInt()}';
+
+    return CachedNetworkImage(
+      cacheKey: cacheKey,
+      imageUrl: speaker.photo,
       fit: BoxFit.cover,
+      width: size,
+      height: size,
       fadeInDuration: UiConstants.animationMedium,
-      imageErrorBuilder: (_, _, _) => placeholder,
-      placeholderErrorBuilder: (_, _, _) => placeholder,
-      placeholderFit: BoxFit.cover,
+      errorWidget: (_, _, _) => placeholder,
     );
   }
 

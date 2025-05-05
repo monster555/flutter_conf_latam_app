@@ -18,7 +18,6 @@ abstract class ConferenceMockData {
   }
 
   static Venue getVenue() => Venue(
-    id: 'V1',
     name: 'Universidad de Las Américas',
     address: 'Vía a Nayón, Quito 170124, Ecuador',
     latitude: -0.162645,
@@ -30,164 +29,222 @@ abstract class ConferenceMockData {
     Speaker(
       id: 'S1',
       name: 'Juan Pérez',
-      role: 'Desarrollador Senior',
+      title: 'Desarrollador Senior',
+      company: 'Tech Solutions',
       country: 'España',
       countryCode: 'ES',
-      language: Language.spanish,
-      bio:
+      languages: [Language.spanish],
+      description:
           'Experto en Flutter con más de 5 años de experiencia en el desarrollo de aplicaciones móviles. Ha trabajado en proyectos de gran escala y es conocido por su habilidad para liderar equipos de desarrollo.',
       photo: _getMaleAvatar(),
-      professionalProfiles: [
-        'https://linkedin.com/in/juanperez',
-        'https://github.com/juanperez',
-        'https://twitter.com/juanperezdev',
+      socialMediaLinks: [
+        SocialMediaLink(
+          type: 'LinkedIn',
+          link: 'https://linkedin.com/in/juanperez',
+        ),
+        SocialMediaLink(type: 'GitHub', link: 'https://github.com/juanperez'),
+        SocialMediaLink(
+          type: 'Twitter',
+          link: 'https://twitter.com/juanperezdev',
+        ),
       ],
-      sessions: [],
+      // sessions:[],
     ),
     Speaker(
       id: 'S2',
       name: 'Ana García',
-      role: 'Ingeniera de Software',
+      title: 'Ingeniera de Software',
+      company: 'Innovatech',
       country: 'México',
       countryCode: 'MX',
-      language: Language.spanish,
-      bio:
+      languages: [Language.spanish],
+      description:
           'Especialista en diseño de interfaces de usuario con experiencia en UX/UI. Ha trabajado en proyectos de aplicaciones móviles y web, y es experta en crear experiencias de usuario intuitivas y atractivas.',
       photo: _getFemaleAvatar(),
-      professionalProfiles: [
-        'https://linkedin.com/in/anagarcia',
-        'https://dribbble.com/anagarcia',
+      socialMediaLinks: [
+        SocialMediaLink(
+          type: 'LinkedIn',
+          link: 'https://linkedin.com/in/anagarcia',
+        ),
+        SocialMediaLink(type: 'Others', link: 'https://dribbble.com/anagarcia'),
       ],
-      sessions: [],
+      // sessions:[],
     ),
     Speaker(
       id: 'S3',
       name: 'John Smith',
-      role: 'Arquitecto de Software',
+      title: 'Arquitecto de Software',
+      company: 'Global Tech',
       country: 'Estados Unidos',
       countryCode: 'US',
-      language: Language.english,
-      bio:
+      languages: [Language.english],
+      description:
           'Experto en arquitectura de aplicaciones móviles con más de 10 años de experiencia. Ha diseñado sistemas escalables y seguros para empresas líderes en el sector tecnológico.',
       photo: _getMaleAvatar(),
-      professionalProfiles: [
-        'https://linkedin.com/in/johnsmith',
-        'https://github.com/johnsmith',
+      socialMediaLinks: [
+        SocialMediaLink(
+          type: 'LinkedIn',
+          link: 'https://linkedin.com/in/johnsmith',
+        ),
+        SocialMediaLink(type: 'GitHub', link: 'https://github.com/johnsmith'),
       ],
-      sessions: [],
+      // sessions:[],
     ),
     Speaker(
       id: 'S4',
       name: 'María Rodríguez',
-      role: 'Desarrolladora de Aplicaciones Móviles',
+      title: 'Desarrolladora de Aplicaciones Móviles',
+      company: 'App Creators',
       country: 'Argentina',
       countryCode: 'AR',
-      language: Language.spanish,
-      bio:
+      languages: [Language.spanish],
+      description:
           'Especialista en desarrollo de aplicaciones móviles con Flutter. Ha trabajado en proyectos de aplicaciones sociales y de entretenimiento, y es conocida por su habilidad para crear soluciones innovadoras.',
       photo: _getFemaleAvatar(),
-      professionalProfiles: [
-        'https://linkedin.com/in/mariarodriguez',
-        'https://twitter.com/mariarodriguezdev',
+      socialMediaLinks: [
+        SocialMediaLink(
+          link: 'https://linkedin.com/in/mariarodriguez',
+          type: 'LinkedIn',
+        ),
+        SocialMediaLink(
+          type: 'Twitter',
+          link: 'https://twitter.com/mariarodriguezdev',
+        ),
       ],
-      sessions: [],
+      // sessions:[],
     ),
     Speaker(
       id: 'S5',
       name: 'Michael Davis',
-      role: 'Especialista en Inteligencia Artificial',
+      title: 'Especialista en Inteligencia Artificial',
+      company: 'AI Innovations',
       country: 'Reino Unido',
       countryCode: 'GB',
-      language: Language.english,
-      bio:
+      languages: [Language.english],
+      description:
           'Investigador en aplicaciones de inteligencia artificial en móviles. Ha publicado varios artículos sobre el tema y ha trabajado en proyectos de integración de IA en aplicaciones móviles.',
       photo: _getMaleAvatar(),
-      professionalProfiles: [
-        'https://linkedin.com/in/michaeldavis',
-        'https://scholar.google.com/citations?user=michaeldavis',
+      socialMediaLinks: [
+        SocialMediaLink(
+          type: 'LinkedIn',
+          link: 'https://linkedin.com/in/michaeldavis',
+        ),
+        SocialMediaLink(
+          type: 'Others',
+          link: 'https://scholar.google.com/citations?user=michaeldavis',
+        ),
       ],
-      sessions: [],
+      // sessions:[],
     ),
     Speaker(
       id: 'S6',
       name: 'Pedro Álvarez',
-      role: 'Flutter Dev',
+      title: 'Flutter Dev',
+      company: 'Dev Solutions',
       country: 'Perú',
       countryCode: 'PE',
-      language: Language.spanish,
-      bio:
+      languages: [Language.spanish],
+      description:
           'Desarrollador Flutter con 3 años de experiencia en el desarrollo de aplicaciones móviles. Ha trabajado en proyectos de aplicaciones de productividad y educativas.',
       photo: _getMaleAvatar(),
-      professionalProfiles: [
-        'https://linkedin.com/in/pedroalvarez',
-        'https://github.com/pedroalvarez',
+      socialMediaLinks: [
+        SocialMediaLink(
+          type: 'LinkedIn',
+          link: 'https://linkedin.com/in/pedroalvarez',
+        ),
+        SocialMediaLink(
+          type: 'GitHub',
+          link: 'https://github.com/pedroalvarez',
+        ),
       ],
-      sessions: [],
+      // sessions:[],
     ),
     Speaker(
       id: 'S7',
       name: 'Leo Farias',
-      role: 'GDE Flutter & Dart',
+      title: 'GDE Flutter & Dart',
+      company: 'HiTech',
       country: 'Estados Unidos',
       countryCode: 'US',
-      language: Language.english,
-      bio:
+      languages: [Language.english],
+      description:
           'Experto en Flutter y Dart, conocido por su trabajo en interfaces generativas y animaciones avanzadas. Ha sido reconocido como Google Developer Expert por su contribución a la comunidad.',
       photo: _getMaleAvatar(),
-      professionalProfiles: [
-        'https://linkedin.com/in/leofarias',
-        'https://twitter.com/leofarias',
-        'https://youtube.com/leofarias',
+      socialMediaLinks: [
+        SocialMediaLink(
+          link: 'https://linkedin.com/in/leofarias',
+          type: 'LinkedIn',
+        ),
+        SocialMediaLink(link: 'https://twitter.com/leofarias', type: 'Twitter'),
+        SocialMediaLink(type: 'Youtube', link: 'https://youtube.com/leofarias'),
       ],
-      sessions: [],
+      // sessions:[],
     ),
     Speaker(
       id: 'S8',
       name: 'Kendi Jacqueline',
-      role: 'Especialista en Realidad Aumentada',
+      title: 'Especialista en Realidad Aumentada',
+      company: 'AR Tech',
       country: 'Canadá',
       countryCode: 'CA',
-      language: Language.english,
-      bio:
+      languages: [Language.english],
+      description:
           'Especialista en realidad aumentada con experiencia en el desarrollo de aplicaciones móviles que integran ARCore y ARKit. Ha trabajado en proyectos de realidad aumentada para la industria del entretenimiento.',
       photo: _getFemaleAvatar(),
-      professionalProfiles: [
-        'https://linkedin.com/in/kendijacqueline',
-        'https://github.com/kendijacqueline',
+      socialMediaLinks: [
+        SocialMediaLink(
+          link: 'https://linkedin.com/in/kendijacqueline',
+          type: 'LinkedIn',
+        ),
+        SocialMediaLink(
+          link: 'https://github.com/kendijacqueline',
+          type: 'Github',
+        ),
       ],
-      sessions: [],
+      // sessions:[],
     ),
     Speaker(
       id: 'S9',
       name: 'Alex Chen',
-      role: 'Especialista en Optimización de Rendimiento',
+      title: 'Especialista en Optimización de Rendimiento',
+      company: 'Performance Labs',
       country: 'China',
       countryCode: 'CN',
-      language: Language.english,
-      bio:
+      languages: [Language.english],
+      description:
           'Experto en optimización de rendimiento de aplicaciones móviles, con experiencia en técnicas de reducción de consumo de memoria y mejora de la velocidad de carga. Ha trabajado en proyectos de aplicaciones de juegos y sociales.',
       photo: _getMaleAvatar(),
-      professionalProfiles: [
-        'https://linkedin.com/in/alexchen',
-        'https://medium.com/@alexchen',
+      socialMediaLinks: [
+        SocialMediaLink(
+          link: 'https://linkedin.com/in/alexchen',
+          type: 'LinkedIn',
+        ),
+        SocialMediaLink(link: 'https://medium.com/@alexchen', type: 'Others'),
       ],
-      sessions: [],
+      // sessions:[],
     ),
     Speaker(
       id: 'S10',
       name: 'Eva Moreno',
-      role: 'Desarrolladora Cross-Platform',
+      title: 'Desarrolladora Cross-Platform',
+      company: 'CrossTech',
       country: 'Francia',
       countryCode: 'FR',
-      language: Language.spanish,
-      bio:
+      languages: [Language.spanish],
+      description:
           'Especialista en desarrollo de aplicaciones multiplataforma con Flutter. Ha trabajado en proyectos que requieren la compartición de código entre iOS, Android y web.',
       photo: _getFemaleAvatar(),
-      professionalProfiles: [
-        'https://linkedin.com/in/evamoreno',
-        'https://twitter.com/evamorenodev',
+      socialMediaLinks: [
+        SocialMediaLink(
+          link: 'https://linkedin.com/in/evamoreno',
+          type: 'LinkedIn',
+        ),
+        SocialMediaLink(
+          link: 'https://twitter.com/evamorenodev',
+          type: 'twitter',
+        ),
       ],
-      sessions: [],
+      // sessions:[],
     ),
   ];
 
@@ -202,7 +259,7 @@ abstract class ConferenceMockData {
         description:
             'Sesión básica sobre los fundamentos de Flutter, incluyendo widgets, layouts y gestión de estado. Ideal para desarrolladores principiantes que buscan comenzar su viaje en el mundo móvil.',
         level: SessionLevel.basic,
-        speaker: speakers[0],
+        mainSpeaker: speakers[0],
         startTime: DateTime(2025, 9, 9, 9),
         endTime: DateTime(2025, 9, 9, 10, 30),
         track: 'Sala A',
@@ -214,7 +271,7 @@ abstract class ConferenceMockData {
         description:
             'Exploración de técnicas y mejores prácticas para crear interfaces de usuario atractivas y funcionales en aplicaciones móviles, utilizando Flutter como plataforma de desarrollo.',
         level: SessionLevel.intermediate,
-        speaker: speakers[1],
+        mainSpeaker: speakers[1],
         startTime: DateTime(2025, 9, 9, 11),
         endTime: DateTime(2025, 9, 9, 12, 30),
         track: 'Sala B',
@@ -226,7 +283,7 @@ abstract class ConferenceMockData {
         description:
             'Análisis de las mejores prácticas para diseñar aplicaciones móviles escalables y mantenibles, utilizando Flutter como base tecnológica. Se cubrirán temas como la separación de capas, inyección de dependencias y gestión de estado.',
         level: SessionLevel.advanced,
-        speaker: speakers[2],
+        mainSpeaker: speakers[2],
         startTime: DateTime(2025, 9, 9, 14),
         endTime: DateTime(2025, 9, 9, 15, 30),
         track: 'Sala A',
@@ -238,7 +295,7 @@ abstract class ConferenceMockData {
         description:
             'Cómo utilizar Flutter para crear aplicaciones web modernas y responsivas, aprovechando las ventajas de la plataforma para desarrollar experiencias multiplataforma.',
         level: SessionLevel.intermediate,
-        speaker: speakers[3],
+        mainSpeaker: speakers[3],
         startTime: DateTime(2025, 9, 9, 16),
         endTime: DateTime(2025, 9, 9, 17, 30),
         track: 'Sala B',
@@ -250,7 +307,7 @@ abstract class ConferenceMockData {
         description:
             'Guía práctica sobre cómo integrar servicios de backend como Firebase en aplicaciones móviles desarrolladas con Flutter, cubriendo temas de autenticación, almacenamiento y bases de datos en la nube.',
         level: SessionLevel.intermediate,
-        speaker: speakers[4],
+        mainSpeaker: speakers[4],
         startTime: DateTime(2025, 9, 9, 18),
         endTime: DateTime(2025, 9, 9, 19, 30),
         track: 'Sala A',
@@ -264,7 +321,7 @@ abstract class ConferenceMockData {
         description:
             'Taller práctico donde los participantes podrán desarrollar una aplicación móvil completa utilizando Flutter, cubriendo desde la creación de la interfaz hasta la implementación de funcionalidades básicas.',
         level: SessionLevel.intermediate,
-        speaker: speakers[5],
+        mainSpeaker: speakers[5],
         startTime: DateTime(2025, 9, 10, 9),
         endTime: DateTime(2025, 9, 10, 10, 30),
         track: 'Sala B',
@@ -276,7 +333,7 @@ abstract class ConferenceMockData {
         description:
             'Técnicas avanzadas para mejorar el rendimiento de aplicaciones móviles desarrolladas con Flutter, incluyendo optimización de gráficos, reducción de consumo de memoria y mejoras en la experiencia del usuario.',
         level: SessionLevel.advanced,
-        speaker: speakers[6],
+        mainSpeaker: speakers[6],
         startTime: DateTime(2025, 9, 10, 11),
         endTime: DateTime(2025, 9, 10, 12, 30),
         track: 'Sala A',
@@ -288,7 +345,7 @@ abstract class ConferenceMockData {
         description:
             'Cómo utilizar tecnologías de realidad aumentada en aplicaciones móviles desarrolladas con Flutter, explorando frameworks como ARCore y ARKit para crear experiencias inmersivas.',
         level: SessionLevel.expert,
-        speaker: speakers[7],
+        mainSpeaker: speakers[7],
         startTime: DateTime(2025, 9, 10, 14),
         endTime: DateTime(2025, 9, 10, 15, 30),
         track: 'Sala A',
@@ -300,7 +357,7 @@ abstract class ConferenceMockData {
         description:
             'Análisis de las próximas tendencias y actualizaciones en el desarrollo móvil, incluyendo cómo Flutter se está posicionando en el mercado y qué nuevas características se esperan en futuras versiones.',
         level: SessionLevel.advanced,
-        speaker: speakers[8],
+        mainSpeaker: speakers[8],
         startTime: DateTime(2025, 9, 10, 16),
         endTime: DateTime(2025, 9, 10, 17, 30),
         track: 'Sala B',
@@ -312,7 +369,7 @@ abstract class ConferenceMockData {
         description:
             'Estrategias para desarrollar aplicaciones multiplataforma utilizando Flutter, cubriendo temas como la compartición de código entre plataformas y la adaptación de interfaces para diferentes dispositivos.',
         level: SessionLevel.intermediate,
-        speaker: speakers[9],
+        mainSpeaker: speakers[9],
         startTime: DateTime(2025, 9, 10, 18),
         endTime: DateTime(2025, 9, 10, 19, 30),
         track: 'Sala A',

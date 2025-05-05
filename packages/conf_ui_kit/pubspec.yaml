@@ -10,10 +10,12 @@ environment:
 
 dependencies:
   animated_flip_counter: ^0.3.4
+  cached_network_image: 
   conf_shared_models:
     path: ../conf_shared_models
   flutter:
     sdk: flutter
+  flutter_svg: ^2.1.0
   google_fonts: ^6.2.1
   intl: ^0.19.0
 
@@ -23,3 +25,7 @@ dev_dependencies:
   very_good_analysis: ^7.0.0
 
 flutter:
+
+  assets:
+    - assets/images/waving_dash.svg
+    - assets/social_icons/

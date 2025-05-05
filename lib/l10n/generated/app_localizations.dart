@@ -125,6 +125,12 @@ abstract class AppLocalizations {
   /// **'Speakers'**
   String get speakersTabLabel;
 
+  /// Label for the sponsors tab
+  ///
+  /// In en, this message translates to:
+  /// **'Sponsors'**
+  String get sponsorsTabLabel;
+
   /// Label for the venue tab
   ///
   /// In en, this message translates to:
@@ -515,6 +521,12 @@ abstract class AppLocalizations {
   /// **'Speaks'**
   String get speaks;
 
+  /// Text showing which languages a speaker knows
+  ///
+  /// In en, this message translates to:
+  /// **'I speak {languages}'**
+  String iSpeakLanguages(String languages);
+
   /// Accessibility label for country flag emoji
   ///
   /// In en, this message translates to:
@@ -574,6 +586,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your profile'**
   String get userProfileTooltip;
+
+  /// Tooltip text for the filter speakers button
+  ///
+  /// In en, this message translates to:
+  /// **'Filter speakers'**
+  String get filterSpeakersTooltip;
+
+  /// Description for the agenda tab in navigation bar
+  ///
+  /// In en, this message translates to:
+  /// **'2 days full of talks, workshops, activities and prizes!'**
+  String get agendaNavigationDescription;
+
+  /// Description for the speakers tab in navigation bar
+  ///
+  /// In en, this message translates to:
+  /// **'Over 20 speakers from 5 different countries'**
+  String get speakersNavigationDescription;
+
+  /// Description for the sponsors tab in navigation bar
+  ///
+  /// In en, this message translates to:
+  /// **'Partners and friends who help make this possible'**
+  String get sponsorsNavigationDescription;
+
+  /// Platinum sponsor tier
+  ///
+  /// In en, this message translates to:
+  /// **'Platinum'**
+  String get sponsorTierPlatinum;
+
+  /// Gold sponsor tier
+  ///
+  /// In en, this message translates to:
+  /// **'Gold'**
+  String get sponsorTierGold;
+
+  /// Silver sponsor tier
+  ///
+  /// In en, this message translates to:
+  /// **'Silver'**
+  String get sponsorTierSilver;
+
+  /// In-kind sponsor tier
+  ///
+  /// In en, this message translates to:
+  /// **'In-kind'**
+  String get sponsorTierInkind;
+
+  /// Other sponsor tier
+  ///
+  /// In en, this message translates to:
+  /// **'Others'**
+  String get sponsorTierOther;
+
+  /// Label for the 'Don't be shy' section
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t be shy and say hi!'**
+  String get dontBeShyLabel;
+
+  /// Label for the English language
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get languageEnglish;
+
+  /// Label for the Spanish language
+  ///
+  /// In en, this message translates to:
+  /// **'Spanish'**
+  String get languageSpanish;
+
+  /// Conjunction 'and' in English
+  ///
+  /// In en, this message translates to:
+  /// **'and'**
+  String get conjunctionAnd;
+
+  /// Label for other social networks
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get socialNetworkOther;
+
+  /// Accessibility prefix for social media links, followed by platform name
+  ///
+  /// In en, this message translates to:
+  /// **'Open profile on '**
+  String get socialProfilePrefix;
+
+  /// Title for the social media links section on speaker details
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s keep in touch'**
+  String get contactSectionTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

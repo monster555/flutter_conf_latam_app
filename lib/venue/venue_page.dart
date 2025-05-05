@@ -2,7 +2,7 @@ import 'package:conf_shared_models/conf_shared_models.dart';
 import 'package:conf_ui_kit/conf_ui_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_latam/l10n/l10n.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_conf_latam/utils/external_link.dart';
 
 class VenuePage extends StatelessWidget {
   const VenuePage({super.key});
@@ -10,22 +10,9 @@ class VenuePage extends StatelessWidget {
   static const String imagePath = 'assets/images/udla.webp';
   static const String venueName = 'Universidad de las Américas';
   static const String venueAddress = 'Vía a Nayón, Quito';
-  static const String venueCoordinates = '-0.162342183708216,-78.4587568998666';
+  static const double venueLatitude = -0.162342183708216;
+  static const double venueLongitude = -78.4587568998666;
   static const String venueCapacity = '600';
-
-  Future<void> _openMaps(BuildContext context) async {
-    final url = Uri.parse('https://maps.google.com/?q=$venueCoordinates');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
-    } else {
-      // Show an error if unable to launch maps
-      if (context.mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(context.l10n.errorMapsOpen)));
-      }
-    }
-  }
 
   Widget _buildDirectionsButton({
     required ColorScheme colorScheme,
@@ -94,49 +81,54 @@ class VenuePage extends StatelessWidget {
       container: true,
       label: l10n.venueTabLabel,
       explicitChildNodes: true,
-      child: CustomScrollView(
-        slivers: [
-          SliverList(
-            delegate: SliverChildListDelegate([
-              ExcludeSemantics(child: SizedBox(height: padding.top)),
-
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: UiConstants.spacing16,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    FeatureImage(
-                      imagePath: imagePath,
-                      semanticLabel: l10n.imageVenueDescription,
-                    ),
-                    const SectionTitle(
-                      title: venueName,
-                      padding: EdgeInsets.only(
-                        top: UiConstants.spacing16,
-                        bottom: UiConstants.spacing8,
+      child: Scaffold(
+        appBar: const FrostedAppBar(),
+        body: CustomScrollView(
+          slivers: [
+            SliverList(
+              delegate: SliverChildListDelegate([
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: UiConstants.spacing16,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FeatureImage(
+                        imagePath: imagePath,
+                        semanticLabel: l10n.imageVenueDescription,
                       ),
-                    ),
-                    IconLabelList(items: venueDetails),
-                    _buildDirectionsButton(
-                      l10n: l10n,
-                      onTap: () => _openMaps(context),
-                      colorScheme: colorScheme,
-                    ),
-                  ],
+                      const SectionTitle(
+                        title: venueName,
+                        padding: EdgeInsets.only(
+                          top: UiConstants.spacing16,
+                          bottom: UiConstants.spacing8,
+                        ),
+                      ),
+                      IconLabelList(items: venueDetails),
+                      _buildDirectionsButton(
+                        l10n: l10n,
+                        onTap:
+                            () => ExternalLinkUtil.openMap(
+                              venueLatitude,
+                              venueLongitude,
+                            ),
+                        colorScheme: colorScheme,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
 
-              InfoSectionGroup(
-                title: l10n.sectionTitleVenue,
-                sections: venueInfoSections,
-              ),
+                InfoSectionGroup(
+                  title: l10n.sectionTitleVenue,
+                  sections: venueInfoSections,
+                ),
 
-              ExcludeSemantics(child: SizedBox(height: padding.bottom)),
-            ]),
-          ),
-        ],
+                ExcludeSemantics(child: SizedBox(height: padding.bottom)),
+              ]),
+            ),
+          ],
+        ),
       ),
     );
   }
