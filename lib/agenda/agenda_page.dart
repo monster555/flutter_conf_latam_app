@@ -81,35 +81,6 @@ class _AgendaPageState extends State<AgendaPage> {
     }
   }
 
-  Widget _buildFilterButton(BuildContext context) {
-    final l10n = context.l10n;
-    final textTheme = context.textTheme;
-    final colorScheme = context.colorScheme;
-
-    return SliverToBoxAdapter(
-      child: SizedBox(
-        width: double.infinity,
-        child: Semantics(
-          label: l10n.filterButtonLabel,
-          button: true,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: OutlinedButton.icon(
-              onPressed: () {},
-              icon: Icon(Icons.filter_list, color: colorScheme.primary),
-              label: Text(
-                l10n.filterButtonLabel,
-                style: textTheme.bodyMedium?.copyWith(
-                  color: colorScheme.primary,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   void _onDateSelected(DateTime date) {
     setState(() {
       _selectedDate = date;
@@ -137,18 +108,18 @@ class _AgendaPageState extends State<AgendaPage> {
     final bottomPadding = padding.bottom;
     final formatter = DateFormatService.withContext(context);
 
+    Widget body;
+
     if (_isLoading) {
-      return Padding(
+      body = Padding(
         padding: EdgeInsets.only(top: topPadding),
         child: Semantics(
           label: l10n.stateLoadingAgenda,
           child: const Center(child: CircularProgressIndicator()),
         ),
       );
-    }
-
-    if (_errorMessage != null) {
-      return Padding(
+    } else if (_errorMessage != null) {
+      body = Padding(
         padding: EdgeInsets.only(top: topPadding),
         child: Semantics(
           label: _errorMessage,
@@ -168,10 +139,8 @@ class _AgendaPageState extends State<AgendaPage> {
           ),
         ),
       );
-    }
-
-    if (_dates.isEmpty) {
-      return Semantics(
+    } else if (_dates.isEmpty) {
+      body = Semantics(
         label: l10n.errorSessionsNone,
         child: FeedbackWidget(
           fullScreen: true,
@@ -179,49 +148,62 @@ class _AgendaPageState extends State<AgendaPage> {
           message: l10n.errorSessionsNone,
         ),
       );
+    } else {
+      final selectedDate = _selectedDate!;
+      final sessions = _sessionsByDate[selectedDate] ?? [];
+
+      final formattedDate = formatter.formatFullDate(selectedDate);
+
+      body = Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            SliverPinnedHeader(
+              child: AgendaHeader(
+                availableDates: _dates,
+                selectedDate: selectedDate,
+                onDateSelected: _onDateSelected,
+              ),
+            ),
+
+            SliverPadding(
+              padding: EdgeInsets.fromLTRB(
+                UiConstants.spacing16,
+                0,
+                UiConstants.spacing16,
+                bottomPadding,
+              ),
+              sliver: SessionsList(
+                sessions: sessions,
+                noSessionsMessage: l10n.errorSessionsNoneForDay(formattedDate),
+                sessionLevelLabels: {
+                  SessionLevel.basic: l10n.sessionLevelBasic,
+                  SessionLevel.intermediate: l10n.sessionLevelIntermediate,
+                  SessionLevel.advanced: l10n.sessionLevelAdvanced,
+                  SessionLevel.expert: l10n.sessionLevelExpert,
+                },
+                showSessionDescriptions: true,
+                onSessionTap:
+                    (session) =>
+                        context.push<void>(SessionDetailsPage(session)),
+              ),
+            ),
+          ],
+        ),
+      );
     }
 
-    final selectedDate = _selectedDate!;
-    final sessions = _sessionsByDate[selectedDate] ?? [];
-
-    final formattedDate = formatter.formatFullDate(selectedDate);
-
-    return CustomScrollView(
-      slivers: [
-        SliverPinnedHeader(
-          child: AgendaHeader(
-            availableDates: _dates,
-            selectedDate: selectedDate,
-            onDateSelected: _onDateSelected,
-            onFavoriteTap: () => debugPrint('Favorite tapped'),
-            favoriteSessionsLabel: l10n.favoriteSessionsLabel,
-            favoriteSessionsTooltip: l10n.favoriteSessionsTooltip,
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: FrostedAppBar(
+        title: Text(l10n.agendaTabLabel),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.filter_list_outlined),
+            onPressed: () {},
           ),
-        ),
-        _buildFilterButton(context),
-
-        SliverPadding(
-          padding: EdgeInsets.fromLTRB(
-            UiConstants.spacing16,
-            0,
-            UiConstants.spacing16,
-            bottomPadding,
-          ),
-          sliver: SessionsList(
-            sessions: sessions,
-            noSessionsMessage: l10n.errorSessionsNoneForDay(formattedDate),
-            sessionLevelLabels: {
-              SessionLevel.basic: l10n.sessionLevelBasic,
-              SessionLevel.intermediate: l10n.sessionLevelIntermediate,
-              SessionLevel.advanced: l10n.sessionLevelAdvanced,
-              SessionLevel.expert: l10n.sessionLevelExpert,
-            },
-            showSessionDescriptions: true,
-            onSessionTap:
-                (session) => context.push<void>(SessionDetailsPage(session)),
-          ),
-        ),
-      ],
+        ],
+      ),
+      body: body,
     );
   }
 }

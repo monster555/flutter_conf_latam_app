@@ -19,7 +19,18 @@ class SessionDetailsPage extends StatelessWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const FrostedAppBar(),
+      appBar: FrostedAppBar(
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.favorite_border_outlined),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.ios_share_outlined),
+          ),
+        ],
+      ),
       body: Semantics(
         label: session.title,
         container: true,
@@ -93,12 +104,12 @@ class SessionDetailsPage extends StatelessWidget {
                       child: SizedBox(height: UiConstants.spacing8),
                     ),
                     SpeakerCard(
-                      speaker: session.speaker,
+                      speaker: session.mainSpeaker,
                       showBio: false,
                       cardSize: SpeakerCardSize.small,
                       onTap:
                           () => context.push<void>(
-                            SpeakerDetailsPage(session.speaker),
+                            SpeakerDetailsPage(session.mainSpeaker),
                           ),
                     ),
                   ],
