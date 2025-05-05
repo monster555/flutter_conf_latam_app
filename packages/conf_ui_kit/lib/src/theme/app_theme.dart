@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 abstract class AppTheme {
   static final lightTheme = ThemeData(
     brightness: Brightness.light,
-    primaryColor: AppColors.flutterBlue,
+    primaryColor: AppColors.flutterNavy,
     scaffoldBackgroundColor: AppColors.lightBackground,
     textTheme: GoogleFonts.poppinsTextTheme().apply(
       bodyColor: AppColors.lightText,
@@ -15,7 +15,40 @@ abstract class AppTheme {
     colorScheme: AppColors.lightColorScheme(),
     cardTheme: CardTheme(
       elevation: 0,
-      color: AppColors.flutterLightBlue.withValues(alpha: 0.1),
+      color: AppColors.flutterBlue.withValues(alpha: 0.1),
+      shape: RoundedRectangleBorder(
+        borderRadius: UiConstants.borderRadiusLarge,
+      ),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        foregroundColor: AppColors.flutterNavy,
+        highlightColor: AppColors.flutterNavy.withValues(alpha: 0.1),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: AppColors.flutterNavy,
+        side: BorderSide(color: AppColors.flutterNavy.withValues(alpha: 0.3)),
+      ),
+    ),
+    splashColor: AppColors.flutterBlue.withValues(alpha: 0.2),
+    highlightColor: AppColors.flutterBlue.withValues(alpha: 0.1),
+  );
+
+  static final darkTheme = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    primaryColor: AppColors.flutterBlue,
+    scaffoldBackgroundColor: AppColors.darkBackground,
+    textTheme: GoogleFonts.poppinsTextTheme(
+      ThemeData.dark().textTheme,
+    ).apply(bodyColor: AppColors.darkText, displayColor: AppColors.darkText),
+
+    colorScheme: AppColors.darkColorScheme(),
+    cardTheme: CardTheme(
+      elevation: 0,
+      color: AppColors.flutterNavy.withValues(alpha: 0.15),
       shape: RoundedRectangleBorder(
         borderRadius: UiConstants.borderRadiusLarge,
       ),
@@ -32,42 +65,7 @@ abstract class AppTheme {
         side: BorderSide(color: AppColors.flutterBlue.withValues(alpha: 0.3)),
       ),
     ),
-    splashColor: AppColors.flutterBlue.withValues(alpha: 0.2),
-    highlightColor: AppColors.flutterBlue.withValues(alpha: 0.1),
-  );
-
-  static final darkTheme = ThemeData(
-    useMaterial3: true,
-    brightness: Brightness.dark,
-    primaryColor: AppColors.flutterLightBlue,
-    scaffoldBackgroundColor: AppColors.darkBackground,
-    textTheme: GoogleFonts.poppinsTextTheme(
-      ThemeData.dark().textTheme,
-    ).apply(bodyColor: AppColors.darkText, displayColor: AppColors.darkText),
-
-    colorScheme: AppColors.darkColorScheme(),
-    cardTheme: CardTheme(
-      elevation: 0,
-      color: AppColors.flutterBlue.withValues(alpha: 0.15),
-      shape: RoundedRectangleBorder(
-        borderRadius: UiConstants.borderRadiusLarge,
-      ),
-    ),
-    iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(
-        foregroundColor: AppColors.flutterLightBlue,
-        highlightColor: AppColors.flutterLightBlue.withValues(alpha: 0.1),
-      ),
-    ),
-    outlinedButtonTheme: OutlinedButtonThemeData(
-      style: OutlinedButton.styleFrom(
-        foregroundColor: AppColors.flutterLightBlue,
-        side: BorderSide(
-          color: AppColors.flutterLightBlue.withValues(alpha: 0.3),
-        ),
-      ),
-    ),
-    splashColor: AppColors.flutterLightBlue.withValues(alpha: 0.2),
-    highlightColor: AppColors.flutterLightBlue.withValues(alpha: 0.1),
+    splashColor: AppColors.flutterSky.withValues(alpha: 0.2),
+    highlightColor: AppColors.flutterSky.withValues(alpha: 0.1),
   );
 }

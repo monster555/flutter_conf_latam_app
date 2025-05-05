@@ -104,7 +104,7 @@ class SessionsList extends StatelessWidget {
   String _buildSemanticLabel(Session session, String formattedTime) {
     final levelLabel =
         sessionLevelLabels[session.level] ?? session.level.toString();
-    return '${session.title} at $formattedTime by ${session.speaker.name}. '
+    return '${session.title} at $formattedTime by ${session.mainSpeaker.name}. '
         'Level: $levelLabel';
   }
 

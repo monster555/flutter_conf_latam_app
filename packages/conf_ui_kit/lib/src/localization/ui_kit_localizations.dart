@@ -19,11 +19,15 @@ class UiKitLocalizations {
         final formatter = DateFormat.yMMMMd();
         return 'No sessions scheduled for ${formatter.format(date)}';
       },
+      socialNetworkOther: 'Other',
+      socialNetworkAccessibilityHint: 'Opens profile link',
     );
   }
   UiKitLocalizations._({
     required this.sessionLevelLabels,
     required this.noSessionsMessageBuilder,
+    required this.socialNetworkOther,
+    required this.socialNetworkAccessibilityHint,
   });
   static UiKitLocalizations? _instance;
 
@@ -33,14 +37,21 @@ class UiKitLocalizations {
   /// Function to build a "no sessions" message with formatted date
   final String Function(DateTime) noSessionsMessageBuilder;
 
+  final String socialNetworkOther;
+  final String socialNetworkAccessibilityHint;
+
   /// Initialize with localized strings from main app
   static void initialize({
     required Map<SessionLevel, String> sessionLevelLabels,
     required String Function(DateTime) noSessionsMessageBuilder,
+    required String socialNetworkOther,
+    required String socialNetworkAccessibilityHint,
   }) {
     _instance = UiKitLocalizations._(
       sessionLevelLabels: sessionLevelLabels,
       noSessionsMessageBuilder: noSessionsMessageBuilder,
+      socialNetworkOther: socialNetworkOther,
+      socialNetworkAccessibilityHint: socialNetworkAccessibilityHint,
     );
     if (kDebugMode) {
       print('UiKitLocalizations initialized');

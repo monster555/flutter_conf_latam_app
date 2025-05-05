@@ -23,6 +23,7 @@ abstract class UiConstants {
   static const double iconSizeXSmall = 12;
   static const double iconSizeSmall = 16;
   static const double iconSizeMedium = 24;
+  static const double iconSizeLarge = 32;
   static const double iconSizeXLarge = 48;
 
   /// Border radius constants

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 /// Color palette for FlutterConf LATAM app
 abstract class AppColors {
   // Primary Flutter blue colors
-  static const Color flutterBlue = Color(0xFF02569B);
-  static const Color flutterLightBlue = Color(0xFF0175C2);
-  static const Color flutterSkyBlue = Color(0xFFB3E5FC);
+  static const Color flutterNavy = Color(0xFF042B59);
+  static const Color flutterBlue = Color(0xFF0553B1);
+  static const Color flutterSky = Color(0xFF027DFD);
 
   // Light theme colors
   static const Color lightBackground = Color(0xFFF5F5F5);
@@ -27,16 +27,16 @@ abstract class AppColors {
 
   // Helper method to get theme-specific colors
   static ColorScheme lightColorScheme() => const ColorScheme.light(
-    primary: flutterBlue,
-    secondary: flutterLightBlue,
+    primary: flutterNavy,
+    secondary: flutterBlue,
     surface: lightSurface,
     onSecondary: onSecondary,
     onSurface: lightText,
   );
 
   static ColorScheme darkColorScheme() => const ColorScheme.dark(
-    primary: flutterSkyBlue,
-    secondary: flutterLightBlue,
+    primary: flutterSky,
+    secondary: flutterBlue,
     surface: darkSurface,
     onSurface: darkText,
   );

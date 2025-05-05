@@ -29,8 +29,9 @@ class SpeakerCard extends StatelessWidget {
 
     final semanticLabel =
         '${speaker.name}. '
-        'Role: ${speaker.role}.'
-        '${showBio && speaker.bio.isNotEmpty ? ' ${speaker.bio}' : ''}';
+        'Title: ${speaker.title}.'
+        '${showBio && speaker.description.isNotEmpty ? ''
+                ' ${speaker.description}' : ''}';
 
     return Semantics(
       label: semanticLabel,
@@ -60,14 +61,14 @@ class SpeakerCard extends StatelessWidget {
                           style: cardSize.getTitleStyle(textTheme),
                         ),
                         Text(
-                          speaker.role,
+                          speaker.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        if (showBio && speaker.bio.isNotEmpty) ...[
+                        if (showBio && speaker.description.isNotEmpty) ...[
                           const SizedBox(height: UiConstants.spacing8),
                           Text(
-                            speaker.bio,
+                            speaker.description,
                             style: textTheme.bodySmall,
                             maxLines: maxBioLines,
                             overflow: TextOverflow.ellipsis,

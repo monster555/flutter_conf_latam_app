@@ -155,26 +155,15 @@ class _CountdownCard extends StatelessWidget {
     final child =
         isEventPassed
             ? _buildEventPassedMessage(textTheme, colorScheme)
-            : _buildCountdown(textTheme, colorScheme);
+            : _buildCountdown(textTheme);
 
     return SizedBox(
       width: double.infinity,
-      child: Card(
-        margin: EdgeInsets.zero,
-        color: Colors.transparent,
-        clipBehavior: Clip.antiAlias,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [colorScheme.secondary, colorScheme.primary],
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(UiConstants.spacing16),
-            child: child,
-          ),
+      child: DecoratedBox(
+        decoration: BoxDecoration(color: colorScheme.secondary),
+        child: Padding(
+          padding: const EdgeInsets.all(UiConstants.spacing16),
+          child: child,
         ),
       ),
     );
@@ -199,7 +188,8 @@ class _CountdownCard extends StatelessWidget {
     );
   }
 
-  Widget _buildCountdown(TextTheme textTheme, ColorScheme colorScheme) {
+  Widget _buildCountdown(TextTheme textTheme) {
+    const effectiveColor = Colors.white;
     return Semantics(
       label:
           '${title ?? ''} $days $daysLabel, $hours $hoursLabel, $minutes '
@@ -213,9 +203,7 @@ class _CountdownCard extends StatelessWidget {
           if (title != null) ...[
             Text(
               title!,
-              style: textTheme.titleMedium?.copyWith(
-                color: colorScheme.onSecondary,
-              ),
+              style: textTheme.titleMedium?.copyWith(color: effectiveColor),
             ),
             const SizedBox(height: UiConstants.spacing8),
           ],
@@ -226,14 +214,27 @@ class _CountdownCard extends StatelessWidget {
               _CountdownUnit(
                 value: days,
                 label: daysLabel,
+                color: effectiveColor,
                 wholeDigits: days > 99 ? 3 : 2,
               ),
-              const _CountdownSeparator(),
-              _CountdownUnit(value: hours, label: hoursLabel),
-              const _CountdownSeparator(),
-              _CountdownUnit(value: minutes, label: minutesLabel),
-              const _CountdownSeparator(),
-              _CountdownUnit(value: seconds, label: secondsLabel),
+              const _CountdownSeparator(color: effectiveColor),
+              _CountdownUnit(
+                value: hours,
+                label: hoursLabel,
+                color: effectiveColor,
+              ),
+              const _CountdownSeparator(color: effectiveColor),
+              _CountdownUnit(
+                value: minutes,
+                label: minutesLabel,
+                color: effectiveColor,
+              ),
+              const _CountdownSeparator(color: effectiveColor),
+              _CountdownUnit(
+                value: seconds,
+                label: secondsLabel,
+                color: effectiveColor,
+              ),
             ],
           ),
         ],
@@ -246,16 +247,17 @@ class _CountdownUnit extends StatelessWidget {
   const _CountdownUnit({
     required this.value,
     required this.label,
+    required this.color,
     this.wholeDigits = 2,
   });
   final int value;
   final String label;
   final int wholeDigits;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = context.textTheme;
-    final colorScheme = context.colorScheme;
 
     return Semantics(
       value: '$value $label',
@@ -272,14 +274,14 @@ class _CountdownUnit extends StatelessWidget {
             textStyle: TextStyle(
               fontSize: UiConstants.fontSizeDisplay,
               fontWeight: FontWeight.bold,
-              color: colorScheme.onSecondary,
+              color: color,
             ),
           ),
           const SizedBox(height: UiConstants.spacing4),
           Text(
             label,
             style: textTheme.bodySmall?.copyWith(
-              color: colorScheme.onSecondary.withValues(alpha: 0.8),
+              color: color.withValues(alpha: 0.8),
             ),
           ),
         ],
@@ -289,7 +291,8 @@ class _CountdownUnit extends StatelessWidget {
 }
 
 class _CountdownSeparator extends StatelessWidget {
-  const _CountdownSeparator();
+  const _CountdownSeparator({required this.color});
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -298,9 +301,7 @@ class _CountdownSeparator extends StatelessWidget {
         width: UiConstants.borderWidth,
         height: UiConstants.dividerheight,
         child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: context.colorScheme.onSecondary.withValues(alpha: 0.5),
-          ),
+          decoration: BoxDecoration(color: color.withValues(alpha: 0.5)),
         ),
       ),
     );

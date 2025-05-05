@@ -50,7 +50,7 @@ class SessionCard extends StatelessWidget {
         '${session.title}. '
         'From $formattedStartTime to '
         '$formattedEndTime. '
-        'Speaker: ${session.speaker.name}. '
+        'Speaker: ${session.mainSpeaker.name}. '
         'Level: ${levelLabels[session.level] ?? session.level.defaultText}. '
         'Language: ${session.language.name}';
 
@@ -102,7 +102,7 @@ class SessionCard extends StatelessWidget {
                           size: UiConstants.spacing16,
                         ),
                         const SizedBox(width: UiConstants.spacing4),
-                        Expanded(child: Text(session.speaker.name)),
+                        Expanded(child: Text(session.mainSpeaker.name)),
                       ],
                     ),
                     const SizedBox(height: UiConstants.spacing4),
