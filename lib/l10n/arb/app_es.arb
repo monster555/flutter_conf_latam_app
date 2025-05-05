@@ -16,6 +16,7 @@
     "description": "Tooltip for the agenda tab"
   },
   "speakersTabLabel": "Speakers",
+  "sponsorsTabLabel": "Sponsors",
   "speakersTabTooltip": "Explorar ponentes de la conferencia",
   "@speakersTabTooltip": {
     "description": "Tooltip for the speakers tab"
@@ -140,6 +141,7 @@
   "stateLoadingSessions": "Cargando sesiones",
   "stateLoadingSpeakers": "Cargando speakers",
   "speaks": "Habla",
+  "iSpeakLanguages": "Hablo {languages}",
   "countryFlag": "bandera de {country}",
   "agendaPreviewEmptyMessage": "Aún no hay sesiones para mostrar. ¡Vuelve pronto!",
   "favoriteSessionsLabel": "Sesiones Favoritas",
@@ -149,5 +151,21 @@
   "venueBannerSemanticLabel": "Sede: {venueName}. Ubicación: {location}. Fechas: {dates}",
   "userProfileLabel": "Perfil de Usuario",
   "userProfileHint": "Toca para ver tu perfil",
-  "userProfileTooltip": "Ver perfil de usuario"
+  "userProfileTooltip": "Ver perfil de usuario",
+  "filterSpeakersTooltip": "Filtrar speakers",
+  "agendaNavigationDescription": "¡2 días llenos de charlas, talleres, dinámicas y premios!",
+  "speakersNavigationDescription": "¡Más de 20 speakers de 5 países diferentes",
+  "sponsorsNavigationDescription": "Aliados y amigos que nos apoyan a hacer esto posible",
+  "sponsorTierPlatinum": "Platinum",
+  "sponsorTierGold": "Gold",
+  "sponsorTierSilver": "Silver",
+  "sponsorTierInkind": "En especie",
+  "sponsorTierOther": "Otros",
+  "dontBeShyLabel": "¡No seas tímido y salúdame!",
+  "languageEnglish": "inglés",
+  "languageSpanish": "español",
+  "conjunctionAnd": "y",
+  "socialNetworkOther": "Otro",
+  "socialProfilePrefix": "Abre perfil en ",
+  "contactSectionTitle": "Sigamos en contacto"
 }

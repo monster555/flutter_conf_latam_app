@@ -24,6 +24,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get speakersTabLabel => 'Speakers';
 
   @override
+  String get sponsorsTabLabel => 'Sponsors';
+
+  @override
   String get venueTabLabel => 'Venue';
 
   @override
@@ -227,6 +230,11 @@ class AppLocalizationsEs extends AppLocalizations {
   String get speaks => 'Habla';
 
   @override
+  String iSpeakLanguages(String languages) {
+    return 'Hablo $languages';
+  }
+
+  @override
   String countryFlag(String country) {
     return 'bandera de $country';
   }
@@ -261,4 +269,52 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get userProfileTooltip => 'Ver perfil de usuario';
+
+  @override
+  String get filterSpeakersTooltip => 'Filtrar speakers';
+
+  @override
+  String get agendaNavigationDescription => '¡2 días llenos de charlas, talleres, dinámicas y premios!';
+
+  @override
+  String get speakersNavigationDescription => '¡Más de 20 speakers de 5 países diferentes';
+
+  @override
+  String get sponsorsNavigationDescription => 'Aliados y amigos que nos apoyan a hacer esto posible';
+
+  @override
+  String get sponsorTierPlatinum => 'Platinum';
+
+  @override
+  String get sponsorTierGold => 'Gold';
+
+  @override
+  String get sponsorTierSilver => 'Silver';
+
+  @override
+  String get sponsorTierInkind => 'En especie';
+
+  @override
+  String get sponsorTierOther => 'Otros';
+
+  @override
+  String get dontBeShyLabel => '¡No seas tímido y salúdame!';
+
+  @override
+  String get languageEnglish => 'inglés';
+
+  @override
+  String get languageSpanish => 'español';
+
+  @override
+  String get conjunctionAnd => 'y';
+
+  @override
+  String get socialNetworkOther => 'Otro';
+
+  @override
+  String get socialProfilePrefix => 'Abre perfil en ';
+
+  @override
+  String get contactSectionTitle => 'Sigamos en contacto';
 }
