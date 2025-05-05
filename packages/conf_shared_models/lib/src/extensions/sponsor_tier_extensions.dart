@@ -1,0 +1,21 @@
+import 'package:conf_shared_models/src/enums/enums.dart';
+
+extension SponsorTierX on SponsorTier {
+  /// Converts a string to a SponsorTier enum value
+  static SponsorTier fromString(String? value) => switch (value
+      ?.toLowerCase()) {
+    'platinum' => SponsorTier.platinum,
+    'gold' => SponsorTier.gold,
+    'silver' => SponsorTier.silver,
+    'inkind' => SponsorTier.inkind,
+    _ => SponsorTier.other,
+  };
+
+  int get sortPriority => switch (this) {
+    SponsorTier.platinum => 1,
+    SponsorTier.gold => 2,
+    SponsorTier.silver => 3,
+    SponsorTier.inkind => 4,
+    SponsorTier.other => 5,
+  };
+}
