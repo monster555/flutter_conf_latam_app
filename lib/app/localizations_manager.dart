@@ -19,6 +19,8 @@ abstract class LocalizationsManager {
         final formattedDate = DateFormat.yMMMd().format(date);
         return 'No sessions scheduled for $formattedDate';
       },
+      socialNetworkOther: 'Other',
+      socialNetworkAccessibilityHint: 'Open profile on ',
     );
   }
 
@@ -38,6 +40,8 @@ abstract class LocalizationsManager {
         final formattedDate = formatter.formatFullDate(date);
         return l10n.errorSessionsNoneForDay(formattedDate);
       },
+      socialNetworkOther: l10n.socialNetworkOther,
+      socialNetworkAccessibilityHint: l10n.socialProfilePrefix,
     );
   }
 }
