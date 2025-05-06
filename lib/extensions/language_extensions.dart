@@ -32,10 +32,14 @@ extension LanguageListExtensions on List<Language> {
     if (items.isEmpty) return '';
     if (items.length == 1) return items.first;
 
-    final isSpanish = locale.startsWith('es');
+    final baseLocale = locale.split('_').first;
     final lastWord = items.last;
-    final conjunction =
-        isSpanish ? _getSpanishConjunction(lastWord) : l10n.conjunctionAnd;
+
+    // Spanish has phonetic-based conjunctions depending on the following word
+    final conjunction = switch (baseLocale) {
+      'es' => _getSpanishConjunction(lastWord),
+      _ => l10n.conjunctionAnd,
+    };
 
     if (items.length == 2) {
       return '${items.first} $conjunction $lastWord';
