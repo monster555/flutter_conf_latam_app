@@ -24,7 +24,12 @@ class HomePage extends StatelessWidget {
       label: l10n.homeTabLabel,
       child: Scaffold(
         extendBodyBehindAppBar: true,
-        appBar: const FrostedAppBar(automaticallyImplyLeading: false),
+        appBar: MainAppBar(
+          profileLabel: l10n.userProfileLabel,
+          profileHint: l10n.userProfileHint,
+          profileTooltip: l10n.userProfileTooltip,
+          onProfileTap: () {},
+        ),
         body: CustomScrollView(
           slivers: [
             SliverPinnedHeader(
