@@ -1,3 +1,4 @@
+import 'package:conf_ui_kit/src/theme/app_assets.dart';
 import 'package:flutter/material.dart';
 
 extension ThemeX on BuildContext {
@@ -6,4 +7,7 @@ extension ThemeX on BuildContext {
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
 
   Color get scaffoldBackgroundColor => Theme.of(this).scaffoldBackgroundColor;
+
+  AppAssets get appAssets =>
+      Theme.of(this).extension<AppAssets>() ?? AppAssets.light;
 }
