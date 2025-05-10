@@ -230,6 +230,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get speaks => 'Speaks';
 
   @override
+  String get iSpeakPrefix => 'I speak';
+
+  @override
   String iSpeakLanguages(String languages) {
     return 'I speak $languages';
   }
