@@ -10,6 +10,22 @@ import 'package:conf_ui_kit/src/localization/ui_kit_localizations.dart'
 extension SocialMediaLinkX on SocialMediaLink {
   UiKitLocalizations get _localizations => UiKitLocalizations();
 
+  /// Returns a user-friendly display version of the URL without protocol.
+  /// Example: https://github.com/username → github.com/username
+  String get displayUrl {
+    try {
+      final uri = Uri.parse(link);
+      var display = uri.host;
+      if (uri.path.isNotEmpty && uri.path != '/') {
+        display += uri.path;
+      }
+      return display;
+    } on FormatException catch (_) {
+      // Fallback if URL parsing fails
+      return link.split('//').lastOrNull ?? link;
+    }
+  }
+
   /// Returns the display name of the social media platform.
   String get displayName {
     // Normalize type for case-insensitive comparison

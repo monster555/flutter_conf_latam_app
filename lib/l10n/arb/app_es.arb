@@ -141,6 +141,7 @@
   "stateLoadingSessions": "Cargando sesiones",
   "stateLoadingSpeakers": "Cargando speakers",
   "speaks": "Habla",
+  "iSpeakPrefix": "Hablo",
   "iSpeakLanguages": "Hablo {languages}",
   "countryFlag": "bandera de {country}",
   "agendaPreviewEmptyMessage": "Aún no hay sesiones para mostrar. ¡Vuelve pronto!",

@@ -34,9 +34,9 @@ class SpeakerDetailsView extends StatelessWidget {
   Widget _buildDetailsContent(BuildContext context, Speaker speaker) {
     final l10n = context.l10n;
     final textTheme = context.textTheme;
-    final topContentOffset = context.padding.top + kToolbarHeight;
+    final padding = context.padding;
+    final topContentOffset = padding.top + kToolbarHeight;
     final languagesText = speaker.languages.formatList(context);
-    final iSpeakLanguages = l10n.iSpeakLanguages(languagesText);
 
     return Semantics(
       label: speaker.name,
@@ -108,13 +108,16 @@ class SpeakerDetailsView extends StatelessWidget {
               padding: const EdgeInsets.all(UiConstants.spacing16),
               child: SpeakerLanguagesCard(
                 promptText: l10n.dontBeShyLabel,
-                languages: iSpeakLanguages,
+                languagesPrefix: l10n.iSpeakPrefix,
+                languagesList: languagesText,
               ),
             ),
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.all(UiConstants.spacing16),
+              padding: const EdgeInsets.symmetric(
+                horizontal: UiConstants.spacing16,
+              ),
               child: SocialLinksList(
                 links: speaker.socialMediaLinks,
                 title: l10n.contactSectionTitle,
@@ -122,6 +125,7 @@ class SpeakerDetailsView extends StatelessWidget {
               ),
             ),
           ),
+          SliverToBoxAdapter(child: SizedBox(height: padding.bottom)),
         ],
       ),
     );

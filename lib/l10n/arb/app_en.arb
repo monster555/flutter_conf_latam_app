@@ -312,6 +312,10 @@
   "@speaks": {
     "description": "Label for the 'Speaks' widget"
   },
+  "iSpeakPrefix": "I speak",
+  "@iSpeakPrefix": {
+    "description": "Prefix displayed before the languages a speaker knows"
+  },
   "iSpeakLanguages": "I speak {languages}",
   "@iSpeakLanguages": {
     "description": "Text showing which languages a speaker knows",

@@ -521,6 +521,12 @@ abstract class AppLocalizations {
   /// **'Speaks'**
   String get speaks;
 
+  /// Prefix displayed before the languages a speaker knows
+  ///
+  /// In en, this message translates to:
+  /// **'I speak'**
+  String get iSpeakPrefix;
+
   /// Text showing which languages a speaker knows
   ///
   /// In en, this message translates to:

@@ -15,7 +15,6 @@ class SocialNetworkListItem extends StatelessWidget {
   const SocialNetworkListItem({
     required this.social,
     required this.onTap,
-    this.size = UiConstants.iconSizeXLarge,
     super.key,
   });
 
@@ -25,13 +24,13 @@ class SocialNetworkListItem extends StatelessWidget {
   /// Called when the button is tapped.
   final VoidCallback onTap;
 
-  /// The size of the icon and button.
-  final double size;
-
   @override
   Widget build(BuildContext context) {
+    final textTheme = context.textTheme;
     final colorScheme = context.colorScheme;
-    final iconSize = size * 0.6;
+
+    const size = UiConstants.iconSizeXLarge;
+    const iconSize = size * 0.6;
 
     return Semantics(
       button: true,
@@ -44,38 +43,49 @@ class SocialNetworkListItem extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(UiConstants.spacing8),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: colorScheme.primary.withValues(alpha: 0.1),
-                  borderRadius: UiConstants.borderRadiusMedium,
-                ),
-                child: ExcludeSemantics(
-                  child: SizedBox(
-                    height: size,
-                    width: size,
-                    child: Center(
-                      child: SvgPicture.asset(
-                        social.iconAssetPath,
-                        package: PackageConstants.packageName,
-                        width: iconSize,
-                        height: iconSize,
-                        colorFilter: ColorFilter.mode(
-                          colorScheme.primary,
-                          BlendMode.srcIn,
-                        ),
-                        placeholderBuilder:
-                            (_) => Icon(Icons.public, size: iconSize),
+              child: ExcludeSemantics(
+                child: SizedBox.square(
+                  dimension: size,
+                  child: Center(
+                    child: SvgPicture.asset(
+                      social.iconAssetPath,
+                      package: PackageConstants.packageName,
+                      width: iconSize,
+                      height: iconSize,
+                      colorFilter: ColorFilter.mode(
+                        colorScheme.primary,
+                        BlendMode.srcIn,
                       ),
+                      placeholderBuilder:
+                          (_) => const Icon(Icons.public, size: iconSize),
                     ),
                   ),
                 ),
               ),
             ),
-            const SizedBox(width: UiConstants.spacing16),
-            Text(
-              social.displayName,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    social.displayName,
+                    style: textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: UiConstants.spacing2),
+                  Text(
+                    social.displayUrl,
+                    style: textTheme.bodySmall?.copyWith(
+                      color: colorScheme.onSurface.withValues(alpha: 0.7),
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
             ),
           ],
         ),
