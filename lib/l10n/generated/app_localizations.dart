@@ -688,6 +688,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Let\'s keep in touch'**
   String get contactSectionTitle;
+
+  /// No description provided for @welcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome'**
+  String get welcome;
+
+  /// No description provided for @welcomeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Get ready to experience the best of the Flutter world!'**
+  String get welcomeDescription;
+
+  /// Button to continue
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with {value}'**
+  String continueWith(Object value);
+
+  /// Button to continue as a guest
+  ///
+  /// In en, this message translates to:
+  /// **'Continue as guest'**
+  String get continueAsGuests;
+
+  /// No description provided for @or.
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get or;
+
+  /// First part of the terms and privacy message
+  ///
+  /// In en, this message translates to:
+  /// **'Almost there! Just accept our '**
+  String get termsAndPrivacyPart1;
+
+  /// Label text for terms link
+  ///
+  /// In en, this message translates to:
+  /// **'Terms'**
+  String get termsLabel;
+
+  /// Conjunction between terms and privacy
+  ///
+  /// In en, this message translates to:
+  /// **' and '**
+  String get termsAndPrivacyAnd;
+
+  /// Label text for privacy policy link
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicyLabel;
+
+  /// Ending part of the terms and privacy message
+  ///
+  /// In en, this message translates to:
+  /// **' to get started.'**
+  String get termsAndPrivacyPart2;
+
+  /// No description provided for @accept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get accept;
+
+  /// Accessible description for the Flutter Conf Latam logo in English
+  ///
+  /// In en, this message translates to:
+  /// **'Logo of Flutter Conf Latam, third edition, in Quito, Ecuador.'**
+  String get flutterConfLatamLogoDescription;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

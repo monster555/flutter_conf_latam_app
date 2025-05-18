@@ -320,4 +320,42 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get contactSectionTitle => 'Sigamos en contacto';
+
+  @override
+  String get welcome => 'Bienvenido';
+
+  @override
+  String get welcomeDescription => '¡Prepárate para vivir lo mejor del mundo Flutter!';
+
+  @override
+  String continueWith(Object value) {
+    return 'Continuar con $value';
+  }
+
+  @override
+  String get continueAsGuests => 'Continuar como invitado';
+
+  @override
+  String get or => 'o';
+
+  @override
+  String get termsAndPrivacyPart1 => '¡Casi listos! Solo acepta nuestros ';
+
+  @override
+  String get termsLabel => 'Términos';
+
+  @override
+  String get termsAndPrivacyAnd => ' y ';
+
+  @override
+  String get privacyPolicyLabel => 'Políticas de privacidad';
+
+  @override
+  String get termsAndPrivacyPart2 => ' para comenzar.';
+
+  @override
+  String get accept => 'Aceptar';
+
+  @override
+  String get flutterConfLatamLogoDescription => 'Logo de Flutter Conf Latam, tercera edición, en Quito, Ecuador.';
 }
