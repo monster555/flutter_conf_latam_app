@@ -1,9 +1,7 @@
 import 'package:conf_shared_models/conf_shared_models.dart';
 import 'package:conf_ui_kit/conf_ui_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_conf_latam/extensions/navigator_extensions.dart';
 import 'package:flutter_conf_latam/l10n/l10n.dart';
-import 'package:flutter_conf_latam/speaker_details/speaker_details.dart';
 
 class SessionDetailsPage extends StatelessWidget {
   const SessionDetailsPage(this.session, {super.key});
@@ -102,15 +100,6 @@ class SessionDetailsPage extends StatelessWidget {
                     ),
                     const ExcludeSemantics(
                       child: SizedBox(height: UiConstants.spacing8),
-                    ),
-                    SpeakerCard(
-                      speaker: session.mainSpeaker,
-                      showBio: false,
-                      cardSize: SpeakerCardSize.small,
-                      onTap:
-                          () => context.push<void>(
-                            SpeakerDetailsPage(session.mainSpeaker),
-                          ),
                     ),
                   ],
                 ),
