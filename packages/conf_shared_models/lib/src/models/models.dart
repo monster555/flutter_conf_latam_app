@@ -1,3 +1,4 @@
+export 'conf_auth_user.dart';
 export 'info_section.dart';
 export 'session.dart';
 export 'social_media_link.dart';
