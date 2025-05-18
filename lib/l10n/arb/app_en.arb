@@ -455,5 +455,46 @@
   "contactSectionTitle": "Let's keep in touch",
   "@contactSectionTitle": {
     "description": "Title for the social media links section on speaker details"
+  },
+  "welcome": "Welcome",
+  "welcomeDescription": "Get ready to experience the best of the Flutter world!",
+  "continueWith": "Continue with {value}",
+  "@continueWith": {
+    "description": "Button to continue",
+    "placeholders": {
+      "value": {
+        "type": "Object"
+      }
+    }
+  },
+  "continueAsGuests": "Continue as guest",
+  "@continueAsGuests": {
+    "description": "Button to continue as a guest"
+  },
+  "or": "or",
+  "termsAndPrivacyPart1": "Almost there! Just accept our ",
+  "@termsAndPrivacyPart1": {
+    "description": "First part of the terms and privacy message"
+  },
+  "termsLabel": "Terms",
+  "@termsLabel": {
+    "description": "Label text for terms link"
+  },
+  "termsAndPrivacyAnd": " and ",
+  "@termsAndPrivacyAnd": {
+    "description": "Conjunction between terms and privacy"
+  },
+  "privacyPolicyLabel": "Privacy Policy",
+  "@privacyPolicyLabel": {
+    "description": "Label text for privacy policy link"
+  },
+  "termsAndPrivacyPart2": " to get started.",
+  "@termsAndPrivacyPart2": {
+    "description": "Ending part of the terms and privacy message"
+  },
+  "accept": "Accept",
+  "flutterConfLatamLogoDescription": "Logo of Flutter Conf Latam, third edition, in Quito, Ecuador.",
+  "@flutterConfLatamLogoDescription": {
+    "description": "Accessible description for the Flutter Conf Latam logo in English"
   }
 }

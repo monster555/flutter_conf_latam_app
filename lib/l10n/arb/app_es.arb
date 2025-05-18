@@ -168,5 +168,46 @@
   "conjunctionAnd": "y",
   "socialNetworkOther": "Otro",
   "socialProfilePrefix": "Abre perfil en ",
-  "contactSectionTitle": "Sigamos en contacto"
+  "contactSectionTitle": "Sigamos en contacto",
+  "welcome": "Bienvenido",
+  "welcomeDescription": "¡Prepárate para vivir lo mejor del mundo Flutter!",
+  "continueWith": "Continuar con {value}",
+  "@continueWith": {
+    "description": "Botón para continuar",
+    "placeholders": {
+      "value": {
+        "type": "Object"
+      }
+    }
+  },
+  "continueAsGuests": "Continuar como invitado",
+  "@continueAsGuests": {
+    "description": "Botón para continuar como invitado"
+  },
+  "or": "o",
+  "termsAndPrivacyPart1": "¡Casi listos! Solo acepta nuestros ",
+  "@termsAndPrivacyPart1": {
+    "description": "Primera parte del mensaje de términos"
+  },
+  "termsLabel": "Términos",
+  "@termsLabel": {
+    "description": "Texto del enlace a términos"
+  },
+  "termsAndPrivacyAnd": " y ",
+  "@termsAndPrivacyAnd": {
+    "description": "Conjunción entre términos y políticas"
+  },
+  "privacyPolicyLabel": "Políticas de privacidad",
+  "@privacyPolicyLabel": {
+    "description": "Texto del enlace a políticas de privacidad"
+  },
+  "termsAndPrivacyPart2": " para comenzar.",
+  "@termsAndPrivacyPart2": {
+    "description": "Parte final del mensaje"
+  },
+  "accept": "Aceptar",
+  "flutterConfLatamLogoDescription": "Logo de Flutter Conf Latam, tercera edición, en Quito, Ecuador.",
+  "@flutterConfLatamLogoDescription": {
+    "description": "Descripción accesible para el logo de Flutter Conf Latam en español"
+  }
 }
