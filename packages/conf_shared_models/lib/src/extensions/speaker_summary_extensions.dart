@@ -1,6 +1,6 @@
-import 'package:conf_shared_models/src/models/speaker.dart';
+import 'package:conf_shared_models/src/models/speaker_summary.dart';
 
-extension SpeakerX on Speaker {
+extension SpeakerX on SpeakerSummary {
   String get flagEmoji {
     return countryCode
         .toUpperCase()
