@@ -24,7 +24,7 @@ class SpeakersLoading extends SpeakersState {
 class SpeakersLoaded extends SpeakersState {
   const SpeakersLoaded(this.speakers);
 
-  final List<Speaker> speakers;
+  final List<SpeakerSummary> speakers;
 
   @override
   List<Object> get props => [speakers];
