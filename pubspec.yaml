@@ -7,8 +7,10 @@ environment:
   sdk: ^3.7.0
 
 dependencies:
-  conf_firestore_data_source:
-    path: packages/conf_firestore_data_source
+  conf_cloud_functions_data_source:
+    path: packages/conf_cloud_functions_data_source
+  conf_core:
+    path: packages/conf_core
   conf_shared_models:
     path: packages/conf_shared_models
   conf_ui_kit:
