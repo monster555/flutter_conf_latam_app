@@ -1,3 +1,4 @@
+import 'package:conf_auth_repository/conf_auth_repository.dart';
 import 'package:conf_ui_kit/conf_ui_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,6 +33,9 @@ class MainApp extends StatelessWidget {
         ),
         RepositoryProvider<SponsorsRepository>.value(
           value: dependencies.sponsorsRepository,
+        ),
+        RepositoryProvider<IConfAuthRepository>.value(
+          value: dependencies.confAuthRepository,
         ),
       ],
       child: MaterialApp(
