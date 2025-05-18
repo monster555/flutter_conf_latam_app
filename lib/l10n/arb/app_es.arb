@@ -168,5 +168,7 @@
   "conjunctionAnd": "y",
   "socialNetworkOther": "Otro",
   "socialProfilePrefix": "Abre perfil en ",
-  "contactSectionTitle": "Sigamos en contacto"
+  "contactSectionTitle": "Sigamos en contacto",
+  "errorCannotOpenLink": "No se puede abrir el enlace",
+  "errorGeneric": "Ha ocurrido un error"
 }
