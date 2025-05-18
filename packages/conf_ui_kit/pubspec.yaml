@@ -19,6 +19,16 @@ dependencies:
   google_fonts: ^6.2.1
   intl: ^0.19.0
 
+flutter_gen:
+  output: lib/src/gen/
+
+  integrations:
+    flutter_svg: true
+
+  assets:
+    outputs:
+      package_parameter_enabled: true
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -26,7 +36,11 @@ dev_dependencies:
 
 flutter:
 
+  uses-material-design: true
+  generate: true
+
   assets:
-    - assets/images/waving_dash.svg
-    - assets/social_icons/
+    - assets/brand/
     - assets/icons/
+    - assets/images/
+    - assets/social_icons/
