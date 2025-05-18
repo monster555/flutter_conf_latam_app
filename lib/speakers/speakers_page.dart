@@ -1,3 +1,4 @@
+import 'package:conf_core/conf_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_conf_latam/speakers/cubit/speakers_cubit.dart';
@@ -12,7 +13,15 @@ class SpeakersPage extends StatelessWidget {
     return BlocProvider<SpeakersCubit>(
       create: (context) {
         final repository = context.read<SpeakersRepository>();
-        return SpeakersCubit(repository: repository)..fetchSpeakers();
+
+        final cubit = SpeakersCubit(repository: repository);
+
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          final languageCode = context.languageCode;
+          cubit.fetchSpeakers(languageCode: languageCode);
+        });
+
+        return cubit;
       },
       child: const SpeakersView(),
     );

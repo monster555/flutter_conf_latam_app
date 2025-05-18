@@ -1,23 +1,19 @@
-import 'dart:developer';
-
-import 'package:conf_firestore_data_source/conf_firestore_data_source.dart';
+import 'package:conf_data_source/conf_data_source.dart';
 import 'package:conf_shared_models/conf_shared_models.dart';
 import 'package:sponsors_repository/src/sponsors_repository_exception.dart';
 
 class SponsorsRepository {
   SponsorsRepository({required this.dataSource});
-  final ConfFirestoreDataSource dataSource;
+  final ConfDataSource dataSource;
 
   static const collectionPath = 'sponsors';
 
   Future<List<Sponsor>> getSponsors() async {
     try {
-      final data = await dataSource.getCollection(collectionPath);
-
-      log('Fetched ${data.length} sponsors from Firestore');
+      final data = await dataSource.getSponsors();
 
       return data.map(Sponsor.fromJson).toList();
-    } on ConfFirestoreDataSourceException catch (e) {
+    } on ConfDataSourceException catch (e) {
       throw SponsorsRepositoryException(
         'Failed to fetch speakers from Firestore',
         cause: e,

@@ -19,10 +19,10 @@ class SpeakersSection extends StatelessWidget {
   final String sectionTitle;
 
   /// List of speakers to display
-  final List<Speaker> speakers;
+  final List<SpeakerSummary> speakers;
 
   /// Called when a speaker is tapped
-  final void Function(Speaker speaker) onSpeakerTap;
+  final void Function(SpeakerSummary speaker) onSpeakerTap;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class SpeakersSection extends StatelessWidget {
 class _SpeakerItem extends StatelessWidget {
   const _SpeakerItem({required this.speaker, required this.onTap});
 
-  final Speaker speaker;
+  final SpeakerSummary speaker;
   final VoidCallback onTap;
 
   @override

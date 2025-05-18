@@ -688,6 +688,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Let\'s keep in touch'**
   String get contactSectionTitle;
+
+  /// Error message when a link cannot be opened
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot open this link'**
+  String get errorCannotOpenLink;
+
+  /// Generic error message
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred'**
+  String get errorGeneric;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

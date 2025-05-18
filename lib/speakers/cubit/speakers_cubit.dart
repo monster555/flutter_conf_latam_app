@@ -12,10 +12,12 @@ class SpeakersCubit extends Cubit<SpeakersState> {
 
   final SpeakersRepository _repository;
 
-  Future<void> fetchSpeakers() async {
+  Future<void> fetchSpeakers({required String languageCode}) async {
     emit(const SpeakersLoading());
     try {
-      final speakers = await _repository.getSpeakers();
+      final speakers = await _repository.getSpeakers(
+        languageCode: languageCode,
+      );
       emit(SpeakersLoaded(speakers));
     } on Exception catch (e) {
       emit(SpeakersError('Failed to load speakers: $e'));

@@ -17,7 +17,7 @@ class SpeakerCard extends StatelessWidget {
     super.key,
   });
 
-  final Speaker speaker;
+  final SpeakerSummary speaker;
   final VoidCallback? onTap;
   final bool showBio;
   final int maxBioLines;
@@ -29,9 +29,7 @@ class SpeakerCard extends StatelessWidget {
 
     final semanticLabel =
         '${speaker.name}. '
-        'Title: ${speaker.title}.'
-        '${showBio && speaker.description.isNotEmpty ? ''
-                ' ${speaker.description}' : ''}';
+        'Title: ${speaker.title}.';
 
     return Semantics(
       label: semanticLabel,
@@ -62,18 +60,18 @@ class SpeakerCard extends StatelessWidget {
                         ),
                         Text(
                           speaker.title,
-                          maxLines: 1,
+                          maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        if (showBio && speaker.description.isNotEmpty) ...[
-                          const SizedBox(height: UiConstants.spacing8),
-                          Text(
-                            speaker.description,
-                            style: textTheme.bodySmall,
-                            maxLines: maxBioLines,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
+                        // if (showBio && speaker.description.isNotEmpty) ...[
+                        //   const SizedBox(height: UiConstants.spacing8),
+                        //   Text(
+                        //     speaker.description,
+                        //     style: textTheme.bodySmall,
+                        //     maxLines: maxBioLines,
+                        //     overflow: TextOverflow.ellipsis,
+                        //   ),
+                        // ],
                       ],
                     ),
                   ),

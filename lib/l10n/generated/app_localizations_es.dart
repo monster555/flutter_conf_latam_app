@@ -320,4 +320,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get contactSectionTitle => 'Sigamos en contacto';
+
+  @override
+  String get errorCannotOpenLink => 'No se puede abrir el enlace';
+
+  @override
+  String get errorGeneric => 'Ha ocurrido un error';
 }

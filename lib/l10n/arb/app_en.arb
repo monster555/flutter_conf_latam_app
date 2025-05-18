@@ -455,5 +455,13 @@
   "contactSectionTitle": "Let's keep in touch",
   "@contactSectionTitle": {
     "description": "Title for the social media links section on speaker details"
+  },
+  "errorCannotOpenLink": "Cannot open this link",
+  "@errorCannotOpenLink": {
+    "description": "Error message when a link cannot be opened"
+  },
+  "errorGeneric": "An error occurred",
+  "@errorGeneric": {
+    "description": "Generic error message"
   }
 }

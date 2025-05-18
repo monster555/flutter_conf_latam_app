@@ -9,8 +9,10 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  conf_firestore_data_source:
-    path: ../conf_firestore_data_source
+  conf_core:
+    path: ../conf_core
+  conf_data_source:
+    path: ../conf_data_source
   conf_shared_models:
     path: ../conf_shared_models
 
