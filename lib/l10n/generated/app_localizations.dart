@@ -760,6 +760,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Logo of Flutter Conf Latam, third edition, in Quito, Ecuador.'**
   String get flutterConfLatamLogoDescription;
+
+  /// Error message when a link cannot be opened
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot open this link'**
+  String get errorCannotOpenLink;
+
+  /// Generic error message
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred'**
+  String get errorGeneric;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

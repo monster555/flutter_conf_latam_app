@@ -11,6 +11,8 @@ environment:
 dependencies:
   animated_flip_counter: ^0.3.4
   cached_network_image: 
+  conf_core:
+    path: ../conf_core
   conf_shared_models:
     path: ../conf_shared_models
   flutter:

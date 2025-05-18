@@ -12,7 +12,7 @@ class SpeakerAvatar extends StatelessWidget {
     super.key,
   });
 
-  final Speaker speaker;
+  final SpeakerSummary speaker;
   final double size;
   final bool showFlag;
 
@@ -60,9 +60,7 @@ class SpeakerAvatar extends StatelessWidget {
     final colorScheme = context.colorScheme;
 
     final semanticLabel =
-        'Profile picture of ${speaker.name}'
-        '${showFlag && speaker.countryCode.isNotEmpty ? ''
-                ' from ${speaker.country}' : ''}';
+        'Profile picture of ${speaker.name} from ${speaker.country}';
 
     return Semantics(
       label: semanticLabel,

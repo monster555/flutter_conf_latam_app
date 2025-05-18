@@ -209,5 +209,7 @@
   "flutterConfLatamLogoDescription": "Logo de Flutter Conf Latam, tercera edición, en Quito, Ecuador.",
   "@flutterConfLatamLogoDescription": {
     "description": "Descripción accesible para el logo de Flutter Conf Latam en español"
-  }
+  },
+  "errorCannotOpenLink": "No se puede abrir el enlace",
+  "errorGeneric": "Ha ocurrido un error"
 }

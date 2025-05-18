@@ -1,0 +1,23 @@
+name: conf_cloud_functions_data_source
+description: "A new Flutter package project."
+version: 0.0.1
+publish_to: none
+homepage:
+
+environment:
+  sdk: ^3.7.2
+  flutter: ">=1.17.0"
+
+dependencies:
+  cloud_functions: ^5.5.0
+  conf_data_source:
+    path: ../conf_data_source
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^7.0.0
+
+flutter:

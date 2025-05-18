@@ -496,5 +496,13 @@
   "flutterConfLatamLogoDescription": "Logo of Flutter Conf Latam, third edition, in Quito, Ecuador.",
   "@flutterConfLatamLogoDescription": {
     "description": "Accessible description for the Flutter Conf Latam logo in English"
+  },
+  "errorCannotOpenLink": "Cannot open this link",
+  "@errorCannotOpenLink": {
+    "description": "Error message when a link cannot be opened"
+  },
+  "errorGeneric": "An error occurred",
+  "@errorGeneric": {
+    "description": "Generic error message"
   }
 }

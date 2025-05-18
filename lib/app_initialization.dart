@@ -1,6 +1,6 @@
 import 'package:conf_auth_data_source/conf_auth_data_source.dart';
 import 'package:conf_auth_repository/conf_auth_repository.dart';
-import 'package:conf_firestore_data_source/conf_firestore_data_source.dart';
+import 'package:conf_cloud_functions_data_source/conf_cloud_functions_data_source.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_conf_latam/firebase_options.dart';
 import 'package:speakers_repository/speakers_repository.dart';
@@ -16,8 +16,8 @@ typedef AppDependencies =
 Future<AppDependencies> initializeApp() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  final dataSource = ConfFirestoreDataSource();
   final authDataSource = ConfAuthDataSource();
+  final dataSource = ConfCloudFunctionsDataSource();
 
   final speakersRepository = SpeakersRepository(dataSource: dataSource);
   final sponsorsRepository = SponsorsRepository(dataSource: dataSource);

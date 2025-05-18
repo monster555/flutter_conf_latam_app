@@ -1,134 +1,99 @@
 import 'dart:async';
 
-import 'package:conf_shared_models/conf_shared_models.dart'
-    show SocialMediaLink, Speaker, SpeakerX;
+import 'package:conf_core/conf_core.dart';
+import 'package:conf_shared_models/conf_shared_models.dart';
 import 'package:conf_ui_kit/conf_ui_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_conf_latam/extensions/language_extensions.dart';
 import 'package:flutter_conf_latam/l10n/l10n.dart';
 import 'package:flutter_conf_latam/speaker_details/cubit/speaker_details_cubit.dart';
+import 'package:flutter_conf_latam/speaker_details/widgets/widgets.dart';
 import 'package:flutter_conf_latam/utils/external_link.dart';
 
 class SpeakerDetailsView extends StatelessWidget {
-  const SpeakerDetailsView(this.speaker, {super.key});
+  const SpeakerDetailsView({super.key});
 
-  final Speaker speaker;
+  static const double _loadingIndicatorSize = 32;
 
-  static bool isLoadingSelector(SpeakerDetailsCubit cubit) =>
-      cubit.state is SpeakerDetailsLoading;
+  /// Extracts the [SpeakerSummary] from any [SpeakerDetailsState].
+  /// This is available in all state variations and provides basic speaker
+  /// information.
+  static SpeakerSummary speakerSummarySelector(SpeakerDetailsCubit cubit) =>
+      cubit.state.speakerSummary;
 
-  static String? errorMessageSelector(SpeakerDetailsCubit cubit) {
+  /// Extracts the full [Speaker] details from the cubit state.
+  ///
+  /// Returns the complete speaker information when available
+  /// (in [SpeakerDetailsLoaded] state), otherwise returns null during loading,
+  /// error, or initial states.
+  /// This allows for progressive UI rendering based on data availability.
+  static Speaker? speakerDetailsSelector(SpeakerDetailsCubit cubit) {
     final state = cubit.state;
-    if (state case SpeakerDetailsError(:final message)) return message;
+    if (state case SpeakerDetailsLoaded(speakerDetails: final speakerDetails)) {
+      return speakerDetails;
+    }
     return null;
   }
 
-  FutureOr<void> _onSpeakerLinkTap(SocialMediaLink social) async {
-    final canLaunch = await ExternalLinkUtil.canLaunchUrl(social.link);
-    if (canLaunch) {
-      await ExternalLinkUtil.launchUrl(social.link);
+  /// Extracts any error message from the cubit state.
+  ///
+  /// Returns a non-null error message string only when in the
+  /// [SpeakerDetailsError] state, otherwise returns null. Used to conditionally
+  /// display error UI.
+  static String? errorMessageSelector(SpeakerDetailsCubit cubit) {
+    final state = cubit.state;
+    if (state case SpeakerDetailsError(:final errorMessage)) {
+      return errorMessage;
+    }
+    return null;
+  }
+
+  /// Determines if the speaker details are currently loading.
+  ///
+  /// Returns true only when the cubit is in the [SpeakerDetailsLoading] state.
+  /// Used to display loading indicators and prevent premature interactions.
+  static bool isLoadingSelector(SpeakerDetailsCubit cubit) =>
+      cubit.state is SpeakerDetailsLoading;
+
+  Widget _buildLoadingIndicator() {
+    return const SliverToBoxAdapter(
+      child: Center(
+        child: SizedBox.square(
+          dimension: _loadingIndicatorSize,
+          child: CircularProgressIndicator(),
+        ),
+      ),
+    );
+  }
+
+  FutureOr<void> _onSpeakerLinkTap(
+    BuildContext context,
+    SocialMediaLink social,
+  ) async {
+    final l10n = context.l10n;
+    try {
+      final canLaunch = await ExternalLinkUtil.canLaunchUrl(social.link);
+      if (canLaunch) {
+        final success = await ExternalLinkUtil.launchUrl(social.link);
+        if (!success && context.mounted) {
+          _showErrorSnackBar(context, l10n.errorCannotOpenLink);
+        }
+      } else {
+        if (context.mounted) {
+          _showErrorSnackBar(context, l10n.errorCannotOpenLink);
+        }
+      }
+    } on Exception catch (_) {
+      if (context.mounted) {
+        _showErrorSnackBar(context, l10n.errorGeneric);
+      }
     }
   }
 
-  Widget _buildDetailsContent(BuildContext context, Speaker speaker) {
-    final l10n = context.l10n;
-    final textTheme = context.textTheme;
-    final padding = context.padding;
-    final topContentOffset = padding.top + kToolbarHeight;
-    final languagesText = speaker.languages.formatList(context);
-
-    return Semantics(
-      label: speaker.name,
-      container: true,
-      explicitChildNodes: true,
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(child: SizedBox(height: topContentOffset)),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(UiConstants.spacing16),
-              child: Row(
-                children: [
-                  SpeakerAvatar(
-                    speaker: speaker,
-                    size: UiConstants.avatarSizeXLarge,
-                    showFlag: false,
-                  ),
-                  const ExcludeSemantics(
-                    child: SizedBox(width: UiConstants.spacing16),
-                  ),
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          speaker.name,
-                          style: textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-
-                        Text(speaker.title),
-
-                        MergeSemantics(
-                          child: Row(
-                            children: [
-                              Semantics(
-                                label: l10n.countryFlag(speaker.country),
-                                child: Text(
-                                  speaker.flagEmoji,
-                                  style: const TextStyle(
-                                    fontSize: UiConstants.fontSizeXLarge,
-                                  ),
-                                ),
-                              ),
-                              const ExcludeSemantics(
-                                child: SizedBox(width: UiConstants.spacing4),
-                              ),
-                              Text(speaker.country),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(UiConstants.spacing16),
-              child: Text(speaker.description),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(UiConstants.spacing16),
-              child: SpeakerLanguagesCard(
-                promptText: l10n.dontBeShyLabel,
-                languagesPrefix: l10n.iSpeakPrefix,
-                languagesList: languagesText,
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: UiConstants.spacing16,
-              ),
-              child: SocialLinksList(
-                links: speaker.socialMediaLinks,
-                title: l10n.contactSectionTitle,
-                onLinkTap: _onSpeakerLinkTap,
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(child: SizedBox(height: padding.bottom)),
-        ],
-      ),
-    );
+  void _showErrorSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   Widget _buildErrorOverlay(BuildContext context, String errorMessage) {
@@ -147,8 +112,13 @@ class SpeakerDetailsView extends StatelessWidget {
                   Text(errorMessage),
                   const SizedBox(height: UiConstants.spacing16),
                   ElevatedButton(
-                    onPressed:
-                        context.read<SpeakerDetailsCubit>().fetchSpeakerDetails,
+                    key: const Key('speaker_details_retry_button'),
+                    onPressed: () {
+                      final languageCode = context.languageCode;
+                      context.read<SpeakerDetailsCubit>().fetchSpeakerDetails(
+                        languageCode: languageCode,
+                      );
+                    },
                     child: Text(context.l10n.actionRetry),
                   ),
                 ],
@@ -160,19 +130,66 @@ class SpeakerDetailsView extends StatelessWidget {
     );
   }
 
-  Widget _buildLoadingOverlay() {
-    return const Positioned.fill(
-      child: Center(child: CircularProgressIndicator()),
+  Widget _buildProgressiveContent(
+    BuildContext context,
+    SpeakerSummary speakerSummary,
+    Speaker? speakerDetails,
+    double topContentOffset,
+    double bottomPadding,
+    bool isLoading,
+  ) {
+    return Semantics(
+      label: speakerSummary.name,
+      container: true,
+      explicitChildNodes: true,
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(child: SizedBox(height: topContentOffset)),
+          SpeakerDetailsHeaderSection(
+            key: const Key('speaker_details_header'),
+            speakerSummary: speakerSummary,
+          ),
+          SpeakerDetailsDescriptionSection(
+            key: const Key('speaker_details_description'),
+            speakerDetails: speakerDetails,
+          ),
+          SpeakerDetailsLanguagesSection(
+            key: const Key('speaker_details_languages'),
+            speakerSummary: speakerSummary,
+          ),
+          SpeakerDetailsSocialLinksSection(
+            key: const Key('speaker_details_social_links'),
+            speakerDetails: speakerDetails,
+            onLinkTap: (social) => _onSpeakerLinkTap(context, social),
+          ),
+          if (isLoading) _buildLoadingIndicator(),
+          SliverToBoxAdapter(
+            child: SizedBox(height: bottomPadding + UiConstants.spacing16),
+          ),
+        ],
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = context.select<SpeakerDetailsCubit, bool>(
-      isLoadingSelector,
+    final padding = context.padding;
+    final topContentOffset = padding.top + kToolbarHeight;
+
+    final speakerSummary = context.select<SpeakerDetailsCubit, SpeakerSummary>(
+      speakerSummarySelector,
     );
+
+    final speakerDetails = context.select<SpeakerDetailsCubit, Speaker?>(
+      speakerDetailsSelector,
+    );
+
     final errorMessage = context.select<SpeakerDetailsCubit, String?>(
       errorMessageSelector,
+    );
+
+    final isLoading = context.select<SpeakerDetailsCubit, bool>(
+      isLoadingSelector,
     );
 
     return Scaffold(
@@ -180,11 +197,16 @@ class SpeakerDetailsView extends StatelessWidget {
       appBar: const FrostedAppBar(),
       body: Stack(
         children: [
-          _buildDetailsContent(context, speaker),
+          _buildProgressiveContent(
+            context,
+            speakerSummary,
+            speakerDetails,
+            topContentOffset,
+            padding.bottom,
+            isLoading,
+          ),
 
           if (errorMessage != null) _buildErrorOverlay(context, errorMessage),
-
-          if (isLoading) _buildLoadingOverlay(),
         ],
       ),
     );

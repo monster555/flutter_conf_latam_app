@@ -8,23 +8,32 @@ part 'speaker_details_state.dart';
 class SpeakerDetailsCubit extends Cubit<SpeakerDetailsState> {
   SpeakerDetailsCubit({
     required SpeakersRepository repository,
-    required Speaker speaker,
+    required SpeakerSummary summary,
   }) : _repository = repository,
-       super(SpeakerDetailsInitial(speaker));
+       super(SpeakerDetailsInitial(speakerSummary: summary));
 
   final SpeakersRepository _repository;
 
-  Future<void> fetchSpeakerDetails() async {
-    final currentSpeaker = state.speaker;
-    emit(SpeakerDetailsLoading(currentSpeaker));
+  Future<void> fetchSpeakerDetails({required String languageCode}) async {
+    final speakerSummary = state.speakerSummary;
+    emit(SpeakerDetailsLoading(speakerSummary: speakerSummary));
+
     try {
-      final speakerDetails = await _repository.getSpeaker(currentSpeaker.id);
-      emit(SpeakerDetailsLoaded(speakerDetails));
+      final speakerDetails = await _repository.getSpeakerById(
+        speakerSummary.id,
+        languageCode: languageCode,
+      );
+      emit(
+        SpeakerDetailsLoaded(
+          speakerSummary: speakerSummary,
+          speakerDetails: speakerDetails,
+        ),
+      );
     } on Exception catch (e) {
       emit(
         SpeakerDetailsError(
-          'Failed to load speaker details: $e',
-          currentSpeaker,
+          speakerSummary: speakerSummary,
+          errorMessage: e.toString(),
         ),
       );
     }

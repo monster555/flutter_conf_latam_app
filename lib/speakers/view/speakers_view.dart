@@ -1,4 +1,5 @@
-import 'package:conf_shared_models/conf_shared_models.dart' show Speaker;
+import 'package:conf_core/conf_core.dart';
+import 'package:conf_shared_models/conf_shared_models.dart' show SpeakerSummary;
 import 'package:conf_ui_kit/conf_ui_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,10 +20,10 @@ class SpeakersView extends StatelessWidget {
     return null;
   }
 
-  static List<Speaker> speakersSelector(SpeakersCubit cubit) {
+  static List<SpeakerSummary> speakersSelector(SpeakersCubit cubit) {
     final state = cubit.state;
     if (state case SpeakersLoaded(:final speakers)) return speakers;
-    return const <Speaker>[];
+    return const <SpeakerSummary>[];
   }
 
   static bool hasFilterableContentSelector(SpeakersCubit cubit) {
@@ -63,11 +64,15 @@ class SpeakersView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(errorMessage),
-              const ExcludeSemantics(
-                child: SizedBox(height: UiConstants.spacing16),
-              ),
+              const SizedBox(height: UiConstants.spacing16),
               ElevatedButton(
-                onPressed: context.read<SpeakersCubit>().fetchSpeakers,
+                key: const Key('speakers_retry_button'),
+                onPressed: () {
+                  final languageCode = context.languageCode;
+                  context.read<SpeakersCubit>().fetchSpeakers(
+                    languageCode: languageCode,
+                  );
+                },
                 child: Text(context.l10n.actionRetry),
               ),
             ],
@@ -88,7 +93,7 @@ class SpeakersView extends StatelessWidget {
     );
   }
 
-  Widget _buildSpeakerCard(BuildContext context, Speaker speaker) {
+  Widget _buildSpeakerCard(BuildContext context, SpeakerSummary speaker) {
     return Padding(
       padding: const EdgeInsets.only(bottom: UiConstants.spacing16),
       child: SpeakerCard(
@@ -100,7 +105,7 @@ class SpeakersView extends StatelessWidget {
 
   Widget _buildSpeakersList(
     AppLocalizations l10n,
-    List<Speaker> speakers,
+    List<SpeakerSummary> speakers,
     EdgeInsets padding,
   ) {
     final topPadding = padding.top + kToolbarHeight + UiConstants.spacing16;
@@ -135,32 +140,35 @@ class SpeakersView extends StatelessWidget {
     );
   }
 
-  Widget _buildContent(BuildContext context) {
-    final l10n = context.l10n;
-    final padding = context.padding;
-
-    final isLoading = context.select<SpeakersCubit, bool>(isLoadingSelector);
-    if (isLoading) return _buildLoadingState(l10n, padding);
-
-    final errorMessage = context.select<SpeakersCubit, String?>(
-      errorMessageSelector,
-    );
-    if (errorMessage != null) {
-      return _buildErrorState(context, errorMessage, padding);
-    }
-
-    final speakers = context.select<SpeakersCubit, List<Speaker>>(
-      speakersSelector,
-    );
-
-    if (speakers.isEmpty) return _buildEmptyState(l10n);
-
-    return _buildSpeakersList(l10n, speakers, padding);
+  @visibleForTesting
+  Widget buildBodyContent(
+    BuildContext context, {
+    required bool isLoading,
+    required String? errorMessage,
+    required List<SpeakerSummary> speakers,
+    required AppLocalizations l10n,
+    required EdgeInsets padding,
+  }) {
+    return switch ((isLoading, errorMessage, speakers.isEmpty)) {
+      (true, _, _) => _buildLoadingState(l10n, padding),
+      (false, final String msg, _) => _buildErrorState(context, msg, padding),
+      (false, null, true) => _buildEmptyState(l10n),
+      _ => _buildSpeakersList(l10n, speakers, padding),
+    };
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final padding = context.padding;
+
+    final isLoading = context.select<SpeakersCubit, bool>(isLoadingSelector);
+    final errorMessage = context.select<SpeakersCubit, String?>(
+      errorMessageSelector,
+    );
+    final speakers = context.select<SpeakersCubit, List<SpeakerSummary>>(
+      speakersSelector,
+    );
     final hasFilterableContent = context.select<SpeakersCubit, bool>(
       hasFilterableContentSelector,
     );
@@ -178,7 +186,14 @@ class SpeakersView extends StatelessWidget {
             ),
         ],
       ),
-      body: _buildContent(context),
+      body: buildBodyContent(
+        context,
+        isLoading: isLoading,
+        errorMessage: errorMessage,
+        speakers: speakers,
+        l10n: l10n,
+        padding: padding,
+      ),
     );
   }
 }

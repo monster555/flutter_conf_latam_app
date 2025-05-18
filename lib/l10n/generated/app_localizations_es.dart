@@ -358,4 +358,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get flutterConfLatamLogoDescription => 'Logo de Flutter Conf Latam, tercera edición, en Quito, Ecuador.';
+
+  @override
+  String get errorCannotOpenLink => 'No se puede abrir el enlace';
+
+  @override
+  String get errorGeneric => 'Ha ocurrido un error';
 }
