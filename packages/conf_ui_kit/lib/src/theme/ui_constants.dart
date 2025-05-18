@@ -13,6 +13,7 @@ abstract class UiConstants {
   static const double spacing16 = 16;
   static const double spacing24 = 24;
   static const double spacing32 = 32;
+  static const double spacing40 = 40;
 
   /// Typography - Font sizes
   static const double fontSizeSmall = 12;

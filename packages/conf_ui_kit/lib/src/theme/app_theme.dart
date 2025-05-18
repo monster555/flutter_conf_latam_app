@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 abstract class AppTheme {
   static final lightTheme = ThemeData(
-    extensions: const [AppAssets.light],
+    extensions: [AppAssets.light],
     brightness: Brightness.light,
     primaryColor: AppColors.flutterNavy,
     scaffoldBackgroundColor: AppColors.lightBackground,
@@ -40,7 +40,7 @@ abstract class AppTheme {
 
   static final darkTheme = ThemeData(
     useMaterial3: true,
-    extensions: const [AppAssets.dark],
+    extensions: [AppAssets.dark],
     brightness: Brightness.dark,
     primaryColor: AppColors.flutterBlue,
     scaffoldBackgroundColor: AppColors.darkBackground,
