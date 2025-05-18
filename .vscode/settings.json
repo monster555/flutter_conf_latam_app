@@ -1,0 +1,13 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "files.defaultLanguage": "dart",
+    "editor.formatOnSave": true,
+    "files.exclude": {
+        "**/.flutter-plugins*": true,
+        "**/.metadata*": true,
+        "**/.packages": true
+    },
+}
