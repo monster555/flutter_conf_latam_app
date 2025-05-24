@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 abstract class AppTheme {
   static final lightTheme = ThemeData(
+    useMaterial3: true,
     extensions: const [AppAssets.light],
     brightness: Brightness.light,
     primaryColor: AppColors.flutterNavy,
@@ -15,7 +16,7 @@ abstract class AppTheme {
       displayColor: AppColors.lightText,
     ),
     colorScheme: AppColors.lightColorScheme(),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       elevation: 0,
       color: AppColors.flutterBlue.withValues(alpha: 0.1),
       shape: RoundedRectangleBorder(
@@ -49,7 +50,7 @@ abstract class AppTheme {
     ).apply(bodyColor: AppColors.darkText, displayColor: AppColors.darkText),
 
     colorScheme: AppColors.darkColorScheme(),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       elevation: 0,
       color: AppColors.flutterNavy.withValues(alpha: 0.15),
       shape: RoundedRectangleBorder(
