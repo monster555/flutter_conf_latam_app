@@ -1,3 +1,4 @@
+import 'package:conf_cache/conf_cache.dart';
 import 'package:conf_core/conf_core.dart';
 import 'package:conf_data_source/conf_data_source.dart';
 import 'package:conf_shared_models/conf_shared_models.dart';
@@ -10,24 +11,51 @@ import 'package:speakers_repository/src/speakers_repository_exception.dart';
 /// the underlying data source implementation. This repository handles data
 /// normalization to ensure consistent types across different data sources.
 class SpeakersRepository {
-  /// Creates a speaker repository with the specified data source.
+  /// Creates a speaker repository with the specified data source and cache.
   ///
-  /// The [dataSource] parameter is required and provides the underlying
-  /// data access implementation.
-  SpeakersRepository({required ConfDataSource dataSource})
-    : _dataSource = dataSource;
+  /// The [dataSource] parameter provides the underlying data access
+  /// implementation.
+  /// The [cache] parameter provides the caching mechanism to improve
+  /// performance.
+  SpeakersRepository({
+    required ConfDataSource dataSource,
+    required ConfCache cache,
+  }) : _dataSource = dataSource,
+       _cache = cache;
 
   final ConfDataSource _dataSource;
+  final ConfCache _cache;
 
-  /// Fetches a list of speakers from the data source.
+  /// Fetches a list of speakers, using cache when available.
   ///
   /// Returns a list of [SpeakerSummary] objects representing the speakers.
+  /// First attempts to retrieve from cache, falling back to data source only
+  /// when needed.
   ///
-  /// Throws a [SpeakersRepositoryException] if the data source fails to
-  /// provide the data or if an unknown error occurs.
+  /// The [languageCode] parameter specifies the language for localized content.
+  /// The [forceRefresh] parameter can be set to true to bypass the cache and
+  /// fetch fresh data.
   Future<List<SpeakerSummary>> getSpeakers({
     required String languageCode,
+    bool forceRefresh = false,
   }) async {
+    return withCache<List<SpeakerSummary>>(
+      key: 'speakers_$languageCode',
+      cacheService: _cache,
+      fromDataSource: () => _fetchSpeakers(languageCode),
+      fromJson: (json) {
+        final items = json['items'] as List;
+        return items
+            .cast<Map<String, dynamic>>()
+            .map(SpeakerSummary.fromJson)
+            .toList();
+      },
+      toJson: (speakers) => {'items': speakers.map((s) => s.toJson()).toList()},
+      forceRefresh: forceRefresh,
+    );
+  }
+
+  Future<List<SpeakerSummary>> _fetchSpeakers(String languageCode) async {
     try {
       final data = await _dataSource.getSpeakers(languageCode: languageCode);
 
@@ -45,16 +73,31 @@ class SpeakersRepository {
     }
   }
 
-  /// Fetches a speaker by their unique identifier.
+  /// Fetches a speaker by their unique identifier, using cache when available.
   ///
   /// Returns a [Speaker] object representing the speaker.
+  /// First attempts to retrieve from cache, falling back to data source only
+  /// when needed.
   ///
   /// Throws a [SpeakersRepositoryException] if the speaker is not found
   /// or if an error occurs while fetching the data.
   Future<Speaker> getSpeakerById(
     String id, {
     required String languageCode,
+    bool forceRefresh = false,
   }) async {
+    return withCache<Speaker>(
+      key: 'speaker_${id}_$languageCode',
+      cacheService: _cache,
+      fromDataSource: () => _fetchSpeakerById(id, languageCode),
+      fromJson:
+          (json) => Speaker.fromJson(json['speaker'] as Map<String, dynamic>),
+      toJson: (speaker) => {'speaker': speaker.toJson()},
+      forceRefresh: forceRefresh,
+    );
+  }
+
+  Future<Speaker> _fetchSpeakerById(String id, String languageCode) async {
     try {
       final data = await _dataSource.getSpeakerById(
         id,
