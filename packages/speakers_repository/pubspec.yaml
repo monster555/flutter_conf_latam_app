@@ -9,6 +9,8 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  conf_cache:
+    path: ../conf_cache
   conf_core:
     path: ../conf_core
   conf_data_source:
