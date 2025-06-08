@@ -7,6 +7,8 @@ environment:
   sdk: ^3.7.0
 
 dependencies:
+  conf_cache:
+    path: packages/conf_cache
   conf_cloud_functions_data_source:
     path: packages/conf_cloud_functions_data_source
   conf_core:
@@ -22,7 +24,7 @@ dependencies:
   flutter_bloc: ^9.1.0
   flutter_localizations:
     sdk: flutter
-  intl: ^0.19.0
+  intl: ^0.20.2
   speakers_repository:
     path: packages/speakers_repository
   sponsors_repository:
