@@ -8,15 +8,36 @@ on:
   workflow_dispatch:
 
 jobs:
-  analyze:
-    name: Flutter Analysis
+  analyze-main:
+    name: Analyze Main App
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Generate Firebase Options
+        run: cp lib/firebase_options_template.dart lib/firebase_options.dart
+
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Analyze
+        run: flutter analyze lib/
+
+  analyze-packages:
+    name: Analyze Packages
     runs-on: ubuntu-latest
     
     strategy:
       fail-fast: false
       matrix:
         package:
-          - .
           - packages/conf_cache
           - packages/conf_cloud_functions_data_source
           - packages/conf_core
