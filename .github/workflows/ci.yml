@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: 
+      - main
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    name: Flutter Analysis
+    runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - .
+          - packages/conf_cache
+          - packages/conf_cloud_functions_data_source
+          - packages/conf_core
+          - packages/conf_data_source
+          - packages/conf_shared_models
+          - packages/conf_ui_kit
+          - packages/speakers_repository
+          - packages/sponsors_repository
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Get dependencies
+        run: flutter pub get
+        working-directory: ${{ matrix.package }}
+      
+      - name: Analyze
+        run: flutter analyze
+        working-directory: ${{ matrix.package }}
