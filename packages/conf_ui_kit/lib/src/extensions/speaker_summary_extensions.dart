@@ -1,4 +1,4 @@
-import 'package:conf_shared_models/src/models/speaker_summary.dart';
+import 'package:conf_shared_models/conf_shared_models.dart' show SpeakerSummary;
 
 extension SpeakerX on SpeakerSummary {
   String get flagEmoji {

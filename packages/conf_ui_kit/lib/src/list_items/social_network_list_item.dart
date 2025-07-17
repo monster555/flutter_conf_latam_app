@@ -1,5 +1,5 @@
 import 'package:conf_shared_models/conf_shared_models.dart'
-    show SocialMediaIconX, SocialMediaLink;
+    show SocialMediaLink;
 import 'package:conf_ui_kit/src/constants/package_constants.dart';
 import 'package:conf_ui_kit/src/extensions/social_media_link_extensions.dart';
 import 'package:conf_ui_kit/src/extensions/theme_extensions.dart';
