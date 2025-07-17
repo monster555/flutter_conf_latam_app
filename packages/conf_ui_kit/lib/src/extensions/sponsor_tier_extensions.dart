@@ -1,4 +1,4 @@
-import 'package:conf_shared_models/src/enums/enums.dart';
+import 'package:conf_shared_models/conf_shared_models.dart' show SponsorTier;
 
 extension SponsorTierX on SponsorTier {
   /// Converts a string to a SponsorTier enum value
