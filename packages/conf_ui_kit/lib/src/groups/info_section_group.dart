@@ -1,5 +1,5 @@
-import 'package:conf_shared_models/conf_shared_models.dart';
 import 'package:conf_ui_kit/src/cards/info_card.dart';
+import 'package:conf_ui_kit/src/models/info_section.dart';
 import 'package:conf_ui_kit/src/theme/ui_constants.dart';
 import 'package:conf_ui_kit/src/typography/section_title.dart';
 import 'package:flutter/material.dart';

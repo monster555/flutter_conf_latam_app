@@ -1,5 +1,6 @@
 import 'package:conf_shared_models/conf_shared_models.dart';
 import 'package:conf_ui_kit/src/chips/color_chip.dart';
+import 'package:conf_ui_kit/src/extensions/session_level_extensions.dart';
 import 'package:conf_ui_kit/src/extensions/theme_extensions.dart';
 import 'package:conf_ui_kit/src/theme/ui_constants.dart';
 import 'package:conf_ui_kit/src/utils/date_format_service.dart';
