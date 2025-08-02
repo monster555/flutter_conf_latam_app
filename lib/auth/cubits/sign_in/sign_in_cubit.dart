@@ -12,7 +12,7 @@ class SignInCubit extends Cubit<SignInState> {
     : _authRepository = authRepository;
   final IConfAuthRepository _authRepository;
 
-  Future<void> signIn(SignInType type) async {
+  Future<bool> signIn(SignInType type) async {
     emit(const SignInLoadingState());
     final result = await switch (type) {
       SignInType.apple => _authRepository.signInWithApple(),
@@ -25,6 +25,7 @@ class SignInCubit extends Cubit<SignInState> {
       Failure(:final error) => SignInErrorState(error.fromException()),
     };
     emit(newState);
+    return result is Success;
   }
 }
 
