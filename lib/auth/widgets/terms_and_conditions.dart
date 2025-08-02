@@ -21,7 +21,7 @@ class TermsAndConditions extends StatelessWidget {
       child: SizedBox(width: UiConstants.spacing12),
     );
     final l10n = context.l10n;
-    final state = context.watch<ValueCubit<TermsAcceptanceStatus>>().state;
+    final state = context.watch<ValueCubit<TermsAcceptanceStatus?>>().state;
     final accepted = state == TermsAcceptanceStatus.accepted;
     return SliverFillRemaining(
       hasScrollBody: false,
@@ -40,7 +40,7 @@ class TermsAndConditions extends StatelessWidget {
                 child: AppCheckbox(
                   checked: accepted,
                   onChanged: (value) {
-                    context.read<ValueCubit<TermsAcceptanceStatus>>().update(
+                    context.read<ValueCubit<TermsAcceptanceStatus?>>().update(
                       value.status,
                     );
                   },
