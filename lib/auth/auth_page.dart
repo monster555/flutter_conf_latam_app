@@ -3,19 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_conf_latam/auth/auth.dart';
 import 'package:flutter_conf_latam/common/common.dart';
+import 'package:flutter_conf_latam/l10n/l10n.dart';
+import 'package:flutter_conf_latam/router/router.dart';
+import 'package:flutter_conf_latam/utils/show_loader.dart';
+import 'package:go_router/go_router.dart';
 
 class AuthPage extends StatelessWidget {
-  const AuthPage({super.key});
+  const AuthPage._({super.key});
+
+  static Widget builder(BuildContext _, GoRouterState state) {
+    return AuthPage._(key: state.pageKey);
+  }
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (_) => ValueCubit<TermsAcceptanceStatus?>(null)),
         BlocProvider(
-          create: (_) => ValueCubit(TermsAcceptanceStatus.notAccepted),
-        ),
-        BlocProvider(
-          create: (_) {
+          create: (context) {
             return SignInCubit(
               const SingInInitialState(),
               authRepository: context.read(),
@@ -41,20 +47,24 @@ class AuthButtons extends StatelessWidget {
   const AuthButtons({super.key});
 
   Future<void> _signIn(SignInType type, BuildContext context) async {
-    final state = context.read<ValueCubit<TermsAcceptanceStatus>>().state;
+    final state = context.read<ValueCubit<TermsAcceptanceStatus?>>().state;
     final accepted = state == TermsAcceptanceStatus.accepted;
     if (!accepted) {
       return _showTermAndConditionsError(context);
     }
-    await context.read<SignInCubit>().signIn(type);
+    await showLoader(
+      context,
+      FCLRoutes.auth.path.replaceAll('/', ''),
+      context.read<SignInCubit>().signIn(type),
+    );
   }
 
   void _showTermAndConditionsError(BuildContext context) {
-    FCLSnackbar.show(
+    return FCLSnackbar.show(
       context,
       type: FCLSnackbarType.warning,
-      title: 'Un último paso',
-      description: 'Acepta nuestros términos y políticas.',
+      title: context.l10n.termsAndConditionsErrorTitle,
+      description: context.l10n.termsAndConditionsErrorDescription,
     );
   }
 
