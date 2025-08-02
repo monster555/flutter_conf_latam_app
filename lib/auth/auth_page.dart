@@ -46,7 +46,7 @@ class AuthPage extends StatelessWidget {
 class AuthButtons extends StatelessWidget {
   const AuthButtons({super.key});
 
-  Future<void> _signIn(SignInType type, BuildContext context) async {
+  Future<void> _startSignInFlow(SignInType type, BuildContext context) async {
     final state = context.read<ValueCubit<TermsAcceptanceStatus?>>().state;
     final accepted = state == TermsAcceptanceStatus.accepted;
     if (!accepted) {
@@ -55,8 +55,14 @@ class AuthButtons extends StatelessWidget {
     await showLoader(
       context,
       FCLRoutes.auth.path.replaceAll('/', ''),
-      context.read<SignInCubit>().signIn(type),
+      _performSignIn(type, context),
     );
+  }
+
+  Future<void> _performSignIn(SignInType type, BuildContext context) async {
+    final result = await context.read<SignInCubit>().signIn(type);
+    if (!context.mounted || !result) return;
+    return context.read<SessionCubit>().checkSession();
   }
 
   void _showTermAndConditionsError(BuildContext context) {
@@ -73,13 +79,17 @@ class AuthButtons extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Column(
         children: [
-          ContinueWithApple(onPressed: (type) => _signIn(type, context)),
+          ContinueWithApple(
+            onPressed: (type) => _startSignInFlow(type, context),
+          ),
           const ExcludeSemantics(
             child: SizedBox(height: UiConstants.spacing12),
           ),
-          ContinueWithGoogle(onPressed: (type) => _signIn(type, context)),
+          ContinueWithGoogle(
+            onPressed: (type) => _startSignInFlow(type, context),
+          ),
           const Or(),
-          ContinueAsGuest(onPressed: (type) => _signIn(type, context)),
+          ContinueAsGuest(onPressed: (type) => _startSignInFlow(type, context)),
         ],
       ),
     );
