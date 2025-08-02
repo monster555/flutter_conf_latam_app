@@ -1,4 +1,3 @@
-/// Base class for all authentication-related exceptions in the data source layer.
 sealed class ConfAuthDataSourceException implements Exception {
   /// Creates a [ConfAuthDataSourceException] with an associated message.
   const ConfAuthDataSourceException(this.message);
@@ -15,8 +14,8 @@ final class UserAbortedSignInException extends ConfAuthDataSourceException {
 
 /// Thrown when a Firebase authentication error occurs.
 final class FirebaseSignInException extends ConfAuthDataSourceException {
-  // ignore: lines_longer_than_80_chars
-  /// Creates a [FirebaseSignInException] with an optional error code and a message.
+  /// Creates a [FirebaseSignInException] with an optional error code
+  /// and a message.
   const FirebaseSignInException({
     required String message,
     this.code,
@@ -29,4 +28,9 @@ final class FirebaseSignInException extends ConfAuthDataSourceException {
 /// Thrown when an error occurs during the sign-out process.
 final class SignOutFailedException extends ConfAuthDataSourceException {
   const SignOutFailedException() : super('Failed to sign out the user.');
+}
+
+/// Thrown when there is no internet connection.
+final class NoInternetException extends ConfAuthDataSourceException {
+  const NoInternetException() : super('No internet connection available.');
 }
