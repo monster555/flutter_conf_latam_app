@@ -14,7 +14,7 @@ enum FCLSnackbarType {
       FCLSnackbarType.warning => (
         backgroundColor: context.colorScheme.primary,
         icon: Icons.cancel,
-        iconColor: Colors.red,
+        iconColor: const Color(0XFFFB3836),
       ),
       // TODO: Handle this case.
       FCLSnackbarType.success => throw UnimplementedError(),
@@ -50,6 +50,7 @@ class FCLSnackbar extends StatelessWidget {
     final overlay = Overlay.of(context);
     OverlayEntry? entry;
     entry = OverlayEntry(
+      canSizeOverlay: true,
       builder: (_) {
         return FCLSnackbar._(
           type: type,
@@ -83,46 +84,54 @@ class FCLSnackbar extends StatelessWidget {
     const spacing12 = SizedBox(width: UiConstants.spacing12);
     return Material(
       type: MaterialType.transparency,
-      child: SafeArea(
-        child: Align(
-          alignment: alignment,
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: data.backgroundColor,
-                borderRadius: UiConstants.borderRadiusMedium,
-              ),
-
+      child: Stack(
+        children: [
+          const Positioned.fill(child: ColoredBox(color: Colors.transparent)),
+          Align(
+            alignment: alignment,
+            child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Icon(data.icon, color: data.iconColor),
-                    spacing12,
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(title, style: titleStyle),
-                          const SizedBox(height: UiConstants.spacing4),
-                          Text(description, style: descriptionStyle),
-                        ],
-                      ),
+                padding: const EdgeInsets.all(10),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: data.backgroundColor,
+                    borderRadius: UiConstants.borderRadiusMedium,
+                  ),
+
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(data.icon, color: data.iconColor),
+                        spacing12,
+                        Expanded(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(title, style: titleStyle),
+                              const SizedBox(height: UiConstants.spacing4),
+                              Text(description, style: descriptionStyle),
+                            ],
+                          ),
+                        ),
+                        spacing12,
+                        InkWell(
+                          onTap: close,
+                          child: Icon(
+                            Icons.close,
+                            color: descriptionStyle?.color,
+                          ),
+                        ),
+                      ],
                     ),
-                    spacing12,
-                    InkWell(
-                      onTap: close,
-                      child: Icon(Icons.close, color: descriptionStyle?.color),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
