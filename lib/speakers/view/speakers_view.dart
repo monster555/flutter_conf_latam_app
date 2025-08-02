@@ -98,7 +98,7 @@ class SpeakersView extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: UiConstants.spacing16),
       child: SpeakerCard(
         speaker: speaker,
-        onTap: () => context.push<void>(SpeakerDetailsPage(speaker)),
+        onTap: () => context.pushX<void>(SpeakerDetailsPage(speaker)),
       ),
     );
   }
