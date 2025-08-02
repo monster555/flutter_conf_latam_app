@@ -3,8 +3,8 @@ sealed class Result<T, E> {
 }
 
 class Success<T, E> extends Result<T, E> {
-  const Success(this.value);
-  final T value;
+  const Success(this.data);
+  final T data;
 }
 
 class Failure<T, E> extends Result<T, E> {
