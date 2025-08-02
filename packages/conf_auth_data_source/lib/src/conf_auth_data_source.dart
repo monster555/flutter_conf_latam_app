@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:conf_auth_data_source/conf_auth_data_source.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -35,15 +37,21 @@ class ConfAuthDataSource {
       if (googleUser == null) {
         throw const UserAbortedSignInException();
       }
-
       final googleAuth = await googleUser.authentication;
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-
-      final result = await _signInWithCredential(credential);
-      return _mapFirebaseUser(result.user!);
+      final user = (await _signInWithCredential(credential)).user;
+      if (user == null) {
+        throw const FirebaseSignInException(
+          code: 'null-user',
+          message: 'No user was returned after signing in with Google.',
+        );
+      }
+      return user.toAuthUser();
+    } on SocketException {
+      throw const NoInternetException();
     } on FirebaseAuthException catch (e) {
       throw FirebaseSignInException(
         code: e.code,
@@ -68,9 +76,10 @@ class ConfAuthDataSource {
         idToken: appleCredential.identityToken,
         accessToken: appleCredential.authorizationCode,
       );
-
       final result = await _signInWithCredential(credential);
-      return _mapFirebaseUser(result.user!);
+      return result.user!.toAuthUser();
+    } on SocketException {
+      throw const NoInternetException();
     } on FirebaseAuthException catch (e) {
       throw FirebaseSignInException(
         code: e.code,
@@ -85,7 +94,9 @@ class ConfAuthDataSource {
   Future<AuthUser> signInAnonymously() async {
     try {
       final result = await _firebaseAuth.signInAnonymously();
-      return _mapFirebaseUser(result.user!);
+      return result.user!.toAuthUser();
+    } on SocketException {
+      throw const NoInternetException();
     } on FirebaseAuthException catch (e) {
       throw FirebaseSignInException(
         code: e.code,
@@ -108,7 +119,7 @@ class ConfAuthDataSource {
 
   /// Returns the currently signed-in user.
   AuthUser? get currentUser => switch (_firebaseAuth.currentUser) {
-        final User user => _mapFirebaseUser(user),
+        final User user => user.toAuthUser(),
         null => null,
       };
 
@@ -126,12 +137,14 @@ class ConfAuthDataSource {
       );
     }
   }
+}
 
-  AuthUser _mapFirebaseUser(User user) => (
-        id: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        photoUrl: user.photoURL,
-        isAnonymous: user.isAnonymous,
+extension on User {
+  AuthUser toAuthUser() => (
+        id: uid,
+        email: email,
+        displayName: displayName,
+        photoUrl: photoURL,
+        isAnonymous: isAnonymous,
       );
 }
