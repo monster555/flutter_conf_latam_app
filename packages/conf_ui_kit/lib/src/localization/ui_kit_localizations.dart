@@ -1,4 +1,5 @@
 import 'package:conf_shared_models/conf_shared_models.dart';
+import 'package:conf_ui_kit/src/extensions/session_level_extensions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 

@@ -15,6 +15,7 @@ export 'src/list_items/social_network_list_item.dart';
 export 'src/lists/lists.dart';
 export 'src/loaders/loaders.dart';
 export 'src/localization/ui_kit_localizations.dart';
+export 'src/models/models.dart';
 export 'src/navigation/conference_bottom_navigation_bar.dart';
 export 'src/sections/sections.dart';
 export 'src/sliver/sliver_pinned_header.dart';

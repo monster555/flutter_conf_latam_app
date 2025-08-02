@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conf_shared_models/conf_shared_models.dart';
+import 'package:conf_ui_kit/src/extensions/speaker_summary_extensions.dart';
 import 'package:conf_ui_kit/src/extensions/theme_extensions.dart';
 import 'package:conf_ui_kit/src/theme/ui_constants.dart';
 import 'package:flutter/material.dart';

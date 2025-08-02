@@ -1,5 +1,4 @@
-import 'package:conf_shared_models/conf_shared_models.dart'
-    show SpeakerSummary, SpeakerX;
+import 'package:conf_shared_models/conf_shared_models.dart' show SpeakerSummary;
 import 'package:conf_ui_kit/conf_ui_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_latam/l10n/l10n.dart';

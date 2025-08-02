@@ -1,5 +1,6 @@
 import 'package:conf_auth_data_source/conf_auth_data_source.dart';
 import 'package:conf_auth_repository/conf_auth_repository.dart';
+import 'package:conf_cache/conf_cache.dart';
 import 'package:conf_cloud_functions_data_source/conf_cloud_functions_data_source.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_conf_latam/firebase_options.dart';
@@ -17,9 +18,14 @@ Future<AppDependencies> initializeApp() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   final authDataSource = ConfAuthDataSource();
+  final caches = await ConfCacheSystem.initialize();
+
   final dataSource = ConfCloudFunctionsDataSource();
 
-  final speakersRepository = SpeakersRepository(dataSource: dataSource);
+  final speakersRepository = SpeakersRepository(
+    dataSource: dataSource,
+    cache: caches.speakers,
+  );
   final sponsorsRepository = SponsorsRepository(dataSource: dataSource);
   final confAuthRepository = ConfAuthRepository(authDataSource: authDataSource);
 
