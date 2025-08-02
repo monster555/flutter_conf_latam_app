@@ -772,6 +772,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An error occurred'**
   String get errorGeneric;
+
+  /// Title shown when the user must accept terms and conditions
+  ///
+  /// In en, this message translates to:
+  /// **'One last step'**
+  String get termsAndConditionsErrorTitle;
+
+  /// Message shown when the user hasn't accepted terms and conditions
+  ///
+  /// In en, this message translates to:
+  /// **'Please accept our terms and policies.'**
+  String get termsAndConditionsErrorDescription;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

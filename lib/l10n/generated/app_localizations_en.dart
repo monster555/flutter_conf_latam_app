@@ -364,4 +364,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorGeneric => 'An error occurred';
+
+  @override
+  String get termsAndConditionsErrorTitle => 'One last step';
+
+  @override
+  String get termsAndConditionsErrorDescription => 'Please accept our terms and policies.';
 }
