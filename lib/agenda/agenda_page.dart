@@ -182,9 +182,9 @@ class _AgendaPageState extends State<AgendaPage> {
                   SessionLevel.expert: l10n.sessionLevelExpert,
                 },
                 showSessionDescriptions: true,
-                onSessionTap:
-                    (session) =>
-                        context.push<void>(SessionDetailsPage(session)),
+                onSessionTap: (session) {
+                  context.pushX<void>(SessionDetailsPage(session));
+                },
               ),
             ),
           ],
