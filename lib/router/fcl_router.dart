@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_conf_latam/auth/auth_page.dart';
 import 'package:flutter_conf_latam/common/common.dart';
 import 'package:flutter_conf_latam/home/home_page.dart';
+import 'package:flutter_conf_latam/onboarding/onboarding_page.dart';
 import 'package:flutter_conf_latam/router/router.dart';
 import 'package:go_router/go_router.dart';
 
@@ -26,7 +27,7 @@ class FCLRouter {
       GoRoute(
         path: FCLRoutes.onboarding.path,
         name: FCLRoutes.onboarding.name,
-        builder: HomePage.builder,
+        builder: OnboardingPage.builder,
       ),
       GoRoute(
         path: FCLRoutes.home.path,
