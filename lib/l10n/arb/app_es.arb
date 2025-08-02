@@ -211,5 +211,7 @@
     "description": "Descripción accesible para el logo de Flutter Conf Latam en español"
   },
   "errorCannotOpenLink": "No se puede abrir el enlace",
-  "errorGeneric": "Ha ocurrido un error"
+  "errorGeneric": "Ha ocurrido un error",
+  "termsAndConditionsErrorTitle": "Un último paso",
+  "termsAndConditionsErrorDescription": "Acepta nuestros términos y políticas."
 }

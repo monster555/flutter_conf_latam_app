@@ -504,5 +504,13 @@
   "errorGeneric": "An error occurred",
   "@errorGeneric": {
     "description": "Generic error message"
+  },
+  "termsAndConditionsErrorTitle": "One last step",
+  "@termsAndConditionsErrorTitle": {
+    "description": "Title shown when the user must accept terms and conditions"
+  },
+  "termsAndConditionsErrorDescription": "Please accept our terms and policies.",
+  "@termsAndConditionsErrorDescription": {
+    "description": "Message shown when the user hasn't accepted terms and conditions"
   }
 }
