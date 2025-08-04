@@ -8,6 +8,9 @@ abstract class ConfDataSource {
     String? languageCode,
   });
 
+  /// Retrieves all sessions with optional localization
+  Future<List<Map<String, dynamic>>> getSessions({String? languageCode});
+
   /// Retrieves all sponsors
   Future<List<Map<String, dynamic>>> getSponsors();
 }
