@@ -43,9 +43,14 @@
   "@venueBannerSemanticsHint": {
     "description": "Accessibility hint for venue banner"
   },
+  "speakerCardSemanticLabel": "{name}, {title}, toca para ver detalles",
   "speaker": "Speaker",
   "@speaker": {
     "description": "Label for a speaker"
+  },
+  "coSpeakersLabel": "Co-speakers",
+  "@coSpeakersLabel": {
+    "description": "Label for the Co-speakers"
   },
   "magicBeginsLabel": "La magia comienza en",
   "@magicBeginsLabel": {
@@ -97,6 +102,11 @@
   "@sessionLevelExpert": {
     "description": "Expert difficulty level for conference sessions"
   },
+  "sessionDescriptionLabel": "Descripción",
+  "sessionNoDataAvailable": "Información de la sesión no disponible",
+  "sessionDetailsSemanticLabel": "Detalles de la sesión: {title}",
+  "sessionFavoriteTooltip": "Agregar a favoritos",
+  "sessionShareTooltip": "Compartir sesión",
   "sessionsForDate": "Sesiones para {date}",
   "sessionCardHint": "Toca para ver detalles de la sesión",
   "actionGetDirections": "Cómo llegar",
@@ -136,10 +146,12 @@
   "actionRetry": "Reintentar",
   "errorSessionsNone": "No hay sesiones disponibles",
   "errorSessionsNoneForDay": "No hay sesiones programadas para el {date}",
+  "errorSponsorsNone": "No hay patrocinadores disponibles",
   "errorSpeakersNone": "No hay ponentes disponibles",
   "stateLoadingAgenda": "Cargando agenda",
   "stateLoadingSessions": "Cargando sesiones",
   "stateLoadingSpeakers": "Cargando speakers",
+  "stateLoadingSponsors": "Cargando sponsors",
   "speaks": "Habla",
   "iSpeakPrefix": "Hablo",
   "iSpeakLanguages": "Hablo {languages}",

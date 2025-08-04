@@ -62,7 +62,8 @@ import 'app_localizations_es.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -70,7 +71,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -82,17 +84,18 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('es')
+    Locale('es'),
   ];
 
   /// The title of the application
@@ -167,11 +170,23 @@ abstract class AppLocalizations {
   /// **'Tap to see venue details'**
   String get venueBannerSemanticsHint;
 
+  /// Semantic label for speaker card accessibility
+  ///
+  /// In en, this message translates to:
+  /// **'{name}, {title}, tap to view details'**
+  String speakerCardSemanticLabel(String name, String title);
+
   /// Label for a speaker
   ///
   /// In en, this message translates to:
   /// **'Speaker'**
   String get speaker;
+
+  /// Label for the Co-speakers
+  ///
+  /// In en, this message translates to:
+  /// **'Co-speakers'**
+  String get coSpeakersLabel;
 
   /// Title shown above the countdown timer
   ///
@@ -256,6 +271,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Expert'**
   String get sessionLevelExpert;
+
+  /// Universal label that works for all session types
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get sessionDescriptionLabel;
+
+  /// Message displayed when no session data is available
+  ///
+  /// In en, this message translates to:
+  /// **'No session data available'**
+  String get sessionNoDataAvailable;
+
+  /// Accessibility label for session details screen
+  ///
+  /// In en, this message translates to:
+  /// **'Session details for: {title}'**
+  String sessionDetailsSemanticLabel(String title);
+
+  /// Tooltip for the favorite button on session details
+  ///
+  /// In en, this message translates to:
+  /// **'Add to favorites'**
+  String get sessionFavoriteTooltip;
+
+  /// Tooltip for the share button on session details
+  ///
+  /// In en, this message translates to:
+  /// **'Share this session'**
+  String get sessionShareTooltip;
 
   /// Header for sessions on a specific date
   ///
@@ -491,6 +536,12 @@ abstract class AppLocalizations {
   /// **'No sessions scheduled for {date}'**
   String errorSessionsNoneForDay(String date);
 
+  /// Message displayed when no sponsors are available
+  ///
+  /// In en, this message translates to:
+  /// **'No sponsors available'**
+  String get errorSponsorsNone;
+
   /// Message displayed when no speakers are available
   ///
   /// In en, this message translates to:
@@ -514,6 +565,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Loading Speakers'**
   String get stateLoadingSpeakers;
+
+  /// Message displayed when the Sponsors are loading
+  ///
+  /// In en, this message translates to:
+  /// **'Loading Sponsors'**
+  String get stateLoadingSponsors;
 
   /// Label for the 'Speaks' widget
   ///
@@ -573,7 +630,11 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Venue: {venueName}. Location: {location}. Dates: {dates}'**
-  String venueBannerSemanticLabel(String venueName, String location, String dates);
+  String venueBannerSemanticLabel(
+    String venueName,
+    String location,
+    String dates,
+  );
 
   /// Accessibility label for the user profile button in app bar
   ///
@@ -702,7 +763,8 @@ abstract class AppLocalizations {
   String get errorGeneric;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -711,25 +773,26 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'es'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['en', 'es'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return AppLocalizationsEn();
-    case 'es': return AppLocalizationsEs();
+    case 'en':
+      return AppLocalizationsEn();
+    case 'es':
+      return AppLocalizationsEs();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
+    'that was used.',
   );
 }

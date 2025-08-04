@@ -48,9 +48,27 @@
   "@venueBannerSemanticsHint": {
     "description": "Accessibility hint for venue banner"
   },
+  "speakerCardSemanticLabel": "{name}, {title}, tap to view details",
+  "@speakerCardSemanticLabel": {
+    "description": "Semantic label for speaker card accessibility",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "description": "Speaker's name"
+      },
+      "title": {
+        "type": "String", 
+        "description": "Speaker's job title"
+      }
+    }
+  },
   "speaker": "Speaker",
   "@speaker": {
     "description": "Label for a speaker"
+  },
+  "coSpeakersLabel": "Co-speakers",
+  "@coSpeakersLabel": {
+    "description": "Label for the Co-speakers"
   },
   "magicBeginsLabel": "The magic begins in",
   "@magicBeginsLabel": {
@@ -117,6 +135,32 @@
   "sessionLevelExpert": "Expert",
   "@sessionLevelExpert": {
     "description": "Expert difficulty level for conference sessions"
+  },
+  "sessionDescriptionLabel": "Description",
+  "@sessionDescriptionLabel": {
+    "description": "Universal label that works for all session types"
+  },
+  "sessionNoDataAvailable": "No session data available",
+  "@sessionNoDataAvailable": {
+    "description": "Message displayed when no session data is available"
+  },
+  "sessionDetailsSemanticLabel": "Session details for: {title}",
+  "@sessionDetailsSemanticLabel": {
+    "description": "Accessibility label for session details screen",
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "description": "Title of the session"
+      }
+    }
+  },
+  "sessionFavoriteTooltip": "Add to favorites",
+  "@sessionFavoriteTooltip": {
+    "description": "Tooltip for the favorite button on session details"
+  },
+  "sessionShareTooltip": "Share this session",
+  "@sessionShareTooltip": {
+    "description": "Tooltip for the share button on session details"
   },
   "sessionsForDate": "Sessions for {date}",
   "@sessionsForDate": {
@@ -292,6 +336,10 @@
       }
     }
   },
+  "errorSponsorsNone": "No sponsors available",
+  "@errorSponsorsNone": {
+    "description": "Message displayed when no sponsors are available"
+  },
   "errorSpeakersNone": "No speakers available",
   "@errorSpeakersNone": {
     "description": "Message displayed when no speakers are available"
@@ -307,6 +355,10 @@
   "stateLoadingSpeakers": "Loading Speakers",
   "@stateLoadingSpeakers": {
     "description": "Message displayed when the Speakers are loading"
+  },
+  "stateLoadingSponsors": "Loading Sponsors",
+  "@stateLoadingSponsors": {
+    "description": "Message displayed when the Sponsors are loading"
   },
   "speaks": "Speaks",
   "@speaks": {
