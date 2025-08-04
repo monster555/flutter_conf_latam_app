@@ -1,0 +1,28 @@
+name: agenda_repository
+description: "Repository for managing agenda data in the Conf app."
+version: 0.0.1
+publish_to: none
+homepage:
+
+environment:
+  sdk: ^3.8.1
+  flutter: ">=1.17.0"
+
+dependencies:
+  conf_cache:
+    path: ../conf_cache
+  conf_core:
+    path: ../conf_core
+  conf_data_source:
+    path: ../conf_data_source
+  conf_shared_models:
+    path: ../conf_shared_models
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^7.0.0
+flutter:
+

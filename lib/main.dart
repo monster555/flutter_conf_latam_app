@@ -1,3 +1,4 @@
+import 'package:agenda_repository/agenda_repository.dart';
 import 'package:conf_ui_kit/conf_ui_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,6 +28,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
+        RepositoryProvider<AgendaRepository>.value(
+          value: dependencies.agendaRepository,
+        ),
         RepositoryProvider<SpeakersRepository>.value(
           value: dependencies.speakersRepository,
         ),

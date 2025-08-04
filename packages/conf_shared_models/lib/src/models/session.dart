@@ -1,62 +1,41 @@
 import 'package:conf_shared_models/src/enums/enums.dart';
-import 'package:conf_shared_models/src/models/speaker.dart';
+import 'package:conf_shared_models/src/models/session_speaker.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'session.g.dart';
+
+@JsonSerializable()
 class Session {
-  Session({
+  const Session({
     required this.id,
     required this.title,
-    required this.description,
-    required this.startTime,
-    required this.endTime,
+    required this.type,
     required this.track,
-    required this.level,
-    required this.mainSpeaker,
+    required this.startDate,
+    required this.endDate,
     required this.language,
-    this.coSpeakers,
+    this.description,
+    this.level,
+    this.speakers,
+    this.tags,
+    this.requirements,
   });
 
-  factory Session.fromJson(Map<String, dynamic> json) {
-    return Session(
-      id: json['id'] as String,
-      title: json['title'] as String,
-      description: json['description'] as String,
-      level: SessionLevel.values.byName(json['level'] as String),
-      startTime: DateTime.parse(json['startTime'] as String),
-      endTime: DateTime.parse(json['endTime'] as String),
-      track: json['track'] as String,
-      mainSpeaker: Speaker.fromJson(
-        json['mainSpeaker'] as Map<String, dynamic>,
-      ),
-      coSpeakers:
-          (json['coSpeakers'] as List<Map<String, dynamic>>?)
-              ?.map(Speaker.fromJson)
-              .toList(),
-      language: Language.values.byName(json['language'] as String),
-    );
-  }
+  factory Session.fromJson(Map<String, dynamic> json) =>
+      _$SessionFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'title': title,
-      'description': description,
-      'level': level.name,
-      'mainSpeaker': mainSpeaker.toJson(),
-      'startTime': startTime.toIso8601String(),
-      'endTime': endTime.toIso8601String(),
-      'track': track,
-      'language': language.name,
-    };
-  }
+  Map<String, dynamic> toJson() => _$SessionToJson(this);
 
   final String id;
   final String title;
-  final String description;
-  final DateTime startTime;
-  final DateTime endTime;
-  final String track;
-  final SessionLevel level;
-  final Speaker mainSpeaker;
-  final List<Speaker>? coSpeakers;
+  final String? description;
+  final SessionType type;
+  final int track;
+  final SessionLevel? level;
   final Language language;
+  final List<SessionSpeaker>? speakers;
+  final List<String>? tags;
+  final List<String>? requirements;
+  final DateTime startDate;
+  final DateTime endDate;
 }
