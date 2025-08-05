@@ -61,4 +61,28 @@ class RenderSliverPinnedHeader extends RenderSliverSingleBoxAdapter {
     // Position the child at the top of the viewport when pinned
     (child!.parentData! as SliverPhysicalParentData).paintOffset = Offset.zero;
   }
+
+  @override
+  bool hitTest(
+    SliverHitTestResult result, {
+    required double mainAxisPosition,
+    required double crossAxisPosition,
+  }) {
+    if (child == null) return false;
+
+    // When pinned, always test against the painted position
+    final paintedChildSize = math.min(
+      child!.size.height,
+      constraints.remainingPaintExtent,
+    );
+
+    if (mainAxisPosition >= 0 && mainAxisPosition < paintedChildSize) {
+      return child!.hitTest(
+        BoxHitTestResult.wrap(result),
+        position: Offset(crossAxisPosition, mainAxisPosition),
+      );
+    }
+
+    return false;
+  }
 }
