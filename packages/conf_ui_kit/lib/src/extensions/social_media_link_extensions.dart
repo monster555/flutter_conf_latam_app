@@ -58,7 +58,13 @@ extension SocialMediaLinkX on SocialMediaLink {
       return 'x';
     }
 
-    return ['linkedin', 'youtube', 'instagram', 'tiktok'].contains(normalized)
+    return [
+          'linkedin',
+          'youtube',
+          'instagram',
+          'tiktok',
+          'github',
+        ].contains(normalized)
         ? normalized
         : 'other';
   }
