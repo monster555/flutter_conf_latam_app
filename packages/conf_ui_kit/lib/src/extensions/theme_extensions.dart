@@ -1,4 +1,5 @@
 import 'package:conf_ui_kit/src/theme/app_assets.dart';
+import 'package:conf_ui_kit/src/theme/color_chip_theme.dart';
 import 'package:flutter/material.dart';
 
 extension ThemeX on BuildContext {
@@ -10,4 +11,7 @@ extension ThemeX on BuildContext {
 
   AppAssets get appAssets =>
       Theme.of(this).extension<AppAssets>() ?? AppAssets.light;
+
+  ColorChipTheme get colorChipTheme =>
+      Theme.of(this).extension<ColorChipTheme>() ?? ColorChipTheme.light;
 }
