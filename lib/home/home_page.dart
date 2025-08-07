@@ -36,6 +36,7 @@ class HomePage extends StatelessWidget {
           profileHint: l10n.userProfileHint,
           profileTooltip: l10n.userProfileTooltip,
           onProfileTap: context.read<SessionCubit>().logout,
+          avatar: const UserProfileAvatar(size: 32),
         ),
         body: CustomScrollView(
           slivers: [
