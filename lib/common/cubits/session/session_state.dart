@@ -9,15 +9,21 @@ class CheckingSession extends SessionState {
 }
 
 class SessionAuthenticated extends SessionState {
-  const SessionAuthenticated(this.user);
-  final ConfAuthUser user;
+  const SessionAuthenticated({this.user});
+  final User? user;
 }
 
 class SessionIncompleteProfile extends SessionState {
-  const SessionIncompleteProfile(this.user);
-  final ConfAuthUser user;
+  const SessionIncompleteProfile();
 }
 
 class SessionUnauthenticated extends SessionState {
   const SessionUnauthenticated();
+}
+
+extension SessionStateX on SessionState {
+  User? get user => switch (this) {
+    SessionAuthenticated(:final user) => user,
+    _ => null,
+  };
 }
