@@ -11,6 +11,7 @@ abstract class UiConstants {
   static const double spacing8 = 8;
   static const double spacing12 = 12;
   static const double spacing16 = 16;
+  static const double spacing20 = 20;
   static const double spacing24 = 24;
   static const double spacing32 = 32;
   static const double spacing40 = 40;
@@ -28,6 +29,7 @@ abstract class UiConstants {
   static const double iconSizeXLarge = 48;
 
   /// Border radius constants
+  static const double radiusSmall = 8;
   static const double radiusMedium = 12;
   static const double radiusLarge = 16;
 
@@ -36,6 +38,7 @@ abstract class UiConstants {
   static const double speakerCardWidth = 100;
 
   /// Predefined BorderRadius objects
+  static final borderRadiusSmall = BorderRadius.circular(radiusSmall);
   static final borderRadiusMedium = BorderRadius.circular(radiusMedium);
   static final borderRadiusLarge = BorderRadius.circular(radiusLarge);
 
