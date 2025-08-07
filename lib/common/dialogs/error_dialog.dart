@@ -45,54 +45,35 @@ class ErrorDialog extends StatelessWidget {
     const gap16 = ExcludeSemantics(
       child: SizedBox(height: UiConstants.spacing16),
     );
-    return Material(
-      type: MaterialType.transparency,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: UiConstants.spacing40),
-        child: Center(
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: context.scaffoldBackgroundColor,
-              borderRadius: UiConstants.borderRadiusLarge,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(UiConstants.spacing24),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ExcludeSemantics(
-                    child: Assets.brand.dashSad.image(width: 100),
-                  ),
-                  gap16,
-                  Semantics(
-                    label: type.title(context),
-                    header: true,
-                    child: Text(
-                      type.title(context),
-                      style: context.textTheme.titleMedium?.copyWith(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  gap16,
-                  Semantics(
-                    label: type.description(context),
-                    header: true,
-                    child: Text(
-                      type.description(context),
-                      style: context.textTheme.bodyMedium,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const ExcludeSemantics(
-                    child: SizedBox(height: UiConstants.spacing24),
-                  ),
-                  const _Buttons(),
-                ],
-              ),
+    return FCLBaseDialog(
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ExcludeSemantics(child: Assets.brand.dashSad.image(width: 100)),
+          gap16,
+          Semantics(
+            label: type.title(context),
+            header: true,
+            child: Text(
+              type.title(context),
+              style: context.textTheme.titleMedium?.copyWith(fontSize: 18),
             ),
           ),
-        ),
+          gap16,
+          Semantics(
+            label: type.description(context),
+            header: true,
+            child: Text(
+              type.description(context),
+              style: context.textTheme.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const ExcludeSemantics(
+            child: SizedBox(height: UiConstants.spacing24),
+          ),
+          const _Buttons(),
+        ],
       ),
     );
   }
