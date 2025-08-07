@@ -10,7 +10,7 @@ class ContinueWithApple extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      value: context.l10n.continueWith('Apple'),
+      label: context.l10n.continueWith('Apple'),
       child: SocialButton(
         onPressed: () => onPressed(SignInType.apple),
         icon: Assets.socialIcons.apple.svg(

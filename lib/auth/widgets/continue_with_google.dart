@@ -10,7 +10,7 @@ class ContinueWithGoogle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      value: context.l10n.continueWith('Google'),
+      label: context.l10n.continueWith('Google'),
       child: SocialButton(
         onPressed: () => onPressed(SignInType.google),
         icon: Assets.socialIcons.google.svg(),

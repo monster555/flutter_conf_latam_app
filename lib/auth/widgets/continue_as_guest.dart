@@ -10,7 +10,7 @@ class ContinueAsGuest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      value: context.l10n.continueAsGuests,
+      label: context.l10n.continueAsGuests,
       child: SocialButton(
         onPressed: () => onPressed(SignInType.guest),
         icon: Assets.icons.face.svg(
