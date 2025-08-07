@@ -370,4 +370,85 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get termsAndConditionsErrorDescription => 'Acepta nuestros términos y políticas.';
+
+  @override
+  String get authErrorGenericTitle => 'Oops, ha ocurrido un error';
+
+  @override
+  String get authErrorInternetTitle => '¡Uy! estás sin internet';
+
+  @override
+  String get authErrorGenericDescription => 'Tranquilo, probemos otra vez.';
+
+  @override
+  String get authErrorInternetDescription => 'Revisa tu conexión y reinténtalo cuando estés listo.';
+
+  @override
+  String get cancelButton => 'Cancelar';
+
+  @override
+  String get retryButton => 'Reintentar';
+
+  @override
+  String get onboardingTitle => 'Información personal';
+
+  @override
+  String get onboardingSkip => 'Omitir';
+
+  @override
+  String get onboardingUpdatePhoto => 'Actualizar foto';
+
+  @override
+  String get onboardingPhotoPreview => 'Vista previa de la foto de perfil';
+
+  @override
+  String get onboardingNamesLabel => 'Nombres';
+
+  @override
+  String get onboardingLastNameLabel => 'Apellidos';
+
+  @override
+  String get onboardingContinue => 'Continuar';
+
+  @override
+  String get shareDialogTitle => '¡Comparte y haz crecer la comunidad!';
+
+  @override
+  String get shareBadgeSelectThemeHint => 'Selecciona un tema para la tarjeta';
+
+  @override
+  String get shareBadgeThemeBlue => 'Tema azul';
+
+  @override
+  String get shareBadgeThemeYellow => 'Tema amarillo';
+
+  @override
+  String get userAvatarLabel => 'Foto de perfil del usuario';
+
+  @override
+  String get badgeImPartOf => 'Soy parte de';
+
+  @override
+  String get badgeConference => 'FlutterConf Latam';
+
+  @override
+  String get badgeYear => '2025';
+
+  @override
+  String get badgeLocation => 'Quito - Ecuador';
+
+  @override
+  String get hashtagBeFCL25 => '#BeFCL25';
+
+  @override
+  String get shareLater => 'Más tarde';
+
+  @override
+  String get shareAction => 'Compartir';
+
+  @override
+  String get dashEcuadorLabel => 'Ilustración de Dash en Ecuador';
+
+  @override
+  String get quitoLogoLabel => 'Logotipo de Quito';
 }

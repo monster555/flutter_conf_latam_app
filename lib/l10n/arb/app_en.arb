@@ -512,5 +512,32 @@
   "termsAndConditionsErrorDescription": "Please accept our terms and policies.",
   "@termsAndConditionsErrorDescription": {
     "description": "Message shown when the user hasn't accepted terms and conditions"
-  }
+  },
+  "authErrorGenericTitle": "Oops, something went wrong",
+  "authErrorInternetTitle": "Oops! You’re offline",
+  "authErrorGenericDescription": "No worries, let’s try again.",
+  "authErrorInternetDescription": "Check your connection and try again when you’re ready.",
+  "cancelButton": "Cancel",
+  "retryButton": "Retry",
+  "onboardingTitle": "Personal information",
+  "onboardingSkip": "Skip",
+  "onboardingUpdatePhoto": "Update photo",
+  "onboardingPhotoPreview": "Profile photo preview",
+  "onboardingNamesLabel": "Names",
+  "onboardingLastNameLabel": "Last Name",
+  "onboardingContinue": "Continue",
+  "shareDialogTitle": "Share and help grow the community!",
+  "shareBadgeSelectThemeHint": "Select a theme for the card",
+  "shareBadgeThemeBlue": "Blue theme",
+  "shareBadgeThemeYellow": "Yellow theme",
+  "userAvatarLabel": "User profile photo",
+  "badgeImPartOf": "I’m part of",
+  "badgeConference": "FlutterConf Latam",
+  "badgeYear": "2025",
+  "badgeLocation": "Quito - Ecuador",
+  "hashtagBeFCL25": "#BeFCL25",
+  "shareLater": "Later",
+  "shareAction": "Share",
+  "dashEcuadorLabel": "Illustration of Dash in Ecuador",
+  "quitoLogoLabel": "Quito logo"
 }

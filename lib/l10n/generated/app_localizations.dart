@@ -784,6 +784,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please accept our terms and policies.'**
   String get termsAndConditionsErrorDescription;
+
+  /// No description provided for @authErrorGenericTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Oops, something went wrong'**
+  String get authErrorGenericTitle;
+
+  /// No description provided for @authErrorInternetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Oops! You’re offline'**
+  String get authErrorInternetTitle;
+
+  /// No description provided for @authErrorGenericDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'No worries, let’s try again.'**
+  String get authErrorGenericDescription;
+
+  /// No description provided for @authErrorInternetDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your connection and try again when you’re ready.'**
+  String get authErrorInternetDescription;
+
+  /// No description provided for @cancelButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelButton;
+
+  /// No description provided for @retryButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retryButton;
+
+  /// No description provided for @onboardingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal information'**
+  String get onboardingTitle;
+
+  /// No description provided for @onboardingSkip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get onboardingSkip;
+
+  /// No description provided for @onboardingUpdatePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Update photo'**
+  String get onboardingUpdatePhoto;
+
+  /// No description provided for @onboardingPhotoPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile photo preview'**
+  String get onboardingPhotoPreview;
+
+  /// No description provided for @onboardingNamesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Names'**
+  String get onboardingNamesLabel;
+
+  /// No description provided for @onboardingLastNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get onboardingLastNameLabel;
+
+  /// No description provided for @onboardingContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get onboardingContinue;
+
+  /// No description provided for @shareDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Share and help grow the community!'**
+  String get shareDialogTitle;
+
+  /// No description provided for @shareBadgeSelectThemeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a theme for the card'**
+  String get shareBadgeSelectThemeHint;
+
+  /// No description provided for @shareBadgeThemeBlue.
+  ///
+  /// In en, this message translates to:
+  /// **'Blue theme'**
+  String get shareBadgeThemeBlue;
+
+  /// No description provided for @shareBadgeThemeYellow.
+  ///
+  /// In en, this message translates to:
+  /// **'Yellow theme'**
+  String get shareBadgeThemeYellow;
+
+  /// No description provided for @userAvatarLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'User profile photo'**
+  String get userAvatarLabel;
+
+  /// No description provided for @badgeImPartOf.
+  ///
+  /// In en, this message translates to:
+  /// **'I’m part of'**
+  String get badgeImPartOf;
+
+  /// No description provided for @badgeConference.
+  ///
+  /// In en, this message translates to:
+  /// **'FlutterConf Latam'**
+  String get badgeConference;
+
+  /// No description provided for @badgeYear.
+  ///
+  /// In en, this message translates to:
+  /// **'2025'**
+  String get badgeYear;
+
+  /// No description provided for @badgeLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Quito - Ecuador'**
+  String get badgeLocation;
+
+  /// No description provided for @hashtagBeFCL25.
+  ///
+  /// In en, this message translates to:
+  /// **'#BeFCL25'**
+  String get hashtagBeFCL25;
+
+  /// No description provided for @shareLater.
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get shareLater;
+
+  /// No description provided for @shareAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get shareAction;
+
+  /// No description provided for @dashEcuadorLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Illustration of Dash in Ecuador'**
+  String get dashEcuadorLabel;
+
+  /// No description provided for @quitoLogoLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Quito logo'**
+  String get quitoLogoLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
