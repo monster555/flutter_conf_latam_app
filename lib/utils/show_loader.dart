@@ -6,12 +6,16 @@ import 'package:go_router/go_router.dart';
 
 Future<T> showLoader<T>(
   BuildContext context,
-  String route,
   Future<T> future, {
+  String? route,
+  String? routeParam,
   String? text,
 }) async {
   unawaited(
-    context.pushNamed(FCLRoutes.loading.name, pathParameters: {'route': route}),
+    context.pushNamed(
+      route ?? FCLRoutes.loading.name,
+      pathParameters: {if (routeParam != null) 'route': routeParam},
+    ),
   );
   final result = await future;
   if (context.mounted) {
