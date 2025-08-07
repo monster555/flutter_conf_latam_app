@@ -3,6 +3,7 @@ export 'src/avatars/avatars.dart';
 export 'src/banners/venue_banner.dart';
 export 'src/cards/cards.dart';
 export 'src/chips/color_chip.dart';
+export 'src/dialogs/dialogs.dart';
 export 'src/effects/effects.dart';
 export 'src/extensions/extensions.dart';
 export 'src/feedback/feedback_widget.dart';
