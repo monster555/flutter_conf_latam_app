@@ -58,4 +58,41 @@ class ConfCloudFunctionsDataSource implements ConfDataSource {
       throw ConfCloudFunctionsException('Failed to fetch sponsors: $e');
     }
   }
+
+  @override
+  Future<Map<String, dynamic>?> getUserById(String id) async {
+    try {
+      final callable = functions.httpsCallable('getUser');
+      final result = await callable.call<Map<String, dynamic>>({'userId': id});
+
+      final data = result.data;
+
+      if (data.containsKey('error')) {
+        throw ConfGetUserException(data['error'] as String);
+      }
+
+      return Map<String, dynamic>.from(data);
+    } catch (e) {
+      log('Error fetching user: $e', name: 'ConfCloudFunctionsDataSource');
+      throw ConfGetUserException('Failed to fetch user: $e');
+    }
+  }
+
+  @override
+  Future<Map<String, dynamic>?> createUser(Map<String, dynamic> data) async {
+    try {
+      final callable = functions.httpsCallable('createUser');
+      final result = await callable.call<Map<String, dynamic>>(data);
+      final response = result.data;
+      final success = response['success'] == true;
+
+      if (!success) {
+        throw const ConfCreateUserException();
+      }
+      return Map<String, dynamic>.from(response['user'] as Map);
+    } catch (e) {
+      log('Error creating user: $e', name: 'ConfCloudFunctionsDataSource');
+      throw ConfCreateUserException('Failed to create user: $e');
+    }
+  }
 }

@@ -34,3 +34,34 @@ final class SignOutFailedException extends ConfAuthDataSourceException {
 final class NoInternetException extends ConfAuthDataSourceException {
   const NoInternetException() : super('No internet connection available.');
 }
+
+/// Thrown when Sign in with Apple is not available on the current device/platform.
+final class AppleSignInNotAvailableException
+    extends ConfAuthDataSourceException {
+  const AppleSignInNotAvailableException()
+      : super('Sign in with Apple is not available on this device.');
+}
+
+/// Thrown when an error occurs during the Apple sign-in process.
+final class AppleSignInFailedException extends ConfAuthDataSourceException {
+  /// Creates an [AppleSignInFailedException] with an optional error code.
+  const AppleSignInFailedException({
+    required String message,
+    this.code,
+  }) : super(message);
+
+  /// The Apple sign-in error code associated with this exception, if available.
+  final String? code;
+}
+
+/// Thrown when the email is already associated with a different sign-in method.
+final class AccountExistsWithDifferentCredentialException
+    extends ConfAuthDataSourceException {
+  const AccountExistsWithDifferentCredentialException({
+    required String message,
+    required this.email,
+  }) : super(message);
+
+  /// The email that already exists in Firebase.
+  final String email;
+}

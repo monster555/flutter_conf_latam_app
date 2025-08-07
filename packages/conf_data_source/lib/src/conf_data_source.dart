@@ -10,4 +10,6 @@ abstract class ConfDataSource {
 
   /// Retrieves all sponsors
   Future<List<Map<String, dynamic>>> getSponsors();
+  Future<Map<String, dynamic>?> getUserById(String id);
+  Future<Map<String, dynamic>?> createUser(Map<String, dynamic> data);
 }
