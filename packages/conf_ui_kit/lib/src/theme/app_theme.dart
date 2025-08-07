@@ -37,6 +37,21 @@ abstract class AppTheme {
     ),
     splashColor: AppColors.flutterBlue.withValues(alpha: 0.2),
     highlightColor: AppColors.flutterBlue.withValues(alpha: 0.1),
+    inputDecorationTheme: InputDecorationTheme(
+      contentPadding: const EdgeInsets.all(UiConstants.spacing16),
+      border: OutlineInputBorder(
+        borderSide: const BorderSide(color: AppColors.neutralGray),
+        borderRadius: UiConstants.borderRadiusSmall,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: AppColors.neutralGray),
+        borderRadius: UiConstants.borderRadiusSmall,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: AppColors.flutterNavy),
+        borderRadius: UiConstants.borderRadiusSmall,
+      ),
+    ),
   );
 
   static final darkTheme = ThemeData(
@@ -48,7 +63,6 @@ abstract class AppTheme {
     textTheme: GoogleFonts.poppinsTextTheme(
       ThemeData.dark().textTheme,
     ).apply(bodyColor: AppColors.darkText, displayColor: AppColors.darkText),
-
     colorScheme: AppColors.darkColorScheme(),
     cardTheme: CardThemeData(
       elevation: 0,
@@ -71,5 +85,20 @@ abstract class AppTheme {
     ),
     splashColor: AppColors.flutterSky.withValues(alpha: 0.2),
     highlightColor: AppColors.flutterSky.withValues(alpha: 0.1),
+    inputDecorationTheme: InputDecorationTheme(
+      contentPadding: const EdgeInsets.all(UiConstants.spacing16),
+      border: OutlineInputBorder(
+        borderSide: const BorderSide(color: AppColors.neutralGray),
+        borderRadius: UiConstants.borderRadiusSmall,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: AppColors.neutralGray),
+        borderRadius: UiConstants.borderRadiusSmall,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: AppColors.flutterBlue),
+        borderRadius: UiConstants.borderRadiusSmall,
+      ),
+    ),
   );
 }
