@@ -12,7 +12,7 @@ class SponsorsPage extends StatelessWidget {
     return BlocProvider<SponsorsCubit>(
       create: (context) {
         final repository = context.read<SponsorsRepository>();
-        return SponsorsCubit(repository: repository)..fetchSponsors();
+        return SponsorsCubit(repository: repository)..loadSponsors();
       },
       child: const SponsorsView(),
     );

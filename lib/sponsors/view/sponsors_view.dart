@@ -8,21 +8,33 @@ import 'package:flutter_conf_latam/sponsors/cubit/sponsors_cubit.dart';
 class SponsorsView extends StatelessWidget {
   const SponsorsView({super.key});
 
-  static bool isLoadingSelector(SponsorsCubit cubit) =>
+  static const Key _sponsorsListKey = PageStorageKey<String>('sponsors_list');
+  static const _emptySponsorsMap = <SponsorTier, List<Sponsor>>{};
+
+  static bool _isLoadingSelector(SponsorsCubit cubit) =>
       cubit.state is SponsorsLoading;
 
-  static String? errorMessageSelector(SponsorsCubit cubit) {
+  static String? _errorMessageSelector(SponsorsCubit cubit) {
     final state = cubit.state;
     if (state case SponsorsError(:final message)) return message;
     return null;
   }
 
-  static Map<SponsorTier, List<Sponsor>> sponsorsSelector(SponsorsCubit cubit) {
+  static Map<SponsorTier, List<Sponsor>> _sponsorsSelector(
+    SponsorsCubit cubit,
+  ) {
     final state = cubit.state;
     if (state case SponsorsLoaded(:final groupedSponsors)) {
       return groupedSponsors;
     }
-    return const <SponsorTier, List<Sponsor>>{};
+    return _emptySponsorsMap;
+  }
+
+  void _handleRetryButtonPressed(BuildContext context) =>
+      context.read<SponsorsCubit>().refreshSponsors();
+
+  Future<void> _handleRefreshIndicatorPull(BuildContext context) async {
+    await context.read<SponsorsCubit>().refreshSponsors();
   }
 
   Widget _buildLoadingState(AppLocalizations l10n, EdgeInsets padding) {
@@ -30,7 +42,7 @@ class SponsorsView extends StatelessWidget {
     return Center(
       child: Semantics(
         liveRegion: true,
-        label: l10n.stateLoadingSpeakers,
+        label: l10n.stateLoadingSponsors,
         child: Padding(
           padding: EdgeInsets.only(top: topPadding),
           child: const CircularProgressIndicator(),
@@ -41,6 +53,7 @@ class SponsorsView extends StatelessWidget {
 
   Widget _buildErrorState(
     BuildContext context,
+    AppLocalizations l10n,
     String errorMessage,
     EdgeInsets padding,
   ) {
@@ -55,12 +68,10 @@ class SponsorsView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(errorMessage),
-              const ExcludeSemantics(
-                child: SizedBox(height: UiConstants.spacing16),
-              ),
+              const SizedBox(height: UiConstants.spacing16),
               ElevatedButton(
-                onPressed: context.read<SponsorsCubit>().fetchSponsors,
-                child: Text(context.l10n.actionRetry),
+                onPressed: () => _handleRetryButtonPressed(context),
+                child: Text(l10n.actionRetry),
               ),
             ],
           ),
@@ -71,11 +82,11 @@ class SponsorsView extends StatelessWidget {
 
   Widget _buildEmptyState(AppLocalizations l10n) {
     return Semantics(
-      label: l10n.errorSpeakersNone,
+      label: l10n.errorSponsorsNone,
       child: FeedbackWidget(
         fullScreen: true,
-        icon: Icons.person_off_outlined,
-        message: l10n.errorSpeakersNone,
+        icon: Icons.business_outlined,
+        message: l10n.errorSponsorsNone,
       ),
     );
   }
@@ -85,7 +96,7 @@ class SponsorsView extends StatelessWidget {
       SponsorTier.platinum => l10n.sponsorTierPlatinum,
       SponsorTier.gold => l10n.sponsorTierGold,
       SponsorTier.silver => l10n.sponsorTierSilver,
-      SponsorTier.inkind => l10n.sponsorTierInkind,
+      SponsorTier.inKind => l10n.sponsorTierInkind,
       SponsorTier.other => l10n.sponsorTierOther,
     };
   }
@@ -102,181 +113,78 @@ class SponsorsView extends StatelessWidget {
 
     return Semantics(
       container: true,
-      label: l10n.speakersTabLabel,
+      label: l10n.sponsorsTabLabel,
       explicitChildNodes: true,
       child: CustomScrollView(
-        key: const PageStorageKey<String>('sponsors_list'),
+        key: _sponsorsListKey,
         slivers: [
-          SliverToBoxAdapter(
-            child: ExcludeSemantics(child: SizedBox(height: topPadding)),
-          ),
+          SliverToBoxAdapter(child: SizedBox(height: topPadding)),
           ...sortedTiers
               .where((tier) => groupedSponsors[tier]!.isNotEmpty)
               .map(
                 (tier) => SliverToBoxAdapter(
-                  child: GroupedSponsors(
+                  child: SponsorsGroup(
                     title: _getTierTitle(tier, l10n),
                     sponsors: groupedSponsors[tier]!,
                   ),
                 ),
               ),
-          SliverToBoxAdapter(
-            child: ExcludeSemantics(child: SizedBox(height: padding.bottom)),
-          ),
+          SliverToBoxAdapter(child: SizedBox(height: padding.bottom)),
         ],
       ),
     );
   }
 
-  Widget _buildContent(BuildContext context) {
+  @visibleForTesting
+  Widget buildBodyContent(
+    BuildContext context, {
+    required AppLocalizations l10n,
+    required EdgeInsets padding,
+    required bool isLoading,
+    required String? errorMessage,
+    required Map<SponsorTier, List<Sponsor>> sponsors,
+  }) {
+    return switch ((isLoading, errorMessage, sponsors.isEmpty)) {
+      (true, _, _) => _buildLoadingState(l10n, padding),
+      (false, final String msg, _) => _buildErrorState(
+        context,
+        l10n,
+        msg,
+        padding,
+      ),
+      (false, null, true) => _buildEmptyState(l10n),
+      _ => _buildSponsorsList(l10n, sponsors, padding),
+    };
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final l10n = context.l10n;
     final padding = context.padding;
 
-    final isLoading = context.select<SponsorsCubit, bool>(isLoadingSelector);
-    if (isLoading) return _buildLoadingState(l10n, padding);
-
+    final isLoading = context.select<SponsorsCubit, bool>(_isLoadingSelector);
     final errorMessage = context.select<SponsorsCubit, String?>(
-      errorMessageSelector,
+      _errorMessageSelector,
     );
-    if (errorMessage != null) {
-      return _buildErrorState(context, errorMessage, padding);
-    }
-
     final sponsors = context
         .select<SponsorsCubit, Map<SponsorTier, List<Sponsor>>>(
-          sponsorsSelector,
+          _sponsorsSelector,
         );
 
-    if (sponsors.isEmpty) return _buildEmptyState(l10n);
-
-    return _buildSponsorsList(l10n, sponsors, padding);
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: FrostedAppBar(title: Text(context.l10n.sponsorsTabLabel)),
-      body: _buildContent(context),
-    );
-  }
-}
-
-class GroupedSponsors extends StatelessWidget {
-  const GroupedSponsors({
-    required this.title,
-    required this.sponsors,
-    super.key,
-  });
-
-  final String title;
-  final List<Sponsor> sponsors;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: UiConstants.spacing16,
-        vertical: UiConstants.spacing8,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SectionTitle(title: title),
-          SizedBox(
-            width: double.infinity,
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(UiConstants.spacing8),
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    // Calculate logo width based on screen size
-                    // Aim for 2 logos per row on phones, 3-4 on larger devices
-                    final width = constraints.maxWidth;
-                    final itemWidth =
-                        width < 600 ? width / 2 - 24 : width / 3 - 32;
-
-                    return Wrap(
-                      spacing: UiConstants.spacing16,
-                      runSpacing: UiConstants.spacing16,
-                      alignment: WrapAlignment.center,
-                      children:
-                          sponsors.map((sponsor) {
-                            return SizedBox(
-                              width: itemWidth,
-                              height: 80,
-                              child: Center(
-                                child: SponsorLogo(
-                                  imageUrl: sponsor.logo,
-                                  sponsorName: sponsor.name,
-                                  height: 60,
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                            );
-                          }).toList(),
-                    );
-                  },
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class GroupedSponsors1 extends StatelessWidget {
-  const GroupedSponsors1({
-    required this.title,
-    required this.sponsors,
-    super.key,
-  });
-
-  final String title;
-  final List<Sponsor> sponsors;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: UiConstants.spacing16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SectionTitle(title: title),
-          Card(
-            child: Wrap(
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                ...sponsors.map(
-                  (sponsor) => Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: UiConstants.spacing2,
-                    ),
-                    child: SponsorLogo(
-                      imageUrl: sponsor.logo,
-                      sponsorName: sponsor.name,
-                      // width: width / 3,
-                      // height: 40,
-                    ),
-                  ),
-                ),
-                // for (final sponsor in sponsors)
-                //   Padding(
-                //     padding: const EdgeInsets.symmetric(
-                //       horizontal: UiConstants.spacing2,
-                //     ),
-                //     child: SponsorLogo(
-                //       imageUrl: sponsor.logo,
-                //       sponsorName: sponsor.name,
-                //       height: 40,
-                //     ),
-                //   ),
-              ],
-            ),
-          ),
-        ],
+      appBar: FrostedAppBar(title: Text(l10n.sponsorsTabLabel)),
+      body: RefreshIndicator(
+        edgeOffset: padding.top + kToolbarHeight,
+        onRefresh: () => _handleRefreshIndicatorPull(context),
+        child: buildBodyContent(
+          context,
+          l10n: l10n,
+          padding: padding,
+          isLoading: isLoading,
+          errorMessage: errorMessage,
+          sponsors: sponsors,
+        ),
       ),
     );
   }
