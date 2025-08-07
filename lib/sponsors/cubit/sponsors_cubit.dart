@@ -12,10 +12,16 @@ class SponsorsCubit extends Cubit<SponsorsState> {
 
   final SponsorsRepository _repository;
 
-  Future<void> fetchSponsors() async {
+  Future<void> loadSponsors() => _fetchSponsors();
+
+  Future<void> refreshSponsors() => _fetchSponsors(forceRefresh: true);
+
+  Future<void> _fetchSponsors({bool forceRefresh = false}) async {
     emit(const SponsorsLoading());
     try {
-      final sponsors = await _repository.getSponsors();
+      final sponsors = await _repository.getSponsors(
+        forceRefresh: forceRefresh,
+      );
       final groupedSponsors = _groupSponsorsByLevel(sponsors);
 
       emit(SponsorsLoaded(groupedSponsors));

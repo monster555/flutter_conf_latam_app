@@ -30,7 +30,10 @@ Future<AppDependencies> initializeApp() async {
     cache: caches.agenda,
   );
 
-  final sponsorsRepository = SponsorsRepository(dataSource: dataSource);
+  final sponsorsRepository = SponsorsRepository(
+    dataSource: dataSource,
+    cache: caches.sponsors,
+  );
 
   return (
     speakersRepository: speakersRepository,

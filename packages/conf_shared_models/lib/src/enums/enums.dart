@@ -4,4 +4,4 @@ enum Language { spanish, english }
 
 enum SessionType { checkIn, keynote, session, breakTime, workshop, breaks }
 
-enum SponsorTier { platinum, gold, silver, inkind, other }
+enum SponsorTier { platinum, gold, silver, inKind, other }
