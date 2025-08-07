@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_conf_latam/auth/auth_page.dart';
+import 'package:flutter_conf_latam/auth/auth.dart';
 import 'package:flutter_conf_latam/common/common.dart';
 import 'package:flutter_conf_latam/home/home_page.dart';
-import 'package:flutter_conf_latam/onboarding/onboarding_page.dart';
+import 'package:flutter_conf_latam/onboarding/onboarding.dart';
 import 'package:flutter_conf_latam/router/router.dart';
 import 'package:go_router/go_router.dart';
 
@@ -23,11 +23,37 @@ class FCLRouter {
         path: FCLRoutes.auth.path,
         name: FCLRoutes.auth.name,
         builder: AuthPage.builder,
+        routes: [
+          GoRoute(
+            path: FCLRoutes.authError.path,
+            name: FCLRoutes.authError.name,
+            pageBuilder: ErrorDialog.builder,
+          ),
+        ],
       ),
       GoRoute(
         path: FCLRoutes.onboarding.path,
         name: FCLRoutes.onboarding.name,
         builder: OnboardingPage.builder,
+        routes: [
+          GoRoute(
+            path: FCLRoutes.onboardingError.path,
+            name: FCLRoutes.onboardingError.name,
+            pageBuilder: ErrorDialog.builder,
+          ),
+          GoRoute(
+            path: FCLRoutes.fclCard.path,
+            name: FCLRoutes.fclCard.name,
+            pageBuilder: FCLCardDialog.builder,
+            routes: [
+              GoRoute(
+                path: FCLRoutes.sharingFclCard.path,
+                name: FCLRoutes.sharingFclCard.name,
+                pageBuilder: LoadingDialog.builder,
+              ),
+            ],
+          ),
+        ],
       ),
       GoRoute(
         path: FCLRoutes.home.path,
