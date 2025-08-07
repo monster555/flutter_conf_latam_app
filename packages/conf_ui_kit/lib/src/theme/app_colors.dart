@@ -19,6 +19,9 @@ abstract class AppColors {
   static const Color darkCardBackground = Color(0xFF232323);
   static const Color darkText = Color(0xD9FFFFFF);
 
+  // Neutral / Gray
+  static const Color neutralGray = Color(0xFF667085);
+
   // Semantic colors
   static const Color onPrimary = Colors.white;
   static const Color onPrimaryDark = Colors.black;
