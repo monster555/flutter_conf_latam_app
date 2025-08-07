@@ -14,7 +14,7 @@ class Or extends StatelessWidget {
       children: [
         gap32,
         Semantics(
-          value: context.l10n.or,
+          label: context.l10n.or,
           child: Text(context.l10n.or, style: context.textTheme.bodyLarge),
         ),
         gap32,
