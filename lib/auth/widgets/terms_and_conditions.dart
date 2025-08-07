@@ -33,7 +33,7 @@ class TermsAndConditions extends StatelessWidget {
           Row(
             children: [
               Semantics(
-                value:
+                label:
                     '${l10n.accept} ${l10n.termsLabel}'
                     '${l10n.termsAndPrivacyAnd}'
                     '${l10n.privacyPolicyLabel}',
@@ -83,7 +83,7 @@ class _TermsAndConditions extends StatelessWidget {
       color: context.colorScheme.secondary,
     );
     return Semantics(
-      value:
+      label:
           '${l10n.termsAndPrivacyPart1}'
           '${l10n.termsLabel}${l10n.termsAndPrivacyAnd}'
           '${l10n.privacyPolicyLabel}${l10n.termsAndPrivacyPart2}',
