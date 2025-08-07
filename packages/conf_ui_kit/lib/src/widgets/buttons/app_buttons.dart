@@ -5,17 +5,17 @@ class AppBaseButton extends StatelessWidget {
   const AppBaseButton({
     required this.child,
     required this.color,
-    required this.onPressed,
+    this.onPressed,
     super.key,
-    this.borderRadius = const BorderRadius.all(Radius.circular(8)),
+    this.borderRadius,
     this.side = BorderSide.none,
     this.overlayColor,
     this.padding = const EdgeInsets.all(UiConstants.spacing12),
   });
-  final BorderRadiusGeometry borderRadius;
+  final BorderRadiusGeometry? borderRadius;
   final Widget child;
-  final Color color;
-  final VoidCallback onPressed;
+  final Color? color;
+  final VoidCallback? onPressed;
   final BorderSide side;
   final Color? overlayColor;
   final EdgeInsetsGeometry padding;
@@ -29,9 +29,12 @@ class AppBaseButton extends StatelessWidget {
         elevation: 0,
         shadowColor: Colors.transparent,
         padding: padding,
-        shape: RoundedRectangleBorder(side: side, borderRadius: borderRadius),
+        shape: RoundedRectangleBorder(
+          side: side,
+          borderRadius: borderRadius ?? UiConstants.borderRadiusSmall,
+        ),
       ),
-      onPressed: onPressed,
+      onPressed: onPressed ?? () {},
       child: child,
     );
   }
@@ -70,6 +73,52 @@ class SocialButton extends StatelessWidget {
           const SizedBox(width: UiConstants.spacing12),
           Text(text, style: style),
         ],
+      ),
+    );
+  }
+}
+
+class FCLPrimaryButton extends StatelessWidget {
+  const FCLPrimaryButton({
+    required this.text,
+    required this.onPressed,
+    super.key,
+  });
+  final String text;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBaseButton(
+      color: context.theme.primaryColor,
+      overlayColor: context.primaryButtonOverlayColor,
+      onPressed: onPressed,
+      child: Text(text, style: context.primaryButton),
+    );
+  }
+}
+
+class FCLSecondaryButton extends StatelessWidget {
+  const FCLSecondaryButton({
+    required this.text,
+    required this.onPressed,
+    super.key,
+  });
+  final String text;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBaseButton(
+      side: BorderSide(color: context.theme.primaryColor),
+      color: Colors.transparent,
+      overlayColor: context.theme.primaryColor,
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: context.textTheme.bodyMedium?.copyWith(
+          color: context.theme.primaryColor,
+        ),
       ),
     );
   }
