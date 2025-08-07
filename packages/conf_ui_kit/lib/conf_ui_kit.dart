@@ -1,5 +1,5 @@
 export 'src/app_bar/app_bar.dart';
-export 'src/avatars/speaker_avatar.dart';
+export 'src/avatars/avatars.dart';
 export 'src/banners/venue_banner.dart';
 export 'src/cards/cards.dart';
 export 'src/chips/color_chip.dart';
@@ -20,6 +20,7 @@ export 'src/navigation/conference_bottom_navigation_bar.dart';
 export 'src/sections/sections.dart';
 export 'src/sliver/sliver_pinned_header.dart';
 export 'src/snackbar/snackbar.dart';
+export 'src/text_fields/text_fields.dart';
 export 'src/theme/theme.dart';
 export 'src/typography/section_title.dart';
 export 'src/utils/date_format_service.dart';

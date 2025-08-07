@@ -15,12 +15,14 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.profileTooltip,
     required this.onProfileTap,
     super.key,
+    this.avatar,
   });
 
   final String profileLabel;
   final String profileHint;
   final String profileTooltip;
   final VoidCallback onProfileTap;
+  final Widget? avatar;
 
   Widget _buildLeadingLogo(BuildContext context) {
     final assets = context.appAssets;
@@ -52,7 +54,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
     return FrostedAppBar(
       automaticallyImplyLeading: false,
       leading: _buildLeadingLogo(context),
-      actions: [_buildAvatar(colorScheme)],
+      actions: [avatar ?? _buildAvatar(colorScheme)],
     );
   }
 
