@@ -45,7 +45,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get venueBannerSemanticsHint => 'Tap to see venue details';
 
   @override
+  String speakerCardSemanticLabel(String name, String title) {
+    return '$name, $title, tap to view details';
+  }
+
+  @override
   String get speaker => 'Speaker';
+
+  @override
+  String get coSpeakersLabel => 'Co-speakers';
 
   @override
   String get magicBeginsLabel => 'The magic begins in';
@@ -90,6 +98,23 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sessionLevelExpert => 'Expert';
+
+  @override
+  String get sessionDescriptionLabel => 'Description';
+
+  @override
+  String get sessionNoDataAvailable => 'No session data available';
+
+  @override
+  String sessionDetailsSemanticLabel(String title) {
+    return 'Session details for: $title';
+  }
+
+  @override
+  String get sessionFavoriteTooltip => 'Add to favorites';
+
+  @override
+  String get sessionShareTooltip => 'Share this session';
 
   @override
   String sessionsForDate(String date) {
@@ -215,6 +240,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get errorSponsorsNone => 'No sponsors available';
+
+  @override
   String get errorSpeakersNone => 'No speakers available';
 
   @override
@@ -225,6 +253,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get stateLoadingSpeakers => 'Loading Speakers';
+
+  @override
+  String get stateLoadingSponsors => 'Loading Sponsors';
 
   @override
   String get speaks => 'Speaks';

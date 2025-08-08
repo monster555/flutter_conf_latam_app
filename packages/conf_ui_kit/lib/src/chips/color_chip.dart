@@ -1,3 +1,4 @@
+import 'package:conf_ui_kit/src/extensions/theme_extensions.dart';
 import 'package:conf_ui_kit/src/theme/ui_constants.dart';
 import 'package:flutter/material.dart';
 
@@ -17,12 +18,16 @@ class ColorChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorChipTheme = context.colorChipTheme;
+
     return MergeSemantics(
       child: Semantics(
         label: text,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: backgroundColor,
+            color: backgroundColor.withValues(
+              alpha: colorChipTheme.backgroundOpacity,
+            ),
             borderRadius: UiConstants.borderRadiusMedium,
           ),
           child: Padding(
@@ -41,9 +46,7 @@ class ColorChip extends StatelessWidget {
                       color: textColor,
                     ),
                   ),
-                  const ExcludeSemantics(
-                    child: SizedBox(width: UiConstants.spacing4),
-                  ),
+                  const SizedBox(width: UiConstants.spacing4),
                 ],
                 ExcludeSemantics(
                   child: Text(

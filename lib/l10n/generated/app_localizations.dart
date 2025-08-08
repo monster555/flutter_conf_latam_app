@@ -167,11 +167,23 @@ abstract class AppLocalizations {
   /// **'Tap to see venue details'**
   String get venueBannerSemanticsHint;
 
+  /// Semantic label for speaker card accessibility
+  ///
+  /// In en, this message translates to:
+  /// **'{name}, {title}, tap to view details'**
+  String speakerCardSemanticLabel(String name, String title);
+
   /// Label for a speaker
   ///
   /// In en, this message translates to:
   /// **'Speaker'**
   String get speaker;
+
+  /// Label for the Co-speakers
+  ///
+  /// In en, this message translates to:
+  /// **'Co-speakers'**
+  String get coSpeakersLabel;
 
   /// Title shown above the countdown timer
   ///
@@ -256,6 +268,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Expert'**
   String get sessionLevelExpert;
+
+  /// Universal label that works for all session types
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get sessionDescriptionLabel;
+
+  /// Message displayed when no session data is available
+  ///
+  /// In en, this message translates to:
+  /// **'No session data available'**
+  String get sessionNoDataAvailable;
+
+  /// Accessibility label for session details screen
+  ///
+  /// In en, this message translates to:
+  /// **'Session details for: {title}'**
+  String sessionDetailsSemanticLabel(String title);
+
+  /// Tooltip for the favorite button on session details
+  ///
+  /// In en, this message translates to:
+  /// **'Add to favorites'**
+  String get sessionFavoriteTooltip;
+
+  /// Tooltip for the share button on session details
+  ///
+  /// In en, this message translates to:
+  /// **'Share this session'**
+  String get sessionShareTooltip;
 
   /// Header for sessions on a specific date
   ///
@@ -491,6 +533,12 @@ abstract class AppLocalizations {
   /// **'No sessions scheduled for {date}'**
   String errorSessionsNoneForDay(String date);
 
+  /// Message displayed when no sponsors are available
+  ///
+  /// In en, this message translates to:
+  /// **'No sponsors available'**
+  String get errorSponsorsNone;
+
   /// Message displayed when no speakers are available
   ///
   /// In en, this message translates to:
@@ -514,6 +562,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Loading Speakers'**
   String get stateLoadingSpeakers;
+
+  /// Message displayed when the Sponsors are loading
+  ///
+  /// In en, this message translates to:
+  /// **'Loading Sponsors'**
+  String get stateLoadingSponsors;
 
   /// Label for the 'Speaks' widget
   ///

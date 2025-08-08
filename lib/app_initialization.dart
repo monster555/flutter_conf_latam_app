@@ -1,3 +1,4 @@
+import 'package:agenda_repository/agenda_repository.dart';
 import 'package:conf_auth_data_source/conf_auth_data_source.dart';
 import 'package:conf_auth_repository/conf_auth_repository.dart';
 import 'package:conf_cache/conf_cache.dart';
@@ -12,6 +13,7 @@ import 'package:user_repository/user_repository.dart';
 typedef AppDependencies =
     ({
       SpeakersRepository speakersRepository,
+      AgendaRepository agendaRepository,
       SponsorsRepository sponsorsRepository,
       IConfAuthRepository confAuthRepository,
       IUserRepository userRepository,
@@ -31,13 +33,23 @@ Future<AppDependencies> initializeApp() async {
     cache: caches.speakers,
   );
 
+  final agendaRepository = AgendaRepository(
+    dataSource: dataSource,
+    cache: caches.agenda,
+  );
+
+  final sponsorsRepository = SponsorsRepository(
+    dataSource: dataSource,
+    cache: caches.sponsors,
+  );
+
   final connectivityMonitorRepository = ConnectivityMonitorRepository();
 
-  final sponsorsRepository = SponsorsRepository(dataSource: dataSource);
   final confAuthRepository = ConfAuthRepository(authDataSource: authDataSource);
   final userRepository = UserRepository(dataSource: dataSource);
   return (
     speakersRepository: speakersRepository,
+    agendaRepository: agendaRepository,
     sponsorsRepository: sponsorsRepository,
     confAuthRepository: confAuthRepository,
     userRepository: userRepository,

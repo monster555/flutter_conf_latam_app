@@ -8,11 +8,12 @@ environment:
 
 dependencies:
   
+  agenda_repository:
+    path: packages/agenda_repository
   conf_auth_data_source:
     path: packages/conf_auth_data_source
   conf_auth_repository:
     path: packages/conf_auth_repository
-  
   conf_cache:
     path: packages/conf_cache
   conf_cloud_functions_data_source:

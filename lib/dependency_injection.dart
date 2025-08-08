@@ -27,6 +27,7 @@ class DependencyInjection extends StatelessWidget {
         RepositoryProvider.value(
           value: dependencies.connectivityMonitorRepository,
         ),
+        RepositoryProvider.value(value: dependencies.agendaRepository),
         RepositoryProvider(create: (_) => const CaptureUtil()),
         RepositoryProvider(create: (_) => const ShareUtil()),
         BlocProvider(
