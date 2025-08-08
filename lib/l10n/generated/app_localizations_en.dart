@@ -140,22 +140,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get facilitiesCampusTitle => 'Campus Facilities';
 
   @override
-  String get facilitiesCampusDescription => 'The venue offers modern classrooms, auditoriums, and networking spaces equipped with high-speed WiFi throughout the campus.';
+  String get facilitiesCampusDescription =>
+      'The venue offers modern classrooms, auditoriums, and networking spaces equipped with high-speed WiFi throughout the campus.';
 
   @override
   String get facilitiesFoodTitle => 'Food & Refreshments';
 
   @override
-  String get facilitiesFoodDescription => 'Several cafeterias and food options are available on campus, with special menus prepared for conference attendees.';
+  String get facilitiesFoodDescription =>
+      'Several cafeterias and food options are available on campus, with special menus prepared for conference attendees.';
 
   @override
   String get navigatingCampusTitle => 'Getting Around';
 
   @override
-  String get navigatingCampusDescription => 'The campus is easy to navigate with clear signage. Event staff in Flutter blue shirts will be available to help with directions.';
+  String get navigatingCampusDescription =>
+      'The campus is easy to navigate with clear signage. Event staff in Flutter blue shirts will be available to help with directions.';
 
   @override
-  String get accessibilityDescription => 'The venue is fully accessible with ramps, elevators, and accessible restrooms. Contact the organizers if you need any special accommodations.';
+  String get accessibilityDescription =>
+      'The venue is fully accessible with ramps, elevators, and accessible restrooms. Contact the organizers if you need any special accommodations.';
 
   @override
   String venueCapacity(String capacity) {
@@ -163,7 +167,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get imageVenueDescription => 'Image of Universidad de las Américas campus';
+  String get imageVenueDescription =>
+      'Image of Universidad de las Américas campus';
 
   @override
   String get sectionTitleSafety => 'Safety Tips';
@@ -184,49 +189,57 @@ class AppLocalizationsEn extends AppLocalizations {
   String get safetyPrecautionsTipTitle => 'Safety Precautions';
 
   @override
-  String get safetyPrecautionsTipDescription => 'Avoid carrying large amounts of cash, and keep valuables secure in crowded areas.';
+  String get safetyPrecautionsTipDescription =>
+      'Avoid carrying large amounts of cash, and keep valuables secure in crowded areas.';
 
   @override
   String get emergencyContactsTipTitle => 'Emergency Contacts';
 
   @override
-  String get emergencyContactsTipDescription => 'Dial 911 for police, ambulance, or fire services. For tourist assistance, call +593-123-HELP.';
+  String get emergencyContactsTipDescription =>
+      'Dial 911 for police, ambulance, or fire services. For tourist assistance, call +593-123-HELP.';
 
   @override
   String get taxisTipTitle => 'Taxis and Rideshares';
 
   @override
-  String get taxisTipDescription => 'Use authorized taxis or apps like Uber and Cabify. Avoid hailing unregistered taxis.';
+  String get taxisTipDescription =>
+      'Use authorized taxis or apps like Uber and Cabify. Avoid hailing unregistered taxis.';
 
   @override
   String get deliveryAppsTipTitle => 'Delivery Apps';
 
   @override
-  String get deliveryAppsTipDescription => 'Popular options include Rappi and Uber Eats for fast and reliable service.';
+  String get deliveryAppsTipDescription =>
+      'Popular options include Rappi and Uber Eats for fast and reliable service.';
 
   @override
   String get localRestaurantsTipTitle => 'Local Restaurants';
 
   @override
-  String get localRestaurantsTipDescription => 'Taste Ecuadorian favorites like \"locro\" or \"ceviche\" at nearby restaurants like Café Quito.';
+  String get localRestaurantsTipDescription =>
+      'Taste Ecuadorian favorites like \"locro\" or \"ceviche\" at nearby restaurants like Café Quito.';
 
   @override
   String get currencyTipTitle => 'Currency and Payments';
 
   @override
-  String get currencyTipDescription => 'US dollars are used in Ecuador. Credit cards are widely accepted, but keep small bills for taxis or street vendors.';
+  String get currencyTipDescription =>
+      'US dollars are used in Ecuador. Credit cards are widely accepted, but keep small bills for taxis or street vendors.';
 
   @override
   String get atmsTipTitle => 'ATMs and Currency Exchange';
 
   @override
-  String get atmsTipDescription => 'ATMs are available across the city. Avoid using ATMs in isolated or poorly lit areas at night.';
+  String get atmsTipDescription =>
+      'ATMs are available across the city. Avoid using ATMs in isolated or poorly lit areas at night.';
 
   @override
   String get weatherTipTitle => 'Weather Tips';
 
   @override
-  String get weatherTipDescription => 'Bring layers! Quito\'s weather can change from warm and sunny to cool and rainy in minutes.';
+  String get weatherTipDescription =>
+      'Bring layers! Quito\'s weather can change from warm and sunny to cool and rainy in minutes.';
 
   @override
   String get actionRetry => 'Retry';
@@ -274,7 +287,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get agendaPreviewEmptyMessage => 'No sessions to preview yet. Check back soon!';
+  String get agendaPreviewEmptyMessage =>
+      'No sessions to preview yet. Check back soon!';
 
   @override
   String get favoriteSessionsLabel => 'Favorite Sessions';
@@ -291,7 +305,11 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String venueBannerSemanticLabel(String venueName, String location, String dates) {
+  String venueBannerSemanticLabel(
+    String venueName,
+    String location,
+    String dates,
+  ) {
     return 'Venue: $venueName. Location: $location. Dates: $dates';
   }
 
@@ -308,13 +326,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get filterSpeakersTooltip => 'Filter speakers';
 
   @override
-  String get agendaNavigationDescription => '2 days full of talks, workshops, activities and prizes!';
+  String get agendaNavigationDescription =>
+      '2 days full of talks, workshops, activities and prizes!';
 
   @override
-  String get speakersNavigationDescription => 'Over 20 speakers from 5 different countries';
+  String get speakersNavigationDescription =>
+      'Over 20 speakers from 5 different countries';
 
   @override
-  String get sponsorsNavigationDescription => 'Partners and friends who help make this possible';
+  String get sponsorsNavigationDescription =>
+      'Partners and friends who help make this possible';
 
   @override
   String get sponsorTierPlatinum => 'Platinum';
@@ -356,7 +377,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get welcome => 'Welcome';
 
   @override
-  String get welcomeDescription => 'Get ready to experience the best of the Flutter world!';
+  String get welcomeDescription =>
+      'Get ready to experience the best of the Flutter world!';
 
   @override
   String continueWith(Object value) {
@@ -388,7 +410,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accept => 'Accept';
 
   @override
-  String get flutterConfLatamLogoDescription => 'Logo of Flutter Conf Latam, third edition, in Quito, Ecuador.';
+  String get flutterConfLatamLogoDescription =>
+      'Logo of Flutter Conf Latam, third edition, in Quito, Ecuador.';
 
   @override
   String get errorCannotOpenLink => 'Cannot open this link';
@@ -400,7 +423,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get termsAndConditionsErrorTitle => 'One last step';
 
   @override
-  String get termsAndConditionsErrorDescription => 'Please accept our terms and policies.';
+  String get termsAndConditionsErrorDescription =>
+      'Please accept our terms and policies.';
 
   @override
   String get authErrorGenericTitle => 'Oops, something went wrong';
@@ -412,7 +436,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authErrorGenericDescription => 'No worries, let’s try again.';
 
   @override
-  String get authErrorInternetDescription => 'Check your connection and try again when you’re ready.';
+  String get authErrorInternetDescription =>
+      'Check your connection and try again when you’re ready.';
 
   @override
   String get cancelButton => 'Cancel';
