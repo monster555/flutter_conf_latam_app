@@ -1,9 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conf_shared_models/conf_shared_models.dart';
-import 'package:conf_ui_kit/src/extensions/speaker_summary_extensions.dart';
+import 'package:conf_ui_kit/src/avatars/base_avatar.dart';
 import 'package:conf_ui_kit/src/extensions/theme_extensions.dart';
-import 'package:conf_ui_kit/src/theme/ui_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SpeakerAvatar extends StatelessWidget {
   const SpeakerAvatar({
@@ -11,47 +10,86 @@ class SpeakerAvatar extends StatelessWidget {
     this.size = 80,
     this.showFlag = true,
     super.key,
-  });
+  }) : assert(size > 0, 'Avatar size must be positive');
 
   final SpeakerSummary speaker;
   final double size;
   final bool showFlag;
 
-  Widget _buildPlaceholder(ColorScheme colorScheme) {
-    return ColoredBox(
-      color: colorScheme.surfaceContainerHighest,
-      child: Icon(
-        Icons.person,
-        size: size * 0.4,
-        color: colorScheme.onSurfaceVariant,
+  double get _flagSize => size * 0.3;
+  double get _flagBorderWidth => _flagSize * 0.1;
+
+  Widget _buildCountryFlag(ColorScheme colorScheme) {
+    if (speaker.countryFlagUrl.isEmpty) {
+      return _buildFlagPlaceholder(colorScheme);
+    }
+
+    return SizedBox.square(
+      dimension: _flagSize,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(color: Colors.white, width: _flagBorderWidth),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 1),
+            ),
+          ],
+        ),
+        child: ClipOval(
+          child: SvgPicture.network(
+            speaker.countryFlagUrl,
+            width: _flagSize,
+            height: _flagSize,
+            fit: BoxFit.cover,
+            placeholderBuilder:
+                (_) => _buildFlagLoadingPlaceholder(colorScheme),
+          ),
+        ),
       ),
     );
   }
 
-  Widget _buildSpeakerImage(ColorScheme colorScheme) {
-    final placeholder = _buildPlaceholder(colorScheme);
-
-    if (speaker.photo.isEmpty) return placeholder;
-
-    final cacheKey = 'speaker_${speaker.id}-${size.toInt()}';
-
-    return CachedNetworkImage(
-      cacheKey: cacheKey,
-      imageUrl: speaker.photo,
-      fit: BoxFit.cover,
-      width: size,
-      height: size,
-      fadeInDuration: UiConstants.animationMedium,
-      errorWidget: (_, _, _) => placeholder,
+  Widget _buildFlagPlaceholder(ColorScheme colorScheme) {
+    return SizedBox.square(
+      dimension: _flagSize,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: colorScheme.surfaceContainerHigh,
+          border: Border.all(color: Colors.white, width: _flagBorderWidth),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 1),
+            ),
+          ],
+        ),
+        child: Icon(
+          Icons.flag_outlined,
+          size: _flagSize * 0.5,
+          color: colorScheme.onSurfaceVariant,
+        ),
+      ),
     );
   }
 
-  Widget _buildFlagEmoji() {
-    return Text(
-      speaker.flagEmoji,
-      style: const TextStyle(
-        fontSize: UiConstants.iconSizeMedium,
-        shadows: [Shadow(color: Colors.white, blurRadius: 8)],
+  Widget _buildFlagLoadingPlaceholder(ColorScheme colorScheme) {
+    return ColoredBox(
+      color: colorScheme.surfaceContainer,
+      child: Center(
+        child: SizedBox.square(
+          dimension: _flagSize * 0.5,
+          child: CircularProgressIndicator(
+            strokeWidth: 1.5,
+            valueColor: AlwaysStoppedAnimation<Color>(
+              colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -62,26 +100,24 @@ class SpeakerAvatar extends StatelessWidget {
 
     final semanticLabel =
         'Profile picture of ${speaker.name} from ${speaker.country}';
+    final cacheKey = 'speaker_${speaker.id}_${size.toInt()}';
 
-    return Semantics(
-      label: semanticLabel,
-      image: true, // Identifies this as an image to screen readers
-      excludeSemantics: true,
-      child: SizedBox.square(
-        dimension: size,
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(size / 2),
-              child: _buildSpeakerImage(colorScheme),
-            ),
-
-            if (showFlag && speaker.countryCode.isNotEmpty)
-              Positioned(bottom: -8, right: 0, child: _buildFlagEmoji()),
-          ],
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        BaseAvatar(
+          imageUrl: speaker.photo,
+          cacheKey: cacheKey,
+          size: size,
+          semanticLabel: semanticLabel,
         ),
-      ),
+        if (showFlag && speaker.countryCode.isNotEmpty)
+          Positioned(
+            bottom: -(_flagBorderWidth / 2),
+            right: -(_flagBorderWidth / 2),
+            child: ExcludeSemantics(child: _buildCountryFlag(colorScheme)),
+          ),
+      ],
     );
   }
 }
