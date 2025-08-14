@@ -30,7 +30,7 @@ class VenueBanner extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(title),
-        const ExcludeSemantics(child: SizedBox(height: 4)),
+        const SizedBox(height: UiConstants.spacing4),
         _BannerCard(
           venueName: venueName,
           location: location,

@@ -46,9 +46,7 @@ class SpeakerCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SpeakerAvatar(speaker: speaker, size: cardSize.avatarSize),
-                const ExcludeSemantics(
-                  child: SizedBox(width: UiConstants.spacing16),
-                ),
+                const SizedBox(width: UiConstants.spacing16),
                 Expanded(
                   child: ExcludeSemantics(
                     child: Column(
@@ -63,15 +61,6 @@ class SpeakerCard extends StatelessWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        // if (showBio && speaker.description.isNotEmpty) ...[
-                        //   const SizedBox(height: UiConstants.spacing8),
-                        //   Text(
-                        //     speaker.description,
-                        //     style: textTheme.bodySmall,
-                        //     maxLines: maxBioLines,
-                        //     overflow: TextOverflow.ellipsis,
-                        //   ),
-                        // ],
                       ],
                     ),
                   ),
