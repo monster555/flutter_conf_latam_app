@@ -25,5 +25,6 @@ const _$SponsorTierEnumMap = {
   SponsorTier.gold: 'gold',
   SponsorTier.silver: 'silver',
   SponsorTier.inKind: 'inKind',
+  SponsorTier.senior: 'senior',
   SponsorTier.other: 'other',
 };
