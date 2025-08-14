@@ -2,6 +2,7 @@ import 'package:agenda_repository/agenda_repository.dart';
 import 'package:conf_cache/conf_cache.dart';
 import 'package:conf_cloud_functions_data_source/conf_cloud_functions_data_source.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_conf_latam/firebase_options.dart';
 import 'package:speakers_repository/speakers_repository.dart';
 import 'package:sponsors_repository/sponsors_repository.dart';
@@ -15,6 +16,10 @@ typedef AppDependencies =
 
 Future<AppDependencies> initializeApp() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+    DeviceOrientation.portraitUp,
+  ]);
 
   final caches = await ConfCacheSystem.initialize();
 
