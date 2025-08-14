@@ -1,7 +1,7 @@
 name: flutter_conf_latam
 description: "FlutterConf - LATAM"
 publish_to: 'none'
-version: 0.1.0
+version: 0.1.1+2
 
 environment:
   sdk: ^3.7.0
@@ -43,5 +43,6 @@ flutter:
 
   assets:
     - assets/images/udla.webp
+    - assets/icons/
 
   generate: true
