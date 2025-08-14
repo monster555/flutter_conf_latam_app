@@ -10,14 +10,34 @@ class SectionNavigationCard extends StatelessWidget {
     required this.title,
     required this.description,
     required this.onTap,
-    required this.icon,
+    this.assetPath,
     super.key,
   });
+
+  static const _indicatorSize = 48.0;
 
   final String title;
   final String description;
   final VoidCallback onTap;
-  final IconData icon;
+  final String? assetPath;
+
+  /// Builds the visual indicator widget (asset or icon).
+  Widget _buildIndicator(ColorScheme colorScheme) {
+    // Prioritize asset path over icon
+    if (assetPath != null) {
+      return Image.asset(
+        assetPath!,
+        // Fallback to icon if asset fails to load
+        errorBuilder: (_, _, _) => _buildIconWidget(colorScheme),
+      );
+    }
+
+    return _buildIconWidget(colorScheme);
+  }
+
+  /// Builds the fallback icon widget.
+  Widget _buildIconWidget(ColorScheme colorScheme) =>
+      Icon(Icons.apps, size: _indicatorSize, color: colorScheme.primary);
 
   Widget _buildContent(TextTheme textTheme) {
     return Expanded(
@@ -63,11 +83,7 @@ class SectionNavigationCard extends StatelessWidget {
               padding: const EdgeInsets.all(UiConstants.spacing16),
               child: Row(
                 children: [
-                  Icon(
-                    icon,
-                    size: UiConstants.iconSizeLarge,
-                    color: colorScheme.primary,
-                  ),
+                  ExcludeSemantics(child: _buildIndicator(colorScheme)),
                   const SizedBox(width: UiConstants.spacing16),
                   _buildContent(textTheme),
                   const SizedBox(width: UiConstants.spacing8),
