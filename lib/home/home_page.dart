@@ -55,9 +55,7 @@ class HomePage extends StatelessWidget {
               ),
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
-                  const ExcludeSemantics(
-                    child: SizedBox(height: UiConstants.spacing16),
-                  ),
+                  const SizedBox(height: UiConstants.spacing16),
                   VenueBanner(
                     title: l10n.venueBannerTitle,
                     imagePath: 'assets/images/udla.webp',
@@ -72,25 +70,23 @@ class HomePage extends StatelessWidget {
                     semanticHint: l10n.venueBannerSemanticsHint,
                     onTap: () => context.push<void>(const VenuePage()),
                   ),
-                  const ExcludeSemantics(
-                    child: SizedBox(height: UiConstants.spacing16),
-                  ),
+                  const SizedBox(height: UiConstants.spacing16),
                   SectionNavigationCard(
                     title: l10n.agendaTabLabel,
                     description: l10n.agendaNavigationDescription,
-                    icon: Icons.calendar_today,
+                    assetPath: 'assets/icons/agenda_icon.png',
                     onTap: () => context.push<void>(const AgendaPage()),
                   ),
                   SectionNavigationCard(
                     title: l10n.speakersTabLabel,
                     description: l10n.speakersNavigationDescription,
-                    icon: Icons.people,
+                    assetPath: 'assets/icons/speakers_icon.png',
                     onTap: () => context.push<void>(const SpeakersPage()),
                   ),
                   SectionNavigationCard(
                     title: l10n.sponsorsTabLabel,
                     description: l10n.sponsorsNavigationDescription,
-                    icon: Icons.business,
+                    assetPath: 'assets/icons/sponsors_icon.png',
                     onTap: () => context.push<void>(const SponsorsPage()),
                   ),
                 ]),
