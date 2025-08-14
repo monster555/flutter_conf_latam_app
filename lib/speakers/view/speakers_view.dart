@@ -11,26 +11,46 @@ import 'package:flutter_conf_latam/speakers/cubit/speakers_cubit.dart';
 class SpeakersView extends StatelessWidget {
   const SpeakersView({super.key});
 
-  static bool isLoadingSelector(SpeakersCubit cubit) =>
+  static const Key _retryButtonKey = Key('speakers_retry_button');
+  static const Key _speakersListKey = PageStorageKey<String>('speakers_list');
+  static const List<SpeakerSummary> _emptySpeakersList = [];
+
+  static bool _isLoadingSelector(SpeakersCubit cubit) =>
       cubit.state is SpeakersLoading;
 
-  static String? errorMessageSelector(SpeakersCubit cubit) {
+  static String? _errorMessageSelector(SpeakersCubit cubit) {
     final state = cubit.state;
     if (state case SpeakersError(:final message)) return message;
     return null;
   }
 
-  static List<SpeakerSummary> speakersSelector(SpeakersCubit cubit) {
+  static List<SpeakerSummary> _speakersSelector(SpeakersCubit cubit) {
     final state = cubit.state;
     if (state case SpeakersLoaded(:final speakers)) return speakers;
-    return const <SpeakerSummary>[];
+    return _emptySpeakersList;
   }
 
-  static bool hasFilterableContentSelector(SpeakersCubit cubit) {
+  static bool _hasFilterableContentSelector(SpeakersCubit cubit) {
     final state = cubit.state;
 
     return state is SpeakersLoaded && state.speakers.isNotEmpty;
   }
+
+  Future<void> _refreshSpeakers(BuildContext context) async {
+    final languageCode = context.languageCode;
+    await context.read<SpeakersCubit>().refreshSpeakers(
+      languageCode: languageCode,
+    );
+  }
+
+  void _handleRetryButtonPressed(BuildContext context) =>
+      _refreshSpeakers(context);
+
+  Future<void> _handleRefreshIndicatorPull(BuildContext context) =>
+      _refreshSpeakers(context);
+
+  void _handleSpeakerTap(BuildContext context, SpeakerSummary speaker) =>
+      context.push<void>(SpeakerDetailsPage(speaker));
 
   Widget _buildLoadingState(AppLocalizations l10n, EdgeInsets padding) {
     final topPadding = padding.top + kToolbarHeight;
@@ -49,6 +69,7 @@ class SpeakersView extends StatelessWidget {
 
   Widget _buildErrorState(
     BuildContext context,
+    AppLocalizations l10n,
     String errorMessage,
     EdgeInsets padding,
   ) {
@@ -66,14 +87,9 @@ class SpeakersView extends StatelessWidget {
               Text(errorMessage),
               const SizedBox(height: UiConstants.spacing16),
               ElevatedButton(
-                key: const Key('speakers_retry_button'),
-                onPressed: () {
-                  final languageCode = context.languageCode;
-                  context.read<SpeakersCubit>().fetchSpeakers(
-                    languageCode: languageCode,
-                  );
-                },
-                child: Text(context.l10n.actionRetry),
+                key: _retryButtonKey,
+                onPressed: () => _handleRetryButtonPressed(context),
+                child: Text(l10n.actionRetry),
               ),
             ],
           ),
@@ -93,12 +109,20 @@ class SpeakersView extends StatelessWidget {
     );
   }
 
-  Widget _buildSpeakerCard(BuildContext context, SpeakerSummary speaker) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: UiConstants.spacing16),
-      child: SpeakerCard(
-        speaker: speaker,
-        onTap: () => context.push<void>(SpeakerDetailsPage(speaker)),
+  Widget _buildSpeakerCard(
+    BuildContext context,
+    AppLocalizations l10n,
+    SpeakerSummary speaker,
+  ) {
+    return Semantics(
+      button: true,
+      label: l10n.speakerCardSemanticLabel(speaker.name, speaker.title),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: UiConstants.spacing16),
+        child: SpeakerCard(
+          speaker: speaker,
+          onTap: () => _handleSpeakerTap(context, speaker),
+        ),
       ),
     );
   }
@@ -115,7 +139,7 @@ class SpeakersView extends StatelessWidget {
       label: l10n.speakersTabLabel,
       explicitChildNodes: true,
       child: CustomScrollView(
-        key: const PageStorageKey<String>('speakers_list'),
+        key: _speakersListKey,
         slivers: [
           SliverPadding(
             padding: EdgeInsets.fromLTRB(
@@ -130,7 +154,7 @@ class SpeakersView extends StatelessWidget {
                 (context, index) {
                   final speaker = speakers[index];
 
-                  return _buildSpeakerCard(context, speaker);
+                  return _buildSpeakerCard(context, l10n, speaker);
                 },
               ),
             ),
@@ -151,7 +175,12 @@ class SpeakersView extends StatelessWidget {
   }) {
     return switch ((isLoading, errorMessage, speakers.isEmpty)) {
       (true, _, _) => _buildLoadingState(l10n, padding),
-      (false, final String msg, _) => _buildErrorState(context, msg, padding),
+      (false, final String msg, _) => _buildErrorState(
+        context,
+        l10n,
+        msg,
+        padding,
+      ),
       (false, null, true) => _buildEmptyState(l10n),
       _ => _buildSpeakersList(l10n, speakers, padding),
     };
@@ -162,15 +191,15 @@ class SpeakersView extends StatelessWidget {
     final l10n = context.l10n;
     final padding = context.padding;
 
-    final isLoading = context.select<SpeakersCubit, bool>(isLoadingSelector);
+    final isLoading = context.select<SpeakersCubit, bool>(_isLoadingSelector);
     final errorMessage = context.select<SpeakersCubit, String?>(
-      errorMessageSelector,
+      _errorMessageSelector,
     );
     final speakers = context.select<SpeakersCubit, List<SpeakerSummary>>(
-      speakersSelector,
+      _speakersSelector,
     );
     final hasFilterableContent = context.select<SpeakersCubit, bool>(
-      hasFilterableContentSelector,
+      _hasFilterableContentSelector,
     );
 
     return Scaffold(
@@ -186,13 +215,17 @@ class SpeakersView extends StatelessWidget {
             ),
         ],
       ),
-      body: buildBodyContent(
-        context,
-        isLoading: isLoading,
-        errorMessage: errorMessage,
-        speakers: speakers,
-        l10n: l10n,
-        padding: padding,
+      body: RefreshIndicator(
+        edgeOffset: padding.top + kToolbarHeight,
+        onRefresh: () => _handleRefreshIndicatorPull(context),
+        child: buildBodyContent(
+          context,
+          isLoading: isLoading,
+          errorMessage: errorMessage,
+          speakers: speakers,
+          l10n: l10n,
+          padding: padding,
+        ),
       ),
     );
   }
