@@ -15,6 +15,10 @@ class SpeakersSection extends StatelessWidget {
     super.key,
   });
 
+  static const EdgeInsets _itemPadding = EdgeInsets.symmetric(
+    horizontal: UiConstants.spacing2,
+  );
+
   /// Title for the section
   final String sectionTitle;
 
@@ -35,16 +39,14 @@ class SpeakersSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SectionTitle(title: sectionTitle),
-          const ExcludeSemantics(child: SizedBox(height: UiConstants.spacing8)),
+          const SizedBox(height: UiConstants.spacing8),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
                 for (final speaker in speakers)
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: UiConstants.spacing2,
-                    ),
+                    padding: _itemPadding,
                     child: _SpeakerItem(
                       speaker: speaker,
                       onTap: () => onSpeakerTap(speaker),
@@ -62,6 +64,12 @@ class SpeakersSection extends StatelessWidget {
 class _SpeakerItem extends StatelessWidget {
   const _SpeakerItem({required this.speaker, required this.onTap});
 
+  static const Widget _verticalSpacing = SizedBox(height: UiConstants.spacing8);
+
+  static const EdgeInsets _speakerNamePadding = EdgeInsets.symmetric(
+    vertical: UiConstants.spacing8,
+  );
+
   final SpeakerSummary speaker;
   final VoidCallback onTap;
 
@@ -78,13 +86,9 @@ class _SpeakerItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SpeakerAvatar(speaker: speaker),
-            const ExcludeSemantics(
-              child: SizedBox(height: UiConstants.spacing8),
-            ),
+            _verticalSpacing,
             Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: UiConstants.spacing8,
-              ),
+              padding: _speakerNamePadding,
               child: SizedBox(
                 width: UiConstants.speakerCardWidth,
                 child: Text(

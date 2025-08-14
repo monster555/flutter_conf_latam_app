@@ -33,7 +33,7 @@ class IconLabelList extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             for (int i = 0; i < items.length; i++) ...[
-              if (i > 0) ExcludeSemantics(child: SizedBox(height: spacing)),
+              if (i > 0) SizedBox(height: spacing),
               _IconLabelRow(item: items[i]),
             ],
           ],

@@ -84,9 +84,7 @@ class FrostedAppBar extends StatelessWidget implements PreferredSizeWidget {
                 children: [
                   if (effectiveLeading != null) ...[
                     effectiveLeading,
-                    const ExcludeSemantics(
-                      child: SizedBox(width: UiConstants.spacing16),
-                    ),
+                    const SizedBox(width: UiConstants.spacing16),
                   ],
 
                   if (title != null)
