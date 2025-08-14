@@ -7,7 +7,8 @@ extension SponsorTierX on SponsorTier {
     'platinum' => SponsorTier.platinum,
     'gold' => SponsorTier.gold,
     'silver' => SponsorTier.silver,
-    'inkind' => SponsorTier.inKind,
+    'inkind' || 'inKind' => SponsorTier.inKind,
+    'senior' => SponsorTier.senior,
     _ => SponsorTier.other,
   };
 
@@ -16,6 +17,7 @@ extension SponsorTierX on SponsorTier {
     SponsorTier.gold => 2,
     SponsorTier.silver => 3,
     SponsorTier.inKind => 4,
-    SponsorTier.other => 5,
+    SponsorTier.senior => 5,
+    SponsorTier.other => 6,
   };
 }
