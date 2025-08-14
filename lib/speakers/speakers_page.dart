@@ -18,7 +18,7 @@ class SpeakersPage extends StatelessWidget {
 
         WidgetsBinding.instance.addPostFrameCallback((_) {
           final languageCode = context.languageCode;
-          cubit.fetchSpeakers(languageCode: languageCode);
+          cubit.loadSpeakers(languageCode: languageCode);
         });
 
         return cubit;
