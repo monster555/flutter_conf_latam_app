@@ -350,6 +350,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sponsorTierInkind => 'En especie';
 
   @override
+  String get sponsorTierSenior => 'Senior';
+
+  @override
   String get sponsorTierOther => 'Otros';
 
   @override

@@ -702,6 +702,12 @@ abstract class AppLocalizations {
   /// **'In-kind'**
   String get sponsorTierInkind;
 
+  /// Senior sponsor tier
+  ///
+  /// In en, this message translates to:
+  /// **'Senior'**
+  String get sponsorTierSenior;
+
   /// Other sponsor tier
   ///
   /// In en, this message translates to:
