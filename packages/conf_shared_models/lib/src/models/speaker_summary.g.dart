@@ -14,6 +14,7 @@ SpeakerSummary _$SpeakerSummaryFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String,
       country: json['country'] as String,
       countryCode: json['country_code'] as String,
+      countryFlagUrl: json['country_flag'] as String,
       languages:
           (json['languages'] as List<dynamic>)
               .map((e) => $enumDecode(_$LanguageEnumMap, e))
@@ -29,6 +30,7 @@ Map<String, dynamic> _$SpeakerSummaryToJson(
   'title': instance.title,
   'country': instance.country,
   'country_code': instance.countryCode,
+  'country_flag': instance.countryFlagUrl,
   'languages': instance.languages.map((e) => _$LanguageEnumMap[e]!).toList(),
 };
 
