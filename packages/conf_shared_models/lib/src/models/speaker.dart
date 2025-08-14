@@ -15,6 +15,7 @@ class Speaker {
     required this.description,
     required this.country,
     required this.countryCode,
+    required this.countryFlagUrl,
     required this.socialMediaLinks,
     required this.languages,
   });
@@ -32,6 +33,8 @@ class Speaker {
   final String description;
   final String country;
   final String countryCode;
+  @JsonKey(name: 'country_flag')
+  final String countryFlagUrl;
   final List<Language> languages;
   final List<SocialMediaLink> socialMediaLinks;
 }
