@@ -10,13 +10,21 @@ import 'package:flutter_conf_latam/venue/venue_page.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  static final _eventStartDate = DateTime(2025, 9, 9);
+  static const _venueName = 'Universidad de las Américas';
+  static const _location = 'Quito, Ecuador';
+  static const _bannerAssetPath = 'assets/images/udla.webp';
+  static const _agendaIconPath = 'assets/icons/agenda_icon.png';
+  static const _speakersIconPath = 'assets/icons/speakers_icon.png';
+  static const _sponsorsIconPath = 'assets/icons/sponsors_icon.png';
+
+  bool get _shouldShowCountdown => DateTime.now().isBefore(_eventStartDate);
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final padding = context.padding;
 
-    const venueName = 'Universidad de las Américas';
-    const location = 'Quito, Ecuador';
     final dates = l10n.conferenceDates(9, 10);
 
     return Semantics(
@@ -32,19 +40,20 @@ class HomePage extends StatelessWidget {
         ),
         body: CustomScrollView(
           slivers: [
-            SliverPinnedHeader(
-              child: Padding(
-                padding: EdgeInsets.only(top: padding.top + kToolbarHeight),
-                child: CountdownWidget(
-                  title: l10n.magicBeginsLabel,
-                  targetDate: DateTime(2025, 9, 9),
-                  daysLabel: l10n.days,
-                  hoursLabel: l10n.hours,
-                  minutesLabel: l10n.minutes,
-                  secondsLabel: l10n.seconds,
+            if (_shouldShowCountdown)
+              SliverPinnedHeader(
+                child: Padding(
+                  padding: EdgeInsets.only(top: padding.top + kToolbarHeight),
+                  child: CountdownWidget(
+                    title: l10n.magicBeginsLabel,
+                    targetDate: _eventStartDate,
+                    daysLabel: l10n.days,
+                    hoursLabel: l10n.hours,
+                    minutesLabel: l10n.minutes,
+                    secondsLabel: l10n.seconds,
+                  ),
                 ),
               ),
-            ),
 
             SliverPadding(
               padding: EdgeInsets.fromLTRB(
@@ -58,13 +67,13 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: UiConstants.spacing16),
                   VenueBanner(
                     title: l10n.venueBannerTitle,
-                    imagePath: 'assets/images/udla.webp',
-                    venueName: venueName,
-                    location: location,
+                    imagePath: _bannerAssetPath,
+                    venueName: _venueName,
+                    location: _location,
                     dates: dates,
                     semanticLabel: l10n.venueBannerSemanticLabel(
-                      venueName,
-                      location,
+                      _venueName,
+                      _location,
                       dates,
                     ),
                     semanticHint: l10n.venueBannerSemanticsHint,
@@ -74,19 +83,19 @@ class HomePage extends StatelessWidget {
                   SectionNavigationCard(
                     title: l10n.agendaTabLabel,
                     description: l10n.agendaNavigationDescription,
-                    assetPath: 'assets/icons/agenda_icon.png',
+                    assetPath: _agendaIconPath,
                     onTap: () => context.push<void>(const AgendaPage()),
                   ),
                   SectionNavigationCard(
                     title: l10n.speakersTabLabel,
                     description: l10n.speakersNavigationDescription,
-                    assetPath: 'assets/icons/speakers_icon.png',
+                    assetPath: _speakersIconPath,
                     onTap: () => context.push<void>(const SpeakersPage()),
                   ),
                   SectionNavigationCard(
                     title: l10n.sponsorsTabLabel,
                     description: l10n.sponsorsNavigationDescription,
-                    assetPath: 'assets/icons/sponsors_icon.png',
+                    assetPath: _sponsorsIconPath,
                     onTap: () => context.push<void>(const SponsorsPage()),
                   ),
                 ]),
