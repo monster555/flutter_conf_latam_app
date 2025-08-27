@@ -7,31 +7,30 @@ sealed class SponsorsState extends Equatable {
   List<Object> get props => [];
 }
 
-class SponsorsInitial extends SponsorsState {
+final class SponsorsInitial extends SponsorsState {
   const SponsorsInitial();
 
   @override
   List<Object> get props => [];
 }
 
-class SponsorsLoading extends SponsorsState {
+final class SponsorsLoading extends SponsorsState {
   const SponsorsLoading();
 
   @override
   List<Object> get props => [];
 }
 
-class SponsorsLoaded extends SponsorsState {
+final class SponsorsLoaded extends SponsorsState {
   const SponsorsLoaded(this.groupedSponsors);
 
   final Map<SponsorTier, List<Sponsor>> groupedSponsors;
-  // final List<Sponsor> sponsors;
 
   @override
   List<Object> get props => [groupedSponsors];
 }
 
-class SponsorsError extends SponsorsState {
+final class SponsorsError extends SponsorsState {
   const SponsorsError(this.message);
 
   final String message;

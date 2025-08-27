@@ -6,17 +6,17 @@ import 'package:conf_data_source/conf_data_source.dart';
 
 class ConfCloudFunctionsDataSource implements ConfDataSource {
   ConfCloudFunctionsDataSource({FirebaseFunctions? functionsInstance})
-    : functions = functionsInstance ?? FirebaseFunctions.instance;
+    : _functions = functionsInstance ?? FirebaseFunctions.instance;
 
   static const Duration _defaultTimeout = Duration(seconds: 30);
   static const String _defaultLanguageCode = 'es';
 
-  final FirebaseFunctions functions;
+  final FirebaseFunctions _functions;
 
   @override
   Future<List<Map<String, dynamic>>> getSpeakers({String? languageCode}) async {
     try {
-      final result = await functions
+      final result = await _functions
           .httpsCallable('getSpeakers')
           .call<List<Object?>>({'lang': languageCode ?? _defaultLanguageCode})
           .timeout(_defaultTimeout);
@@ -37,7 +37,7 @@ class ConfCloudFunctionsDataSource implements ConfDataSource {
     String? languageCode,
   }) async {
     try {
-      final result = await functions
+      final result = await _functions
           .httpsCallable('getSpeakerById')
           .call<Object?>({
             'speakerId': id,
@@ -61,7 +61,7 @@ class ConfCloudFunctionsDataSource implements ConfDataSource {
   @override
   Future<List<Map<String, dynamic>>> getSessions({String? languageCode}) async {
     try {
-      final result = await functions
+      final result = await _functions
           .httpsCallable('getConferenceSchedule')
           .call<Object?>({'lang': languageCode ?? _defaultLanguageCode})
           .timeout(_defaultTimeout);
@@ -87,7 +87,7 @@ class ConfCloudFunctionsDataSource implements ConfDataSource {
   @override
   Future<List<Map<String, dynamic>>> getSponsors() async {
     try {
-      final result = await functions
+      final result = await _functions
           .httpsCallable('getSponsors')
           .call<List<Object?>>()
           .timeout(_defaultTimeout);

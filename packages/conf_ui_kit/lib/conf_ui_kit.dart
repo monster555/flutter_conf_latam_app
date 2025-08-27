@@ -1,5 +1,5 @@
 export 'src/app_bar/app_bar.dart';
-export 'src/avatars/speaker_avatar.dart';
+export 'src/avatars/avatars.dart';
 export 'src/banners/venue_banner.dart';
 export 'src/cards/cards.dart';
 export 'src/chips/color_chip.dart';
