@@ -30,12 +30,6 @@ class SpeakersView extends StatelessWidget {
     return _emptySpeakersList;
   }
 
-  static bool _hasFilterableContentSelector(SpeakersCubit cubit) {
-    final state = cubit.state;
-
-    return state is SpeakersLoaded && state.speakers.isNotEmpty;
-  }
-
   Future<void> _refreshSpeakers(BuildContext context) async {
     final languageCode = context.languageCode;
     await context.read<SpeakersCubit>().refreshSpeakers(
@@ -198,23 +192,10 @@ class SpeakersView extends StatelessWidget {
     final speakers = context.select<SpeakersCubit, List<SpeakerSummary>>(
       _speakersSelector,
     );
-    final hasFilterableContent = context.select<SpeakersCubit, bool>(
-      _hasFilterableContentSelector,
-    );
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: FrostedAppBar(
-        title: Text(l10n.speakersTabLabel),
-        actions: [
-          if (hasFilterableContent)
-            IconButton(
-              icon: const Icon(Icons.filter_list_outlined),
-              tooltip: l10n.filterSpeakersTooltip,
-              onPressed: () {},
-            ),
-        ],
-      ),
+      appBar: FrostedAppBar(title: Text(l10n.speakersTabLabel)),
       body: RefreshIndicator(
         edgeOffset: padding.top + kToolbarHeight,
         onRefresh: () => _handleRefreshIndicatorPull(context),
