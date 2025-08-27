@@ -1,7 +1,6 @@
 import 'package:conf_shared_models/conf_shared_models.dart';
 import 'package:conf_ui_kit/src/cards/session/session_content_section.dart';
 import 'package:conf_ui_kit/src/extensions/session_extensions.dart';
-import 'package:conf_ui_kit/src/extensions/session_level_extensions.dart';
 import 'package:conf_ui_kit/src/extensions/theme_extensions.dart';
 import 'package:conf_ui_kit/src/theme/ui_constants.dart';
 import 'package:conf_ui_kit/src/utils/date_format_service.dart';
@@ -42,14 +41,11 @@ class SessionCard extends StatelessWidget {
     }
 
     if (session.shouldDisplayLevel) {
-      final levelText =
-          levelLabels[session.displayLevel] ??
-          session.displayLevel!.defaultText;
-      buffer.write('. Level: $levelText');
+      buffer.write('. Level: ${session.levelText(levelLabels)}');
     }
 
     if (session.shouldDisplayLanguage) {
-      buffer.write('. Language: ${session.language.name}');
+      buffer.write('. Language: ${session.language?.name}');
     }
 
     return buffer.toString();
