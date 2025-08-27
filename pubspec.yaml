@@ -1,7 +1,7 @@
 name: flutter_conf_latam
 description: "FlutterConf - LATAM"
 publish_to: 'none'
-version: 0.1.1+2
+version: 0.1.2+6
 
 environment:
   sdk: ^3.7.0
@@ -34,6 +34,7 @@ dependencies:
   url_launcher: ^6.3.1
   
 dev_dependencies:
+  flutter_launcher_icons: ^0.14.4
   flutter_test:
     sdk: flutter
   very_good_analysis: ^7.0.0
@@ -43,6 +44,12 @@ flutter:
 
   assets:
     - assets/images/udla.webp
+    - assets/icons/agenda/
     - assets/icons/
 
   generate: true
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/launcher_icon/launcher_icon.png"
