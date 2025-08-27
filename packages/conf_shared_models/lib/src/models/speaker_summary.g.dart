@@ -15,10 +15,9 @@ SpeakerSummary _$SpeakerSummaryFromJson(Map<String, dynamic> json) =>
       country: json['country'] as String,
       countryCode: json['country_code'] as String,
       countryFlagUrl: json['country_flag'] as String,
-      languages:
-          (json['languages'] as List<dynamic>)
-              .map((e) => $enumDecode(_$LanguageEnumMap, e))
-              .toList(),
+      languages: (json['languages'] as List<dynamic>)
+          .map((e) => $enumDecode(_$LanguageEnumMap, e))
+          .toList(),
     );
 
 Map<String, dynamic> _$SpeakerSummaryToJson(
