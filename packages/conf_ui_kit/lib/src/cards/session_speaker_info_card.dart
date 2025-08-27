@@ -88,7 +88,10 @@ class SessionSpeakerInfoCard extends StatelessWidget {
             children: [
               IconLabel(icon: Icons.access_time, label: sessionTime),
               const SizedBox(height: UiConstants.spacing4),
-              IconLabel(icon: Icons.location_on_outlined, label: track),
+              IconLabel(
+                icon: Icons.location_on_outlined,
+                label: 'Track $track',
+              ),
             ],
           ),
         ],

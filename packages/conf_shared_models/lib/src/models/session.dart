@@ -1,3 +1,5 @@
+import 'package:conf_shared_models/src/converters/session_level_converter.dart';
+import 'package:conf_shared_models/src/converters/session_type_converter.dart';
 import 'package:conf_shared_models/src/enums/enums.dart';
 import 'package:conf_shared_models/src/models/session_speaker.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -13,7 +15,7 @@ class Session {
     required this.track,
     required this.startDate,
     required this.endDate,
-    required this.language,
+    this.language,
     this.description,
     this.level,
     this.speakers,
@@ -29,10 +31,14 @@ class Session {
   final String id;
   final String title;
   final String? description;
+
+  @SessionTypeConverter()
   final SessionType type;
   final int track;
+
+  @SessionLevelConverter()
   final SessionLevel? level;
-  final Language language;
+  final Language? language;
   final List<SessionSpeaker>? speakers;
   final List<String>? tags;
   final List<String>? requirements;
