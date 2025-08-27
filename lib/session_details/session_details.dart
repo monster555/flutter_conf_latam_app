@@ -8,9 +8,6 @@ class SessionDetailsPage extends StatelessWidget {
 
   final Session session;
 
-  static const Key _favoriteButtonKey = Key('session_favorite_button');
-  static const Key _shareButtonKey = Key('session_share_button');
-
   Widget _buildSessionHeader(
     AppLocalizations l10n,
     TextTheme textTheme,
@@ -175,31 +172,24 @@ class SessionDetailsPage extends StatelessWidget {
     final textTheme = context.textTheme;
     final padding = context.padding;
     final formatter = DateFormatService.withContext(context);
-    final formattedStartTime = formatter.formatDateAndTime(session.startDate);
+    final formattedDateTimeRange = formatter.formatDateWithTimeRange(
+      session.startDate,
+      session.endDate,
+    );
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: FrostedAppBar(
-        actions: [
-          IconButton(
-            key: _favoriteButtonKey,
-            onPressed: () {},
-            icon: const Icon(Icons.favorite_border_outlined),
-            tooltip: l10n.sessionFavoriteTooltip,
-          ),
-          IconButton(
-            key: _shareButtonKey,
-            onPressed: () {},
-            icon: const Icon(Icons.ios_share_outlined),
-            tooltip: l10n.sessionShareTooltip,
-          ),
-        ],
-      ),
+      appBar: const FrostedAppBar(),
       body: Semantics(
         label: l10n.sessionDetailsSemanticLabel(session.title),
         container: true,
         explicitChildNodes: true,
-        child: buildBodyContent(l10n, textTheme, padding, formattedStartTime),
+        child: buildBodyContent(
+          l10n,
+          textTheme,
+          padding,
+          formattedDateTimeRange,
+        ),
       ),
     );
   }

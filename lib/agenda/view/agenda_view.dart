@@ -249,18 +249,7 @@ class AgendaView extends StatelessWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: FrostedAppBar(
-        title: Text(l10n.agendaTabLabel),
-        actions: [
-          if (availableDates.isNotEmpty)
-            IconButton(
-              icon: const Icon(Icons.filter_list_outlined),
-              onPressed: () {
-                // Future: Add filtering functionality
-              },
-            ),
-        ],
-      ),
+      appBar: FrostedAppBar(title: Text(l10n.agendaTabLabel)),
       body: RefreshIndicator(
         edgeOffset: padding.top + kToolbarHeight,
         onRefresh: () async {
