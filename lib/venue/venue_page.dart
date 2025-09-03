@@ -13,6 +13,20 @@ class VenuePage extends StatelessWidget {
   static const double venueLongitude = -78.4587568998666;
   static const String venueCapacity = '600';
 
+  static const EdgeInsets _horizontalPadding = EdgeInsets.symmetric(
+    horizontal: UiConstants.spacing16,
+  );
+  static const EdgeInsets _sectionTitlePadding = EdgeInsets.only(
+    top: UiConstants.spacing16,
+    bottom: UiConstants.spacing8,
+  );
+  static const EdgeInsets _buttonTopPadding = EdgeInsets.only(
+    top: UiConstants.spacing16,
+  );
+
+  Future<bool> _openMap() =>
+      ExternalLinkUtil.openMap(venueLatitude, venueLongitude);
+
   Widget _buildDirectionsButton({
     required ColorScheme colorScheme,
     required AppLocalizations l10n,
@@ -25,7 +39,7 @@ class VenuePage extends StatelessWidget {
     );
 
     return Padding(
-      padding: const EdgeInsets.only(top: UiConstants.spacing16),
+      padding: _buttonTopPadding,
       child: SizedBox(
         width: double.infinity,
         child: ElevatedButton.icon(
@@ -45,7 +59,9 @@ class VenuePage extends StatelessWidget {
     final padding = context.padding;
 
     // Get all venue info sections
-    final venueInfoSections = [
+    final venueInfoSections = <InfoSection>[];
+
+    final allSections = [
       InfoSection(
         title: l10n.facilitiesCampusTitle,
         description: l10n.facilitiesCampusDescription,
@@ -68,6 +84,12 @@ class VenuePage extends StatelessWidget {
       ),
     ];
 
+    venueInfoSections.addAll(
+      allSections.where(
+        (section) => section.title.isNotEmpty && section.description.isNotEmpty,
+      ),
+    );
+
     final venueDetails = [
       const IconLabelItem(text: venueAddress, icon: Icons.location_on_outlined),
       IconLabelItem(
@@ -81,15 +103,17 @@ class VenuePage extends StatelessWidget {
       label: l10n.venueTabLabel,
       explicitChildNodes: true,
       child: Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: const FrostedAppBar(),
         body: CustomScrollView(
           slivers: [
+            SliverToBoxAdapter(
+              child: SizedBox(height: padding.top + kToolbarHeight),
+            ),
             SliverList(
               delegate: SliverChildListDelegate([
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: UiConstants.spacing16,
-                  ),
+                  padding: _horizontalPadding,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -99,19 +123,12 @@ class VenuePage extends StatelessWidget {
                       ),
                       const SectionTitle(
                         title: venueName,
-                        padding: EdgeInsets.only(
-                          top: UiConstants.spacing16,
-                          bottom: UiConstants.spacing8,
-                        ),
+                        padding: _sectionTitlePadding,
                       ),
                       IconLabelList(items: venueDetails),
                       _buildDirectionsButton(
                         l10n: l10n,
-                        onTap:
-                            () => ExternalLinkUtil.openMap(
-                              venueLatitude,
-                              venueLongitude,
-                            ),
+                        onTap: _openMap,
                         colorScheme: colorScheme,
                       ),
                     ],
@@ -123,7 +140,7 @@ class VenuePage extends StatelessWidget {
                   sections: venueInfoSections,
                 ),
 
-                ExcludeSemantics(child: SizedBox(height: padding.bottom)),
+                SizedBox(height: padding.bottom),
               ]),
             ),
           ],

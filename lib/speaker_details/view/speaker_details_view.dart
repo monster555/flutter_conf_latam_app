@@ -18,7 +18,7 @@ class SpeakerDetailsView extends StatelessWidget {
   /// Extracts the [SpeakerSummary] from any [SpeakerDetailsState].
   /// This is available in all state variations and provides basic speaker
   /// information.
-  static SpeakerSummary speakerSummarySelector(SpeakerDetailsCubit cubit) =>
+  static SpeakerSummary _speakerSummarySelector(SpeakerDetailsCubit cubit) =>
       cubit.state.speakerSummary;
 
   /// Extracts the full [Speaker] details from the cubit state.
@@ -27,7 +27,7 @@ class SpeakerDetailsView extends StatelessWidget {
   /// (in [SpeakerDetailsLoaded] state), otherwise returns null during loading,
   /// error, or initial states.
   /// This allows for progressive UI rendering based on data availability.
-  static Speaker? speakerDetailsSelector(SpeakerDetailsCubit cubit) {
+  static Speaker? _speakerDetailsSelector(SpeakerDetailsCubit cubit) {
     final state = cubit.state;
     if (state case SpeakerDetailsLoaded(speakerDetails: final speakerDetails)) {
       return speakerDetails;
@@ -40,7 +40,7 @@ class SpeakerDetailsView extends StatelessWidget {
   /// Returns a non-null error message string only when in the
   /// [SpeakerDetailsError] state, otherwise returns null. Used to conditionally
   /// display error UI.
-  static String? errorMessageSelector(SpeakerDetailsCubit cubit) {
+  static String? _errorMessageSelector(SpeakerDetailsCubit cubit) {
     final state = cubit.state;
     if (state case SpeakerDetailsError(:final errorMessage)) {
       return errorMessage;
@@ -52,7 +52,7 @@ class SpeakerDetailsView extends StatelessWidget {
   ///
   /// Returns true only when the cubit is in the [SpeakerDetailsLoading] state.
   /// Used to display loading indicators and prevent premature interactions.
-  static bool isLoadingSelector(SpeakerDetailsCubit cubit) =>
+  static bool _isLoadingSelector(SpeakerDetailsCubit cubit) =>
       cubit.state is SpeakerDetailsLoading;
 
   Widget _buildLoadingIndicator() {
@@ -177,19 +177,19 @@ class SpeakerDetailsView extends StatelessWidget {
     final topContentOffset = padding.top + kToolbarHeight;
 
     final speakerSummary = context.select<SpeakerDetailsCubit, SpeakerSummary>(
-      speakerSummarySelector,
+      _speakerSummarySelector,
     );
 
     final speakerDetails = context.select<SpeakerDetailsCubit, Speaker?>(
-      speakerDetailsSelector,
+      _speakerDetailsSelector,
     );
 
     final errorMessage = context.select<SpeakerDetailsCubit, String?>(
-      errorMessageSelector,
+      _errorMessageSelector,
     );
 
     final isLoading = context.select<SpeakerDetailsCubit, bool>(
-      isLoadingSelector,
+      _isLoadingSelector,
     );
 
     return Scaffold(

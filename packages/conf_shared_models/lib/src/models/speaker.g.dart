@@ -15,14 +15,13 @@ Speaker _$SpeakerFromJson(Map<String, dynamic> json) => Speaker(
   description: json['description'] as String,
   country: json['country'] as String,
   countryCode: json['country_code'] as String,
-  socialMediaLinks:
-      (json['social_media_links'] as List<dynamic>)
-          .map((e) => SocialMediaLink.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  languages:
-      (json['languages'] as List<dynamic>)
-          .map((e) => $enumDecode(_$LanguageEnumMap, e))
-          .toList(),
+  countryFlagUrl: json['country_flag'] as String,
+  socialMediaLinks: (json['social_media_links'] as List<dynamic>)
+      .map((e) => SocialMediaLink.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  languages: (json['languages'] as List<dynamic>)
+      .map((e) => $enumDecode(_$LanguageEnumMap, e))
+      .toList(),
 );
 
 Map<String, dynamic> _$SpeakerToJson(Speaker instance) => <String, dynamic>{
@@ -34,6 +33,7 @@ Map<String, dynamic> _$SpeakerToJson(Speaker instance) => <String, dynamic>{
   'description': instance.description,
   'country': instance.country,
   'country_code': instance.countryCode,
+  'country_flag': instance.countryFlagUrl,
   'languages': instance.languages.map((e) => _$LanguageEnumMap[e]!).toList(),
   'social_media_links': instance.socialMediaLinks,
 };

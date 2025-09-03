@@ -32,29 +32,11 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _buildAvatar(ColorScheme colorScheme) {
-    return Semantics(
-      button: true,
-      label: profileLabel,
-      hint: profileHint,
-      child: CircleAvatar(
-        child: IconButton(
-          tooltip: profileTooltip,
-          icon: Icon(Icons.person_outline, color: colorScheme.onPrimary),
-          onPressed: onProfileTap,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    final colorScheme = context.colorScheme;
-
     return FrostedAppBar(
       automaticallyImplyLeading: false,
       leading: _buildLeadingLogo(context),
-      actions: [avatar ?? _buildAvatar(colorScheme)],
     );
   }
 

@@ -27,7 +27,7 @@ class DateFormatter {
 
   final String locale;
 
-  /// Format a date for display in schedule tabs (e.g., "Mon 9")
+  /// Format a date for display in schedule tabs (e.g., "09 Sep")
   String formatTabDate(DateTime date) =>
       DateFormatService._getCachedFormatter('dd MMM', locale).format(date);
 
@@ -52,6 +52,19 @@ class DateFormatter {
   String formatDate(DateTime date) =>
       DateFormatService._getCachedFormatter('yMMMd', locale).format(date);
 
+  /// Format a date without year (e.g., "Sep 9")
+  String formatDateWithoutYear(DateTime date) =>
+      DateFormatService._getCachedFormatter('MMM d', locale).format(date);
+
+  /// Format date with time range (e.g., "Sep 9, 3:00 PM - 4:00 PM")
+  String formatDateWithTimeRange(DateTime startDateTime, DateTime endDateTime) {
+    final datePart = formatDateWithoutYear(startDateTime);
+    final startTime = formatTime(startDateTime);
+    final endTime = formatTime(endDateTime);
+
+    return '$datePart, $startTime - $endTime';
+  }
+
   /// Format just the time (e.g., "10:30 AM")
   String formatTime(DateTime time) =>
       DateFormatService._getCachedFormatter('jm', locale).format(time);
@@ -75,7 +88,7 @@ class DateFormatter {
   }
 
   /// Format duration in hours and minutes
-  static String formatDuration(Duration duration) {
+  String formatDuration(Duration duration) {
     final hours = duration.inHours;
     final minutes = duration.inMinutes % 60;
 

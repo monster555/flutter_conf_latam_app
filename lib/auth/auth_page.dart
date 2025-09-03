@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:conf_shared_models/conf_shared_models.dart';
 import 'package:conf_ui_kit/conf_ui_kit.dart';
 import 'package:flutter/material.dart';
@@ -117,12 +119,14 @@ class AuthButtons extends StatelessWidget {
         listenWhen: _listenWhen,
         child: Column(
           children: [
-            ContinueWithApple(
-              onPressed: (type) => _startSignInFlow(type, context),
-            ),
-            const ExcludeSemantics(
-              child: SizedBox(height: UiConstants.spacing12),
-            ),
+            if (Platform.isIOS) ...[
+              ContinueWithApple(
+                onPressed: (type) => _startSignInFlow(type, context),
+              ),
+              const ExcludeSemantics(
+                child: SizedBox(height: UiConstants.spacing12),
+              ),
+            ],
             ContinueWithGoogle(
               onPressed: (type) => _startSignInFlow(type, context),
             ),

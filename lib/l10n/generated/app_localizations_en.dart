@@ -350,6 +350,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sponsorTierInkind => 'In-kind';
 
   @override
+  String get sponsorTierSenior => 'Senior';
+
+  @override
   String get sponsorTierOther => 'Others';
 
   @override

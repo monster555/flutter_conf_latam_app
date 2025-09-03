@@ -7,21 +7,21 @@ sealed class SpeakersState extends Equatable {
   List<Object> get props => [];
 }
 
-class SpeakersInitial extends SpeakersState {
+final class SpeakersInitial extends SpeakersState {
   const SpeakersInitial();
 
   @override
   List<Object> get props => [];
 }
 
-class SpeakersLoading extends SpeakersState {
+final class SpeakersLoading extends SpeakersState {
   const SpeakersLoading();
 
   @override
   List<Object> get props => [];
 }
 
-class SpeakersLoaded extends SpeakersState {
+final class SpeakersLoaded extends SpeakersState {
   const SpeakersLoaded(this.speakers);
 
   final List<SpeakerSummary> speakers;
@@ -30,7 +30,7 @@ class SpeakersLoaded extends SpeakersState {
   List<Object> get props => [speakers];
 }
 
-class SpeakersError extends SpeakersState {
+final class SpeakersError extends SpeakersState {
   const SpeakersError(this.message);
 
   final String message;

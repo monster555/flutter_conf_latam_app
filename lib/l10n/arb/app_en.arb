@@ -476,6 +476,10 @@
   "@sponsorTierInkind": {
     "description": "In-kind sponsor tier"
   },
+  "sponsorTierSenior": "Senior",
+  "@sponsorTierSenior": {
+    "description": "Senior sponsor tier"
+  },
   "sponsorTierOther": "Others",
   "@sponsorTierOther": {
     "description": "Other sponsor tier"

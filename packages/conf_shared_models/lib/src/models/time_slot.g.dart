@@ -9,10 +9,9 @@ part of 'time_slot.dart';
 TimeSlot _$TimeSlotFromJson(Map<String, dynamic> json) => TimeSlot(
   id: json['id'] as String,
   name: json['name'] as String,
-  sessions:
-      (json['sessions'] as List<dynamic>)
-          .map((e) => Session.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  sessions: (json['sessions'] as List<dynamic>)
+      .map((e) => Session.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$TimeSlotToJson(TimeSlot instance) => <String, dynamic>{

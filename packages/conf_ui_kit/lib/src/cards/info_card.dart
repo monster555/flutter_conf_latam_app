@@ -50,9 +50,7 @@ class InfoCard extends StatelessWidget {
                         color: iconColor ?? colorScheme.primary,
                       ),
                     ),
-                    const ExcludeSemantics(
-                      child: SizedBox(width: UiConstants.spacing8),
-                    ),
+                    const SizedBox(width: UiConstants.spacing8),
                     Expanded(
                       child: Semantics(
                         header: true,
@@ -67,9 +65,7 @@ class InfoCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const ExcludeSemantics(
-                child: SizedBox(height: UiConstants.spacing8),
-              ),
+              const SizedBox(height: UiConstants.spacing8),
               Text(description, style: textTheme.bodyMedium),
             ],
           ),
