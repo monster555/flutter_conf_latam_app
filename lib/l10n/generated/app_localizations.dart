@@ -696,6 +696,12 @@ abstract class AppLocalizations {
   /// **'Silver'**
   String get sponsorTierSilver;
 
+  /// Bronze sponsor tier
+  ///
+  /// In en, this message translates to:
+  /// **'Bronze'**
+  String get sponsorTierBronze;
+
   /// In-kind sponsor tier
   ///
   /// In en, this message translates to:
@@ -707,6 +713,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Senior'**
   String get sponsorTierSenior;
+
+  /// Junior sponsor tier
+  ///
+  /// In en, this message translates to:
+  /// **'Junior'**
+  String get sponsorTierJunior;
 
   /// Other sponsor tier
   ///
