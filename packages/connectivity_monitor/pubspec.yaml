@@ -1,0 +1,13 @@
+name: connectivity_monitor
+description: A simple connectivity and internet access monitor with real-time listener.
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  connectivity_plus: ^6.1.4
+
+dev_dependencies:
+  very_good_analysis: ^7.0.0

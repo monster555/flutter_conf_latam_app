@@ -1,0 +1,16 @@
+name: conf_auth_repository
+description: Auth Repository
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  conf_auth_data_source:
+    path: ../conf_auth_data_source
+  conf_shared_models:
+    path: ../conf_shared_models
+
+dev_dependencies:
+  very_good_analysis: ^7.0.0

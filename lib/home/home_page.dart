@@ -1,14 +1,21 @@
 import 'package:conf_ui_kit/conf_ui_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_conf_latam/agenda/agenda_page.dart';
+import 'package:flutter_conf_latam/common/common.dart';
 import 'package:flutter_conf_latam/extensions/navigator_extensions.dart';
 import 'package:flutter_conf_latam/l10n/l10n.dart';
 import 'package:flutter_conf_latam/speakers/speakers_page.dart';
 import 'package:flutter_conf_latam/sponsors/sponsors_page.dart';
 import 'package:flutter_conf_latam/venue/venue_page.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage._({super.key});
+
+  static Widget builder(BuildContext _, GoRouterState state) {
+    return HomePage._(key: state.pageKey);
+  }
 
   static final _eventStartDate = DateTime(2025, 9, 9, 8);
   static const _venueName = 'Universidad de las Américas';
@@ -38,7 +45,8 @@ class HomePage extends StatelessWidget {
           profileLabel: l10n.userProfileLabel,
           profileHint: l10n.userProfileHint,
           profileTooltip: l10n.userProfileTooltip,
-          onProfileTap: () {},
+          onProfileTap: context.read<SessionCubit>().logout,
+          avatar: const UserProfileAvatar(size: 40),
         ),
         body: CustomScrollView(
           slivers: [
@@ -79,26 +87,26 @@ class HomePage extends StatelessWidget {
                       dates,
                     ),
                     semanticHint: l10n.venueBannerSemanticsHint,
-                    onTap: () => context.push<void>(const VenuePage()),
+                    onTap: () => context.pushX<void>(const VenuePage()),
                   ),
                   const SizedBox(height: UiConstants.spacing16),
                   SectionNavigationCard(
                     title: l10n.agendaTabLabel,
                     description: l10n.agendaNavigationDescription,
                     assetPath: _agendaIconPath,
-                    onTap: () => context.push<void>(const AgendaPage()),
+                    onTap: () => context.pushX<void>(const AgendaPage()),
                   ),
                   SectionNavigationCard(
                     title: l10n.speakersTabLabel,
                     description: l10n.speakersNavigationDescription,
                     assetPath: _speakersIconPath,
-                    onTap: () => context.push<void>(const SpeakersPage()),
+                    onTap: () => context.pushX<void>(const SpeakersPage()),
                   ),
                   SectionNavigationCard(
                     title: l10n.sponsorsTabLabel,
                     description: l10n.sponsorsNavigationDescription,
                     assetPath: _sponsorsIconPath,
-                    onTap: () => context.push<void>(const SponsorsPage()),
+                    onTap: () => context.pushX<void>(const SponsorsPage()),
                   ),
                 ]),
               ),

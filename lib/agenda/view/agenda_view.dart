@@ -151,7 +151,7 @@ class AgendaView extends StatelessWidget {
             SessionLevel.expert: l10n.sessionLevelExpert,
           },
           onSessionTap:
-              (session) => context.push<void>(SessionDetailsPage(session)),
+              (session) => context.pushX<void>(SessionDetailsPage(session)),
           noSessionsMessage: l10n.errorSessionsNoneForDay(
             formatter.formatFullDate(selectedDate),
           ),

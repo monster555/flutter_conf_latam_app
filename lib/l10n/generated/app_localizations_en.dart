@@ -383,8 +383,137 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contactSectionTitle => 'Let\'s keep in touch';
 
   @override
+  String get welcome => 'Welcome';
+
+  @override
+  String get welcomeDescription =>
+      'Get ready to experience the best of the Flutter world!';
+
+  @override
+  String continueWith(Object value) {
+    return 'Continue with $value';
+  }
+
+  @override
+  String get continueAsGuests => 'Continue as guest';
+
+  @override
+  String get or => 'or';
+
+  @override
+  String get termsAndPrivacyPart1 => 'Almost there! Just accept our ';
+
+  @override
+  String get termsLabel => 'Terms';
+
+  @override
+  String get termsAndPrivacyAnd => ' and ';
+
+  @override
+  String get privacyPolicyLabel => 'Privacy Policy';
+
+  @override
+  String get termsAndPrivacyPart2 => ' to get started.';
+
+  @override
+  String get accept => 'Accept';
+
+  @override
+  String get flutterConfLatamLogoDescription =>
+      'Logo of Flutter Conf Latam, third edition, in Quito, Ecuador.';
+
+  @override
   String get errorCannotOpenLink => 'Cannot open this link';
 
   @override
   String get errorGeneric => 'An error occurred';
+
+  @override
+  String get termsAndConditionsErrorTitle => 'One last step';
+
+  @override
+  String get termsAndConditionsErrorDescription =>
+      'Please accept our terms and policies.';
+
+  @override
+  String get authErrorGenericTitle => 'Oops, something went wrong';
+
+  @override
+  String get authErrorInternetTitle => 'Oops! You’re offline';
+
+  @override
+  String get authErrorGenericDescription => 'No worries, let’s try again.';
+
+  @override
+  String get authErrorInternetDescription =>
+      'Check your connection and try again when you’re ready.';
+
+  @override
+  String get cancelButton => 'Cancel';
+
+  @override
+  String get retryButton => 'Retry';
+
+  @override
+  String get onboardingTitle => 'Personal information';
+
+  @override
+  String get onboardingSkip => 'Skip';
+
+  @override
+  String get onboardingUpdatePhoto => 'Update photo';
+
+  @override
+  String get onboardingPhotoPreview => 'Profile photo preview';
+
+  @override
+  String get onboardingNamesLabel => 'Names';
+
+  @override
+  String get onboardingLastNameLabel => 'Last Name';
+
+  @override
+  String get onboardingContinue => 'Continue';
+
+  @override
+  String get shareDialogTitle => 'Share and help grow the community!';
+
+  @override
+  String get shareBadgeSelectThemeHint => 'Select a theme for the card';
+
+  @override
+  String get shareBadgeThemeBlue => 'Blue theme';
+
+  @override
+  String get shareBadgeThemeYellow => 'Yellow theme';
+
+  @override
+  String get userAvatarLabel => 'User profile photo';
+
+  @override
+  String get badgeImPartOf => 'I’m part of';
+
+  @override
+  String get badgeConference => 'FlutterConf Latam';
+
+  @override
+  String get badgeYear => '2025';
+
+  @override
+  String get badgeLocation => 'Quito - Ecuador';
+
+  @override
+  String get hashtagBeFCL25 => '#BeFCL25';
+
+  @override
+  String get shareLater => 'Later';
+
+  @override
+  String get shareAction => 'Share';
+
+  @override
+  String get dashEcuadorLabel => 'Illustration of Dash in Ecuador';
+
+  @override
+  String get quitoLogoLabel => 'Quito logo';
 }

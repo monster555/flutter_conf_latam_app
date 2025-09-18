@@ -184,6 +184,76 @@
   "socialNetworkOther": "Otro",
   "socialProfilePrefix": "Abre perfil en ",
   "contactSectionTitle": "Sigamos en contacto",
+  "welcome": "Bienvenido",
+  "welcomeDescription": "¡Prepárate para vivir lo mejor del mundo Flutter!",
+  "continueWith": "Continuar con {value}",
+  "@continueWith": {
+    "description": "Botón para continuar",
+    "placeholders": {
+      "value": {
+        "type": "Object"
+      }
+    }
+  },
+  "continueAsGuests": "Continuar como invitado",
+  "@continueAsGuests": {
+    "description": "Botón para continuar como invitado"
+  },
+  "or": "o",
+  "termsAndPrivacyPart1": "¡Casi listos! Solo acepta nuestros ",
+  "@termsAndPrivacyPart1": {
+    "description": "Primera parte del mensaje de términos"
+  },
+  "termsLabel": "Términos",
+  "@termsLabel": {
+    "description": "Texto del enlace a términos"
+  },
+  "termsAndPrivacyAnd": " y ",
+  "@termsAndPrivacyAnd": {
+    "description": "Conjunción entre términos y políticas"
+  },
+  "privacyPolicyLabel": "Políticas de privacidad",
+  "@privacyPolicyLabel": {
+    "description": "Texto del enlace a políticas de privacidad"
+  },
+  "termsAndPrivacyPart2": " para comenzar.",
+  "@termsAndPrivacyPart2": {
+    "description": "Parte final del mensaje"
+  },
+  "accept": "Aceptar",
+  "flutterConfLatamLogoDescription": "Logo de Flutter Conf Latam, tercera edición, en Quito, Ecuador.",
+  "@flutterConfLatamLogoDescription": {
+    "description": "Descripción accesible para el logo de Flutter Conf Latam en español"
+  },
   "errorCannotOpenLink": "No se puede abrir el enlace",
-  "errorGeneric": "Ha ocurrido un error"
+  "errorGeneric": "Ha ocurrido un error",
+  "termsAndConditionsErrorTitle": "Un último paso",
+  "termsAndConditionsErrorDescription": "Acepta nuestros términos y políticas.",
+  "authErrorGenericTitle": "Oops, ha ocurrido un error",
+  "authErrorInternetTitle": "¡Uy! estás sin internet",
+  "authErrorGenericDescription": "Tranquilo, probemos otra vez.",
+  "authErrorInternetDescription": "Revisa tu conexión y reinténtalo cuando estés listo.",
+  "cancelButton": "Cancelar",
+  "retryButton": "Reintentar",
+  "onboardingTitle": "Información personal",
+  "onboardingSkip": "Omitir",
+  "onboardingUpdatePhoto": "Actualizar foto",
+  "onboardingPhotoPreview": "Vista previa de la foto de perfil",
+  "onboardingNamesLabel": "Nombres",
+  "onboardingLastNameLabel": "Apellidos",
+  "onboardingContinue": "Continuar",
+  "shareDialogTitle": "¡Comparte y haz crecer la comunidad!",
+  "shareBadgeSelectThemeHint": "Selecciona un tema para la tarjeta",
+  "shareBadgeThemeBlue": "Tema azul",
+  "shareBadgeThemeYellow": "Tema amarillo",
+  "userAvatarLabel": "Foto de perfil del usuario",
+  "badgeImPartOf": "Soy parte de",
+  "badgeConference": "FlutterConf Latam",
+  "badgeYear": "2025",
+  "badgeLocation": "Quito - Ecuador",
+  "hashtagBeFCL25": "#BeFCL25",
+  "shareLater": "Más tarde",
+  "shareAction": "Compartir",
+  "dashEcuadorLabel": "Ilustración de Dash en Ecuador",
+  "quitoLogoLabel": "Logotipo de Quito"
 }

@@ -44,7 +44,7 @@ class SpeakersView extends StatelessWidget {
       _refreshSpeakers(context);
 
   void _handleSpeakerTap(BuildContext context, SpeakerSummary speaker) =>
-      context.push<void>(SpeakerDetailsPage(speaker));
+      context.pushX<void>(SpeakerDetailsPage(speaker));
 
   Widget _buildLoadingState(AppLocalizations l10n, EdgeInsets padding) {
     final topPadding = padding.top + kToolbarHeight;

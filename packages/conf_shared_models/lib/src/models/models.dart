@@ -1,3 +1,4 @@
+export 'conf_auth_user.dart';
 export 'schedule_day.dart';
 export 'session.dart';
 export 'session_speaker.dart';
@@ -6,4 +7,5 @@ export 'speaker.dart';
 export 'speaker_summary.dart';
 export 'sponsor.dart';
 export 'time_slot.dart';
+export 'user.dart';
 export 'venue.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_latam/app/localizations_manager.dart';
-import 'package:flutter_conf_latam/home/home_page.dart';
 
 class App extends StatefulWidget {
-  const App({super.key});
+  const App({required this.child, super.key});
+  final Widget child;
 
   @override
   State<App> createState() => _AppState();
@@ -18,6 +18,6 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return const HomePage();
+    return widget.child;
   }
 }

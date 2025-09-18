@@ -520,6 +520,47 @@
   "@contactSectionTitle": {
     "description": "Title for the social media links section on speaker details"
   },
+  "welcome": "Welcome",
+  "welcomeDescription": "Get ready to experience the best of the Flutter world!",
+  "continueWith": "Continue with {value}",
+  "@continueWith": {
+    "description": "Button to continue",
+    "placeholders": {
+      "value": {
+        "type": "Object"
+      }
+    }
+  },
+  "continueAsGuests": "Continue as guest",
+  "@continueAsGuests": {
+    "description": "Button to continue as a guest"
+  },
+  "or": "or",
+  "termsAndPrivacyPart1": "Almost there! Just accept our ",
+  "@termsAndPrivacyPart1": {
+    "description": "First part of the terms and privacy message"
+  },
+  "termsLabel": "Terms",
+  "@termsLabel": {
+    "description": "Label text for terms link"
+  },
+  "termsAndPrivacyAnd": " and ",
+  "@termsAndPrivacyAnd": {
+    "description": "Conjunction between terms and privacy"
+  },
+  "privacyPolicyLabel": "Privacy Policy",
+  "@privacyPolicyLabel": {
+    "description": "Label text for privacy policy link"
+  },
+  "termsAndPrivacyPart2": " to get started.",
+  "@termsAndPrivacyPart2": {
+    "description": "Ending part of the terms and privacy message"
+  },
+  "accept": "Accept",
+  "flutterConfLatamLogoDescription": "Logo of Flutter Conf Latam, third edition, in Quito, Ecuador.",
+  "@flutterConfLatamLogoDescription": {
+    "description": "Accessible description for the Flutter Conf Latam logo in English"
+  },
   "errorCannotOpenLink": "Cannot open this link",
   "@errorCannotOpenLink": {
     "description": "Error message when a link cannot be opened"
@@ -527,5 +568,40 @@
   "errorGeneric": "An error occurred",
   "@errorGeneric": {
     "description": "Generic error message"
-  }
+  },
+  "termsAndConditionsErrorTitle": "One last step",
+  "@termsAndConditionsErrorTitle": {
+    "description": "Title shown when the user must accept terms and conditions"
+  },
+  "termsAndConditionsErrorDescription": "Please accept our terms and policies.",
+  "@termsAndConditionsErrorDescription": {
+    "description": "Message shown when the user hasn't accepted terms and conditions"
+  },
+  "authErrorGenericTitle": "Oops, something went wrong",
+  "authErrorInternetTitle": "Oops! You’re offline",
+  "authErrorGenericDescription": "No worries, let’s try again.",
+  "authErrorInternetDescription": "Check your connection and try again when you’re ready.",
+  "cancelButton": "Cancel",
+  "retryButton": "Retry",
+  "onboardingTitle": "Personal information",
+  "onboardingSkip": "Skip",
+  "onboardingUpdatePhoto": "Update photo",
+  "onboardingPhotoPreview": "Profile photo preview",
+  "onboardingNamesLabel": "Names",
+  "onboardingLastNameLabel": "Last Name",
+  "onboardingContinue": "Continue",
+  "shareDialogTitle": "Share and help grow the community!",
+  "shareBadgeSelectThemeHint": "Select a theme for the card",
+  "shareBadgeThemeBlue": "Blue theme",
+  "shareBadgeThemeYellow": "Yellow theme",
+  "userAvatarLabel": "User profile photo",
+  "badgeImPartOf": "I’m part of",
+  "badgeConference": "FlutterConf Latam",
+  "badgeYear": "2025",
+  "badgeLocation": "Quito - Ecuador",
+  "hashtagBeFCL25": "#BeFCL25",
+  "shareLater": "Later",
+  "shareAction": "Share",
+  "dashEcuadorLabel": "Illustration of Dash in Ecuador",
+  "quitoLogoLabel": "Quito logo"
 }
