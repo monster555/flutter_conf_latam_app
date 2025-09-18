@@ -1,7 +1,7 @@
 name: flutter_conf_latam
 description: "FlutterConf - LATAM"
 publish_to: 'none'
-version: 0.1.2+6
+version: 0.1.5+13
 
 environment:
   sdk: ^3.7.0
@@ -52,4 +52,4 @@ flutter:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icons/launcher_icon/launcher_icon.png"
+  image_path: "assets/icons/launcher_icon/ic_launcher.png"
