@@ -10,7 +10,7 @@ import 'package:flutter_conf_latam/venue/venue_page.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  static final _eventStartDate = DateTime(2025, 9, 9);
+  static final _eventStartDate = DateTime(2025, 9, 9, 8);
   static const _venueName = 'Universidad de las Américas';
   static const _location = 'Quito, Ecuador';
   static const _bannerAssetPath = 'assets/images/udla.webp';
@@ -18,14 +18,16 @@ class HomePage extends StatelessWidget {
   static const _speakersIconPath = 'assets/icons/speakers_icon.png';
   static const _sponsorsIconPath = 'assets/icons/sponsors_icon.png';
 
-  bool get _shouldShowCountdown => DateTime.now().isBefore(_eventStartDate);
-
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final padding = context.padding;
+    final now = DateTime.now();
+    final shouldShowCountdown = now.isBefore(_eventStartDate);
 
     final dates = l10n.conferenceDates(9, 10);
+    final baseTopPadding = padding.top + kToolbarHeight;
+    final contentTopPadding = shouldShowCountdown ? 0.0 : baseTopPadding;
 
     return Semantics(
       container: true,
@@ -40,10 +42,10 @@ class HomePage extends StatelessWidget {
         ),
         body: CustomScrollView(
           slivers: [
-            if (_shouldShowCountdown)
+            if (shouldShowCountdown)
               SliverPinnedHeader(
                 child: Padding(
-                  padding: EdgeInsets.only(top: padding.top + kToolbarHeight),
+                  padding: EdgeInsets.only(top: baseTopPadding),
                   child: CountdownWidget(
                     title: l10n.magicBeginsLabel,
                     targetDate: _eventStartDate,
@@ -58,7 +60,7 @@ class HomePage extends StatelessWidget {
             SliverPadding(
               padding: EdgeInsets.fromLTRB(
                 UiConstants.spacing16,
-                0,
+                contentTopPadding,
                 UiConstants.spacing16,
                 padding.bottom,
               ),
