@@ -139,16 +139,6 @@ class AgendaRepository {
       );
     }
 
-    if (normalized['startDate'] != null) {
-      final utcDate = DateTime.parse(normalized['startDate'] as String);
-      normalized['startDate'] = utcDate.toLocal().toIso8601String();
-    }
-
-    if (normalized['endDate'] != null) {
-      final utcDate = DateTime.parse(normalized['endDate'] as String);
-      normalized['endDate'] = utcDate.toLocal().toIso8601String();
-    }
-
     return normalized;
   }
 }
