@@ -9,6 +9,14 @@ class AppAssets extends ThemeExtension<AppAssets> {
   const AppAssets({required this.confLogoPath});
 
   /// Path to the conference logo SVG asset.
+  ///
+  /// Currently using the same asset for both light and dark themes.
+  /// This constant should be updated when the design team provides
+  /// separate assets optimized for each theme. When available, create
+  /// separate constants for light and dark theme variants.
+  static const String _logoPath = 'assets/icons/app_bar_logo.svg';
+
+  /// Path to the conference logo SVG asset.
   final String confLogoPath;
 
   @override
@@ -20,12 +28,8 @@ class AppAssets extends ThemeExtension<AppAssets> {
   ThemeExtension<AppAssets> lerp(covariant AppAssets? other, double t) => this;
 
   /// Light theme assets
-  static const light = AppAssets(
-    confLogoPath: 'assets/icons/flutter_conf_logo_light.svg',
-  );
+  static const light = AppAssets(confLogoPath: _logoPath);
 
   /// Dark theme assets
-  static const dark = AppAssets(
-    confLogoPath: 'assets/icons/flutter_conf_logo_dark.svg',
-  );
+  static const dark = AppAssets(confLogoPath: _logoPath);
 }
