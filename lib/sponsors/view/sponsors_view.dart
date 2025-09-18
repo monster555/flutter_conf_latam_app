@@ -96,8 +96,10 @@ class SponsorsView extends StatelessWidget {
       SponsorTier.platinum => l10n.sponsorTierPlatinum,
       SponsorTier.gold => l10n.sponsorTierGold,
       SponsorTier.silver => l10n.sponsorTierSilver,
+      SponsorTier.bronze => l10n.sponsorTierBronze,
       SponsorTier.inKind => l10n.sponsorTierInkind,
       SponsorTier.senior => l10n.sponsorTierSenior,
+      SponsorTier.junior => l10n.sponsorTierJunior,
       SponsorTier.other => l10n.sponsorTierOther,
     };
   }
