@@ -15,4 +15,13 @@ enum SessionType {
   finish,
 }
 
-enum SponsorTier { platinum, gold, silver, inKind, senior, other }
+enum SponsorTier {
+  platinum,
+  gold,
+  silver,
+  bronze,
+  inKind,
+  senior,
+  junior,
+  other,
+}

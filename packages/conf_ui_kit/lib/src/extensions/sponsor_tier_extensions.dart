@@ -16,8 +16,10 @@ extension SponsorTierX on SponsorTier {
     SponsorTier.platinum => 1,
     SponsorTier.gold => 2,
     SponsorTier.silver => 3,
-    SponsorTier.inKind => 4,
-    SponsorTier.senior => 5,
-    SponsorTier.other => 6,
+    SponsorTier.bronze => 4,
+    SponsorTier.inKind => 5,
+    SponsorTier.senior => 6,
+    SponsorTier.junior => 7,
+    SponsorTier.other => 8,
   };
 }
