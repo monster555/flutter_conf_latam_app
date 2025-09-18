@@ -472,6 +472,10 @@
   "@sponsorTierSilver": {
     "description": "Silver sponsor tier"
   },
+  "sponsorTierBronze": "Bronze",
+  "@sponsorTierBronze": {
+    "description": "Bronze sponsor tier"
+  },
   "sponsorTierInkind": "In-kind",
   "@sponsorTierInkind": {
     "description": "In-kind sponsor tier"
@@ -479,6 +483,10 @@
   "sponsorTierSenior": "Senior",
   "@sponsorTierSenior": {
     "description": "Senior sponsor tier"
+  },
+  "sponsorTierJunior": "Junior",
+  "@sponsorTierJunior": {
+    "description": "Junior sponsor tier"
   },
   "sponsorTierOther": "Others",
   "@sponsorTierOther": {
