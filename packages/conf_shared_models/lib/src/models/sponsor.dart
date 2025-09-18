@@ -1,3 +1,4 @@
+import 'package:conf_shared_models/src/converters/sponsor_tier_converter.dart';
 import 'package:conf_shared_models/src/enums/enums.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -17,6 +18,7 @@ class Sponsor {
 
   Map<String, dynamic> toJson() => _$SponsorToJson(this);
 
+  @SponsorTierConverter()
   final SponsorTier level;
   final String logo;
   final String name;
