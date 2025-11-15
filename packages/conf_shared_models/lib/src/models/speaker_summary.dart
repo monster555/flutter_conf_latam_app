@@ -5,7 +5,7 @@ part 'speaker_summary.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class SpeakerSummary {
-  SpeakerSummary({
+  const SpeakerSummary({
     required this.id,
     required this.name,
     required this.photo,

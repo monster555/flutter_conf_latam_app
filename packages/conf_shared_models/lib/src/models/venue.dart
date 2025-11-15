@@ -1,5 +1,5 @@
 class Venue {
-  Venue({
+  const Venue({
     required this.name,
     required this.address,
     required this.latitude,
