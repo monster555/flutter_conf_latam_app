@@ -1,4 +1,4 @@
-import 'package:conf_ui_kit/src/extensions/locale_extensions.dart';
+import 'package:conf_core/conf_core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
@@ -9,9 +9,9 @@ class DateFormatService {
   /// Global cache for formatters to avoid recreation
   static final Map<String, Map<String, DateFormat>> _formatters = {};
 
-  /// Creates a formatter using the current locale from context
+  /// Creates a formatter using the current language code from context
   static DateFormatter withContext(BuildContext context) =>
-      DateFormatter(context.localeLanguageCode);
+      DateFormatter(context.languageCode);
 
   /// Gets a cached formatter or creates a new one
   static DateFormat _getCachedFormatter(String pattern, String locale) {
