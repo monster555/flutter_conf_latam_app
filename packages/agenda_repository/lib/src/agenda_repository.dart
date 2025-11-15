@@ -61,10 +61,7 @@ class AgendaRepository {
         return ScheduleDay.fromJson(normalizedData);
       }).toList();
     } on ConfDataSourceException catch (e) {
-      throw AgendaRepositoryException(
-        'Failed to fetch agenda from data source',
-        cause: e,
-      );
+      throw AgendaRepositoryException('Failed to fetch agenda', cause: e);
     } on Exception catch (e) {
       throw AgendaRepositoryException(
         'Unknown error when fetching agenda',
