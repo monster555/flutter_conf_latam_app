@@ -61,10 +61,7 @@ class SpeakersRepository {
 
       return data.map(SpeakerSummary.fromJson).toList();
     } on ConfDataSourceException catch (e) {
-      throw SpeakersRepositoryException(
-        'Failed to fetch speakers from data source',
-        cause: e,
-      );
+      throw SpeakersRepositoryException('Failed to fetch speakers', cause: e);
     } on Exception catch (e) {
       throw SpeakersRepositoryException(
         'Unknown error when fetching speakers',
@@ -113,10 +110,7 @@ class SpeakersRepository {
 
       return Speaker.fromJson(normalizedData);
     } on ConfDataSourceException catch (e) {
-      throw SpeakersRepositoryException(
-        'Failed to fetch speaker from data source',
-        cause: e,
-      );
+      throw SpeakersRepositoryException('Failed to fetch speaker', cause: e);
     } on Exception catch (e) {
       throw SpeakersRepositoryException(
         'Unknown error when fetching speaker',

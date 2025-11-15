@@ -38,13 +38,10 @@ class SponsorsRepository {
 
       return data.map(Sponsor.fromJson).toList();
     } on ConfDataSourceException catch (e) {
-      throw SponsorsRepositoryException(
-        'Failed to fetch speakers from Firestore',
-        cause: e,
-      );
+      throw SponsorsRepositoryException('Failed to fetch sponsors', cause: e);
     } on Exception catch (e) {
       throw SponsorsRepositoryException(
-        'Unknown error when fetching speakers',
+        'Unknown error when fetching sponsors',
         cause: e,
       );
     }

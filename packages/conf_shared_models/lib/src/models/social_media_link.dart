@@ -4,7 +4,7 @@ part 'social_media_link.g.dart';
 
 @JsonSerializable()
 class SocialMediaLink {
-  SocialMediaLink({required this.link, required this.type});
+  const SocialMediaLink({required this.link, required this.type});
 
   factory SocialMediaLink.fromJson(Map<String, dynamic> json) =>
       _$SocialMediaLinkFromJson(json);
