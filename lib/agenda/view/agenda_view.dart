@@ -1,3 +1,5 @@
+import 'dart:ui' show FlutterView;
+
 import 'package:conf_core/conf_core.dart';
 import 'package:conf_shared_models/conf_shared_models.dart';
 import 'package:conf_ui_kit/conf_ui_kit.dart';
@@ -168,17 +170,25 @@ class AgendaView extends StatelessWidget {
     DateFormatter formatter,
   ) {
     context.read<AgendaCubit>().selectDayByDate(date);
-    _announceSelectedDate(date, l10n, formatter);
+
+    final view = View.maybeOf(context);
+    if (view == null) return;
+
+    final textDirection = Directionality.of(context);
+    _announceSelectedDate(view, date, l10n, formatter, textDirection);
   }
 
   void _announceSelectedDate(
+    FlutterView view,
     DateTime date,
     AppLocalizations l10n,
     DateFormatter formatter,
+    TextDirection textDirection,
   ) {
-    SemanticsService.announce(
+    SemanticsService.sendAnnouncement(
+      view,
       l10n.dateSelectedAnnouncement(formatter.formatFullDate(date)),
-      TextDirection.ltr,
+      textDirection,
     );
   }
 
